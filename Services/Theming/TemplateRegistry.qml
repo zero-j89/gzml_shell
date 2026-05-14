@@ -383,8 +383,13 @@ Singleton {
       "input": "hyprland.conf",
       "outputs": [
         {
-          "path": "~/.config/hypr/noctalia/noctalia-colors.conf"
-        }
+          "path": "~/.config/hypr/noctalia/noctalia-colors.conf",
+          "postProcess": false
+        },
+        {
+          "path": "~/.config/hypr/noctalia/noctalia-colors.lua",
+          "input": "hyprland.lua"
+        },
       ],
       "postProcess": () => `${templateApplyScript} hyprland`
     },
