@@ -296,7 +296,7 @@ Singleton {
                                                                       lines.push(`input_path = "${Quickshell.shellDir}/Assets/Templates/${inputFile}"`);
                                                                       const outputPath = output.path.replace("~", homeDir);
                                                                       lines.push(`output_path = "${outputPath}"`);
-                                                                      if (app.postProcess) {
+                                                                      if (app.postProcess && output.postProcess !== false) {
                                                                         const postHook = escapeTomlString(app.postProcess(mode));
                                                                         lines.push(`post_hook = "${postHook}"`);
                                                                       }
