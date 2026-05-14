@@ -334,32 +334,56 @@ niri)
 hyprland)
     echo "🎨 Applying 'noctalia' theme to Hyprland..."
     CONFIG_DIR="$HOME/.config/hypr"
-    CONFIG_FILE="$CONFIG_DIR/hyprland.conf"
-    THEME_FILE="$CONFIG_DIR/noctalia/noctalia-colors.conf"
 
-    INCLUDE_LINE="source = $THEME_FILE"
+    CONF_CONFIG_FILE="$CONFIG_DIR/hyprland.conf"
+    LUA_CONFIG_FILE="$CONFIG_DIR/hyprland.lua"
 
-    # Check if the config file exists.
-    if [ ! -f "$CONFIG_FILE" ]; then
-        echo "Config file not found, creating $CONFIG_FILE..."
-        mkdir -p "$(dirname "$CONFIG_FILE")"
-        echo -e "\n$INCLUDE_LINE\n" >"$CONFIG_FILE"
-        echo "Created new config file with noctalia theme."
-    else
-        # Check if noctalia theme source already exists (flexible matching)
-        if grep -qE 'source\s*=\s*.*noctalia.*\.conf' "$CONFIG_FILE"; then
-            echo "Theme already included, skipping modification."
-        else
-            # Only convert symlink when we actually need to write (NixOS read-only symlinks)
-            if [ -L "$CONFIG_FILE" ] && [ ! -w "$CONFIG_FILE" ]; then
-                echo "Detected read-only symlink, converting to local file..."
-                cp --remove-destination "$(readlink -f "$CONFIG_FILE")" "$CONFIG_FILE"
-                chmod +w "$CONFIG_FILE"
-            fi
-            # Add the include line to the end of the file
-            echo -e "\n$INCLUDE_LINE\n" >>"$CONFIG_FILE"
-            echo "✅ Added noctalia theme include to config."
+    CONF_THEME_FILE="$CONFIG_DIR/noctalia/noctalia-colors.conf"
+    LUA_THEME_FILE="$CONFIG_DIR/noctalia/noctalia-colors.lua"
+
+    CONF_INCLUDE_LINE="source = $CONF_THEME_FILE"
+    LUA_INCLUDE_LINE="dofile(\"$LUA_THEME_FILE\")"
+
+    # Prefer Lua config when present. .conf file is kept
+    # only for legacy compatibility
+    if [ -f "$LUA_CONFIG_FILE" ]; then
+      if grep -qF 'noctalia-colors.lua' "$LUA_CONFIG_FILE"; then
+        echo "Lua theme already included, skipping modification."
+      else
+        if [ -L "$LUA_CONFIG_FILE" ] && [ ! -w "$LUA_CONFIG_FILE" ]; then
+          echo "Detected read-only symlink, converting to local file..."
+          cp --remove-destination "$(readlink -f "$LUA_CONFIG_FILE")" "$LUA_CONFIG_FILE"
+          chmod +w "$LUA_CONFIG_FILE"
         fi
+
+        printf "\n%s\n%s\n" \
+          "-- This loads Noctalia-generated Hyprland colors." \
+          "$LUA_INCLUDE_LINE" >> "$LUA_CONFIG_FILE"
+
+        echo "Added Noctalia Lua theme include to config."
+      fi
+
+    else
+      # Existing hyprlang behavior preserved for legacy users.
+      if [ ! -f "$CONF_CONFIG_FILE" ]; then
+        echo "Config file not found, creating $CONF_CONFIG_FILE..."
+        mkdir -p "$(dirname "$CONF_CONFIG_FILE")"
+        printf "\n%s\n" "$CONF_INCLUDE_LINE" > "$CONF_CONFIG_FILE"
+        echo "Created new config file with noctalia theme."
+      else
+        if grep -qE 'source\s*=\s*.*noctalia.*\.conf' "$CONF_CONFIG_FILE"; then
+          echo "Theme already included, skipping modification."
+        else
+          if [ -L "$CONF_CONFIG_FILE" ] && [ ! -w "$CONF_CONFIG_FILE" ]; then
+            echo "Detected read-only symlink, converting to local file..."
+            cp --remove-destination "$(readlink -f "$CONF_CONFIG_FILE")" "$CONF_CONFIG_FILE"
+            chmod +w "$CONF_CONFIG_FILE"
+          fi
+
+          printf "\n%s\n" "$CONF_INCLUDE_LINE" >> "$CONF_CONFIG_FILE"
+          echo "Added noctalia theme include to config."
+        fi
+      fi
     fi
 
     # Reload hyprland
