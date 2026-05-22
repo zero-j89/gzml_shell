@@ -575,12 +575,12 @@ Item {
                            const command = terminal.concat(app.command);
                            Logger.d("ApplicationsProvider", "Executing command (manual terminal): " + command.join(" "));
                            CompositorService.spawn(command);
-                         } else if (app.command && app.command.length > 0) {
-                           Logger.d("ApplicationsProvider", "Executing command: " + app.command.join(" "));
-                           CompositorService.spawn(app.command);
                          } else if (app.execute) {
                            Logger.d("ApplicationsProvider", "Calling app.execute() for: " + app.name);
                            app.execute();
+                         } else if (app.command && app.command.length > 0) {
+                           Logger.d("ApplicationsProvider", "Executing command: " + app.command.join(" "));
+                           CompositorService.spawn(app.command);
                          } else {
                            Logger.w("ApplicationsProvider", `Could not launch: ${app.name}. No valid launch method.`);
                          }
