@@ -354,17 +354,17 @@ Singleton {
   function taliaWeatherImageFromCode(code) {
     var isDay = data.weather ? data.weather.current_weather.is_day : true;
     if (code >= 40 && code <= 49)
-      return Quickshell.shellDir + "/Assets/Talia/TaliaDazed.png";
+      return Quickshell.shellDir + "/Assets/Talia/cloud-fog.svg";
     if (code >= 95 && code <= 99)
-      return Quickshell.shellDir + "/Assets/Talia/TaliaFear.png";
+      return Quickshell.shellDir + "/Assets/Talia/cloud-lightning.svg";
     var wet = (code >= 51 && code <= 67) || (code >= 80 && code <= 82) || (code >= 71 && code <= 77) || (code >= 85 && code <= 86);
     if (wet)
-      return Quickshell.shellDir + "/Assets/Talia/TaliaSob.png";
+      return Quickshell.shellDir + "/Assets/Talia/cloud-rain.svg";
     if ((code === 0 || code === 1 || code === 2) && isDay === false)
-      return Quickshell.shellDir + "/Assets/Talia/TaliaVampire.png";
+      return Quickshell.shellDir + "/Assets/Talia/moon.svg";
     if ((code === 0 && isDay === true) || code === 1 || code === 2)
-      return Quickshell.shellDir + "/Assets/Talia/TaliaParty.png";
-    return Quickshell.shellDir + "/Assets/Talia/TaliaBlank.png";
+      return Quickshell.shellDir + "/Assets/Talia/sunny.svg";
+    return Quickshell.shellDir + "/Assets/Talia/third-eye.svg";
   }
 
   // --------------------------------

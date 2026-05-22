@@ -525,18 +525,23 @@ Item {
   }
 
   // Public functions
-  function switchToWorkspace(workspace) {
-    try {
-      if (workspace.name) {
-        Hyprland.dispatch(`workspace ${workspace.name}`);
-        return;
-      }
-      Hyprland.dispatch(`workspace ${workspace.idx}`);
-    } catch (e) {
-      Logger.e("HyprlandService", "Failed to switch workspace:", e);
-    }
-  }
+function switchToWorkspace(workspace) {
+  try {
+    const ws = workspace.idx !== undefined ? workspace.idx
+             : workspace.id !== undefined ? workspace.id
+             : workspace.name;
 
+    Logger.d("HyprlandService", `Switching workspace via Lua dispatch: ${ws}`);
+
+    Quickshell.execDetached([
+      "bash",
+      "-lc",
+      `hyprctl dispatch 'hl.dsp.focus({ workspace = "${ws}" })'`
+    ]);
+  } catch (e) {
+    Logger.e("HyprlandService", "Failed to switch workspace:", e);
+  }
+}
   function focusWindow(window) {
     try {
       if (!window || !window.id) {

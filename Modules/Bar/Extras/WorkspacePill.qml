@@ -206,9 +206,13 @@ Item {
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
     hoverEnabled: true
-    onClicked: {
-      CompositorService.switchToWorkspace(workspace);
-    }
+ onClicked: {
+    CompositorService.switchToWorkspace({
+    idx: pillContainer.workspace.idx,
+    id: pillContainer.workspace.id,
+    name: pillContainer.workspace.name
+  });
+}
   }
 
   // Burst effect overlay for focused pill

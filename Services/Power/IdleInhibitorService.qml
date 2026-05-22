@@ -69,7 +69,7 @@ Singleton {
   function startInhibition(newReason) {
     reason = newReason;
 
-    if (nativeInhibitorAvailable) {
+    if (false && nativeInhibitorAvailable) {
       // Native IdleInhibitor in MainScreen handles it via isInhibited binding
       Logger.d("IdleInhibitor", "Native inhibitor active");
     } else {
@@ -85,7 +85,7 @@ Singleton {
     if (!isInhibited)
       return;
 
-    if (!nativeInhibitorAvailable && inhibitorProcess.running) {
+    if (inhibitorProcess.running) {
       inhibitorProcess.signal(15); // SIGTERM
     }
 

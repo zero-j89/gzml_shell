@@ -546,18 +546,24 @@ Singleton {
       let txt = text();
       let matches = txt.match(/cpu MHz\s+:\s+([0-9.]+)/g);
       if (matches && matches.length > 0) {
-        let totalFreq = 0.0;
-        for (let i = 0; i < matches.length; i++) {
-          totalFreq += parseFloat(matches[i].split(":")[1]);
-        }
-        let avgFreq = (totalFreq / matches.length) / 1000.0;
-        root.cpuFreq = avgFreq.toFixed(1) + "GHz";
-        cpuMaxFreqFile.reload();
-        if (avgFreq > root.cpuGlobalMaxFreq)
-        root.cpuGlobalMaxFreq = avgFreq;
-        if (root.cpuGlobalMaxFreq > 0) {
-          root.cpuFreqRatio = Math.min(1.0, avgFreq / root.cpuGlobalMaxFreq);
-        }
+let maxFreq = 0.0;
+
+for (let i = 0; i < matches.length; i++) {
+  let freq = parseFloat(matches[i].split(":")[1]) / 1000.0;
+  if (freq > maxFreq)
+    maxFreq = freq;
+}
+
+     root.cpuFreq = maxFreq.toFixed(1) + "GHz";
+
+	cpuMaxFreqFile.reload();
+
+	if (maxFreq > root.cpuGlobalMaxFreq)
+  	root.cpuGlobalMaxFreq = maxFreq;
+
+	if (root.cpuGlobalMaxFreq > 0) {
+ 	 root.cpuFreqRatio = Math.min(1.0, maxFreq / root.cpuGlobalMaxFreq);
+       }
       }
     }
   }

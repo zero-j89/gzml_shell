@@ -15,20 +15,18 @@ ColumnLayout {
     distributeEvenly: true
     currentIndex: tabView.currentIndex
 
+    // YOUR PAGE
     NTabButton {
-      text: I18n.tr("common.info")
+      text: "GZML"
       tabIndex: 0
       checked: subTabBar.currentIndex === 0
     }
+
+    // FASTFETCH / INFO TAB
     NTabButton {
-      text: I18n.tr("common.contributors")
+      text: I18n.tr("common.info")
       tabIndex: 1
       checked: subTabBar.currentIndex === 1
-    }
-    NTabButton {
-      text: I18n.tr("common.supporters")
-      tabIndex: 2
-      checked: subTabBar.currentIndex === 2
     }
   }
 
@@ -41,8 +39,40 @@ ColumnLayout {
     id: tabView
     currentIndex: subTabBar.currentIndex
 
+    // ===== YOUR CUSTOM PAGE =====
+    ColumnLayout {
+      spacing: Style.marginL
+      anchors.margins: Style.marginL
+
+      NText {
+        text: "Ground ZeR0 ML"
+        font.pointSize: 28
+        color: Color.mPrimary
+      }
+
+     Image {
+      source: "/home/zer0/Downloads/GZML.png"
+
+      Layout.preferredWidth: 460 * Style.uiScaleRatio
+      Layout.preferredHeight: 460 * Style.uiScaleRatio
+      Layout.alignment: Qt.AlignHCenter
+
+      width: 460 * Style.uiScaleRatio
+      height: 460 * Style.uiScaleRatio
+
+      sourceSize.width: width
+      sourceSize.height: height
+      fillMode: Image.PreserveAspectFit
+ }
+      NText {
+        Layout.fillWidth: true
+        wrapMode: Text.Wrap
+        text: "Testing My Programming and Injection Skills...."
+        color: Color.mOnSurface
+      }
+    }
+
+    // ===== ORIGINAL SYSTEM INFO TAB =====
     VersionSubTab {}
-    ContributorsSubTab {}
-    SupportersSubTab {}
   }
 }
