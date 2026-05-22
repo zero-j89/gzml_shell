@@ -46,3 +46,7 @@ Noctalia Shell is made possible by the incredible work of many open-source proje
 Noctalia Shell is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 Each dependency listed above is governed by its own respective license. Please refer to their individual projects for licensing information.
+
+
+
+EXTRAS.. GZML - Ground ZeR0 extras added. I do have to thank all the people over at noctalia.
