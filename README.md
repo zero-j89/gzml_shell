@@ -8,7 +8,7 @@ This is a self maintianed custom fork of noctalia with custom injections and plu
 
 This is a custom shell so a lot of the problems with thge orignal source matierla has been fixed/changed for the better IMO.
 
-
+you will need the "dotfiles" from https://github.com/zero-j89/Full-Lua-Migration-custom-jakool-dotfiles as well as all its depends.
 
 <img width="2560" height="1440" alt="Screenshot_20-May_21-49-53_5203" src="https://github.com/user-attachments/assets/c44e9ae6-8090-4535-a2e3-619575882d87" />
 <img width="2560" height="1440" alt="Screenshot_20-May_21-45-57_23831" src="https://github.com/user-attachments/assets/71b68ef6-9f3f-42f6-bb37-77344091d4d0" />
