@@ -353,17 +353,6 @@
         "shortcuts": {
             "left": [
                 {
-                    "enableOnStateLogic": true,
-                    "generalTooltipText": "CPU Mode",
-                    "icon": "bong",
-                    "id": "CustomButton",
-                    "onClicked": "sh -c '/home/zer0/.config/hypr/scripts/TogglePerformance.sh'",
-                    "onMiddleClicked": "",
-                    "onRightClicked": "",
-                    "showExecTooltip": false,
-                    "stateChecksJson": "[{\"command\":\"sh -c 'test \\\"$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)\\\" != \\\"performance\\\"'\",\"icon\":\"bong\"},{\"command\":\"sh -c 'test \\\"$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)\\\" = \\\"performance\\\"'\",\"icon\":\"bong-filled\"}]"
-                },
-                {
                     "id": "NoctaliaPerformance"
                 },
                 {
@@ -395,6 +384,26 @@
                         "videoPath": ""
                     },
                     "id": "plugin:screen-toolkit"
+                },
+                {
+                    "defaultSettings": {
+                        "autoPaste": false,
+                        "autoPasteDelay": 300,
+                        "autoPasteOnRightClick": false,
+                        "cardColors": {
+                        },
+                        "customColors": {
+                        },
+                        "enableTodoIntegration": false,
+                        "fullscreenMode": false,
+                        "hidePanelBackground": false,
+                        "notecardsEnabled": true,
+                        "panelHeight": 0,
+                        "panelWidth": 1450,
+                        "pincardsEnabled": true,
+                        "showCloseButton": true
+                    },
+                    "id": "plugin:clipper"
                 }
             ],
             "right": [
@@ -835,7 +844,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "",
+        "directory": "~/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": true,
         "enabled": true,
         "favorites": [

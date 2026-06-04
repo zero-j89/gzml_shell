@@ -240,7 +240,7 @@ Singleton {
   function loadTranslations() {
     if (langCode === "")
       return;
-    const filePath = `file://${Quickshell.shellDir}/Assets/Translations/${langCode}.json`;
+    const filePath = `file://${Quickshell.shellDir}/Assets/Translations/en.json`;
     fileView.path = filePath;
     isLoaded = false;
   }

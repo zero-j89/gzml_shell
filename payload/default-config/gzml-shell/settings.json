@@ -66,7 +66,7 @@
         "mouseWheelAction": "workspace",
         "mouseWheelWrap": true,
         "outerCorners": true,
-        "position": "top",
+        "position": "left",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -147,18 +147,6 @@
                     "useDistroLogo": false
                 },
                 {
-                    "defaultSettings": {
-                        "autoMount": false,
-                        "fileBrowser": "yazi",
-                        "hideWhenEmpty": false,
-                        "iconColor": "none",
-                        "showBadge": false,
-                        "showNotifications": true,
-                        "terminalCommand": "kitty"
-                    },
-                    "id": "plugin:usb-drive-manager"
-                },
-                {
                     "compactMode": false,
                     "diskPath": "/",
                     "iconColor": "primary",
@@ -235,44 +223,11 @@
                     "unreadBadgeColor": "primary"
                 },
                 {
-                    "defaultSettings": {
-                        "autoPaste": false,
-                        "autoPasteDelay": 300,
-                        "autoPasteOnRightClick": false,
-                        "cardColors": {
-                        },
-                        "customColors": {
-                        },
-                        "enableTodoIntegration": false,
-                        "fullscreenMode": false,
-                        "hidePanelBackground": false,
-                        "notecardsEnabled": true,
-                        "panelHeight": 0,
-                        "panelWidth": 1450,
-                        "pincardsEnabled": true,
-                        "showCloseButton": true
-                    },
-                    "id": "plugin:clipper"
-                },
-                {
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol",
                     "textColor": "none"
-                },
-                {
-                    "defaultSettings": {
-                        "activeColor": "primary",
-                        "camFilterRegex": "",
-                        "enableToast": true,
-                        "hideInactive": false,
-                        "iconSpacing": 4,
-                        "inactiveColor": "none",
-                        "micFilterRegex": "",
-                        "removeMargins": false
-                    },
-                    "id": "plugin:privacy-indicator"
                 },
                 {
                     "colorizeDistroLogo": false,
@@ -360,50 +315,11 @@
                     "generalTooltipText": "Profile Switcher",
                     "icon": "biohazard",
                     "id": "CustomButton",
-                    "onClicked": "qs -p ~/.config/quickshell-noctalia ipc call plugin:shell-profiles toggleProfiles",
+                    "onClicked": "qs -p ~/.local/share/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
                     "onMiddleClicked": "",
-                    "onRightClicked": "qs -p ~/.config/quickshell-noctalia ipc call plugin:shell-profiles toggleProfiles",
+                    "onRightClicked": "qs -p ~/.local/share/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
                     "showExecTooltip": false,
                     "stateChecksJson": "[]"
-                },
-                {
-                    "defaultSettings": {
-                        "colorHistory": [
-                        ],
-                        "detectedCompositor": "",
-                        "detectedRecorder": "",
-                        "filenameFormat": "",
-                        "installedLangs": [
-                            "eng"
-                        ],
-                        "paletteColors": [
-                        ],
-                        "screenshotPath": "",
-                        "selectedOcrLang": "eng",
-                        "transAvailable": false,
-                        "videoPath": ""
-                    },
-                    "id": "plugin:screen-toolkit"
-                },
-                {
-                    "defaultSettings": {
-                        "autoPaste": false,
-                        "autoPasteDelay": 300,
-                        "autoPasteOnRightClick": false,
-                        "cardColors": {
-                        },
-                        "customColors": {
-                        },
-                        "enableTodoIntegration": false,
-                        "fullscreenMode": false,
-                        "hidePanelBackground": false,
-                        "notecardsEnabled": true,
-                        "panelHeight": 0,
-                        "panelWidth": 1450,
-                        "pincardsEnabled": true,
-                        "showCloseButton": true
-                    },
-                    "id": "plugin:clipper"
                 }
             ],
             "right": [
@@ -415,18 +331,6 @@
                 },
                 {
                     "id": "Network"
-                },
-                {
-                    "defaultSettings": {
-                        "autoMount": false,
-                        "fileBrowser": "yazi",
-                        "hideWhenEmpty": false,
-                        "iconColor": "none",
-                        "showBadge": false,
-                        "showNotifications": true,
-                        "terminalCommand": "kitty"
-                    },
-                    "id": "plugin:usb-drive-manager"
                 }
             ]
         }
@@ -844,7 +748,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "~/Pictures/Wallpapers",
+        "directory": "/home/zer0/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": true,
         "enabled": true,
         "favorites": [

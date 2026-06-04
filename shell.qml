@@ -48,7 +48,7 @@ ShellRoot {
 
   Component.onCompleted: {
     Logger.i("Shell", "---------------------------");
-    Logger.i("Shell", "Noctalia Hello!");
+    Logger.i("Shell", "GZML Shell loaded!");
 
     // Initialize plugin system early so Settings can validate plugin widgets
     PluginRegistry.init();
@@ -209,7 +209,7 @@ ShellRoot {
 
     if (wizardType === "") {
       // First call - determine wizard type
-      if (Settings.shouldOpenSetupWizard) {
+    if (Settings.shouldOpenSetupWizard) {
         wizardType = "setup";
       } else if (UpdateService.shouldShowTelemetryWizard()) {
         wizardType = "telemetry";

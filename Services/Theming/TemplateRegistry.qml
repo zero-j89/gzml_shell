@@ -142,7 +142,7 @@ Singleton {
           "path": "~/.local/share/vicinae/themes/noctalia.toml"
         }
       ],
-      "postProcess": () => `cp --update=none ${Quickshell.shellDir}/Assets/noctalia.svg ~/.local/share/vicinae/themes/noctalia.svg && ${templateApplyScript} vicinae`
+      "postProcess": () => `cp --update=none ${Quickshell.shellDir}/Assets/gzml-small.png ~/.local/share/vicinae/themes/gzml-shell.png && ${templateApplyScript} vicinae`
     },
     {
       "id": "walker",

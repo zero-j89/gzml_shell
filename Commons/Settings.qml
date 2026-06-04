@@ -16,7 +16,7 @@ Singleton {
   property bool isLoaded: false
   property bool reloadSettings: false
   property bool directoriesCreated: false
-  property bool shouldOpenSetupWizard: false
+  property bool shouldOpenSetupWizard: Quickshell.env("GZML_SHELL_FIRST_RUN") === "1"
   property bool isFreshInstall: false
 
   /*
@@ -150,21 +150,25 @@ Singleton {
         reloadSettings = false;
         return;
       }
+
       if (error.toString().includes("No such file") || error === 2) {
         Logger.i("Settings", "Fresh install detected, seeding from bundled GZML defaults");
-      
+
         root.isFreshInstall = true;
-      
-        Quickshell.execDetached([
-          "sh",
-          "-c",
-          "cp '" + Quickshell.shellDir + "/Assets/settings-default.json' '" + settingsFile + "'"
-        ]);
-      
+
+Quickshell.execDetached([
+  "sh",
+  "-c",
+  "mkdir -p '" + configDir + "' && " +
+  "if [ -d '" + Quickshell.shellDir + "/payload/default-config' ]; then " +
+  "cp -a '" + Quickshell.shellDir + "/payload/default-config/.' '" + configDir + "'; " +
+  "else " +
+  "cp '" + Quickshell.shellDir + "/Assets/settings-default.json' '" + settingsFile + "'; " +
+  "fi"
+]);;
+
         reload();
-      
-        // We started without settings, we should open the setupWizard
-        root.shouldOpenSetupWizard = true;
+
       }
     }
   }
@@ -744,7 +748,7 @@ Singleton {
 
     property JsonObject colorSchemes: JsonObject {
       property bool useWallpaperColors: false
-      property string predefinedScheme: "Noctalia (default)"
+      property string predefinedScheme: "GZML (default)"
       property bool darkMode: true
       property string schedulingMode: "off"
       property string manualSunrise: "06:30"

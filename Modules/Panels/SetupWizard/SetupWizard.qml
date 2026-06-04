@@ -106,6 +106,8 @@ SmartPanel {
 
         // Initialize telemetry now that user has made their choice
         TelemetryService.init();
+        
+        // Mark first-run wizard as completed
 
         // Save settings immediately and wait for settingsSaved signal before closing
         Settings.saveImmediate();
@@ -186,7 +188,7 @@ SmartPanel {
                   anchors.centerIn: parent
                   width: 110
                   height: 110
-                  source: Qt.resolvedUrl(Quickshell.shellDir + "/Assets/noctalia.svg")
+                  source: Qt.resolvedUrl(Quickshell.shellDir + "/Assets/gzml-small.png")
                   fillMode: Image.PreserveAspectFit
                   smooth: true
 

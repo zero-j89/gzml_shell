@@ -132,7 +132,7 @@ ColumnLayout {
 
                 Image {
                   anchors.centerIn: parent
-                  source: "../../../../../Assets/noctalia.svg"
+                  source: "../../../../../Assets/gzml-small.png"
                   width: parent.width * 0.75
                   height: width
                   fillMode: Image.PreserveAspectFit
