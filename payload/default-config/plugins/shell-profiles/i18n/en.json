@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Shell profiles"
+  },
+  "panel": {
+    "title": "Profiles",
+    "empty": "No profiles yet. Save your current configuration to get started.",
+    "action-apply": "Apply",
+    "action-save": "Save current",
+    "action-overwrite": "Overwrite",
+    "action-rename": "Rename",
+    "action-delete": "Delete",
+    "more-actions": "More actions",
+    "include-wallpapers": "Wallpapers",
+    "rename-title": "Rename profile",
+    "rename-placeholder": "New name\u2026",
+    "save-title": "Save profile",
+    "save-placeholder": "Profile name\u2026",
+    "save-button": "Save",
+    "search-placeholder": "Search profiles…",
+    "delete-confirm-title": "Delete profile?",
+    "delete-confirm-message": "Delete \"{name}\"? This cannot be undone."
+  },
+  "settings": {
+    "dir-label": "Profiles directory",
+    "dir-description": "Where profiles are stored on disk",
+    "dir-select": "Select folder",
+    "icon-label": "Widget icon",
+    "icon-description": "Tabler icon name shown in the bar",
+    "icon-color-label": "Icon color",
+    "icon-color-description": "Color used for the bar icon",
+    "wallpapers-label": "Include wallpapers by default",
+    "wallpapers-description": "Apply wallpaper settings when loading a profile",
+    "backup-label": "Auto-backup before applying",
+    "backup-description": "Save current config to _backups/ before each profile apply",
+    "backup-count-label": "Maximum backups to keep",
+    "backup-count-description": "Oldest entries are deleted automatically (1\u201320)"
+  },
+  "toast": {
+    "saved": "Profile \"{name}\" saved",
+    "applied": "Profile \"{name}\" applied",
+    "deleted": "Profile \"{name}\" deleted"
+  },
+  "error": {
+    "name-empty": "Name cannot be empty",
+    "name-too-long": "Name is too long (max 64 characters)",
+    "name-invalid": "Name contains invalid characters",
+    "name-exists": "A profile with that name already exists",
+    "save-failed": "Failed to save profile",
+    "apply-failed": "Failed to apply profile",
+    "delete-failed": "Failed to delete profile",
+    "rename-failed": "Failed to rename profile"
+  },
+  "ipc": {
+    "applied": "Profile \"{name}\" applied",
+    "not-found": "Profile \"{name}\" not found"
+  }
+}

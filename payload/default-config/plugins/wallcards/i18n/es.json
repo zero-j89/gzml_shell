@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Todos",
+    "images": "Imágenes",
+    "videos": "Vídeos",
+    "shuffle": "Mezclar",
+    "live-preview": "En vivo",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Abrir Wallcards",
+    "generate-thumbs-message": "Generando miniaturas…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Color del icono",
+      "description": "Color del icono del widget de barra"
+    },
+    "live-preview": {
+      "label": "Vista previa en vivo",
+      "description": "Aplicar fondo mientras navegas por las tarjetas"
+    },
+    "default-filter": {
+      "label": "Filtro predeterminado",
+      "description": "Filtro de tipo de archivo inicial al abrir"
+    },
+    "hide-shortcuts": {
+      "label": "Ocultar atajos",
+      "description": "Ocultar el panel de atajos de teclado"
+    },
+    "hide-top-bar": {
+      "label": "Ocultar barra superior",
+      "description": "Ocultar la barra de herramientas sobre las tarjetas"
+    },
+    "center-card-width": {
+      "label": "Ancho de tarjeta central",
+      "description": "Ancho de la tarjeta central como porcentaje de la pantalla"
+    },
+    "card-height": {
+      "label": "Altura de tarjeta",
+      "description": "Altura de las tarjetas de fondo"
+    },
+    "strip-width": {
+      "label": "Ancho de franja",
+      "description": "Ancho de las franjas laterales"
+    },
+    "card-spacing": {
+      "label": "Espaciado de tarjetas",
+      "description": "Espacio entre tarjetas"
+    },
+    "cards-shown": {
+      "label": "Tarjetas visibles",
+      "description": "Número de tarjetas visibles (se recomiendan números impares)"
+    },
+    "shear-factor": {
+      "label": "Factor de inclinación",
+      "description": "Ángulo de inclinación del diseño de tarjetas"
+    },
+    "card-animation": {
+      "label": "Animación de tarjetas",
+      "description": "Velocidad de las transiciones de tarjetas"
+    },
+    "background-color": {
+      "label": "Color de fondo",
+      "description": "Color de la superposición oscurecida"
+    },
+    "background-opacity": {
+      "label": "Opacidad del fondo",
+      "description": "Opacidad de la superposición oscurecida"
+    },
+    "window-animation-speed": {
+      "label": "Velocidad de animación de ventana",
+      "description": "Velocidad de las transiciones de abrir y cerrar"
+    },
+    "animate-window": {
+      "label": "Animación de ventana",
+      "description": "Animar las transiciones de abrir y cerrar"
+    },
+    "top-bar-height": {
+      "label": "Altura de barra superior",
+      "description": "Altura de la barra de herramientas"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVEGACIÓN",
+      "actions": "ACCIONES",
+      "filters": "FILTROS",
+      "view": "VISTA",
+      "layout": "DISEÑO"
+    },
+    "label": {
+      "help-title": "Atajos",
+      "navigate": "Navegar",
+      "jump": "Saltar",
+      "shuffle": "Mezclar",
+      "apply-quit": "Aplicar + Cerrar",
+      "apply": "Aplicar",
+      "quit": "Cerrar",
+      "filter-all": "Todos",
+      "filter-images": "Imágenes",
+      "filter-videos": "Vídeos",
+      "filter-colors": "Filtro de color",
+      "top-bar": "Barra superior",
+      "live-preview": "Vista previa",
+      "center-height": "Altura central",
+      "center-width": "Ancho central",
+      "cards-shown": "Tarjetas visibles",
+      "cards-spacing": "Espaciado",
+      "cards-width": "Ancho de tarjetas",
+      "save": "Guardar ajustes",
+      "hide": "Ocultar"
+    }
+  }
+}

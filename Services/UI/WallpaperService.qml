@@ -39,8 +39,8 @@ Singleton {
   property string wallpaperCacheFile: ""
 
   readonly property bool scanning: (scanningCount > 0)
-  readonly property string noctaliaDefaultWallpaper: Quickshell.shellDir + "/Assets/Wallpaper/noctalia.png"
-  property string defaultWallpaper: noctaliaDefaultWallpaper
+  readonly property string gzmlDefaultWallpaper: Quickshell.shellDir + "/Assets/Wallpaper/gzml-shell.png"
+  property string defaultWallpaper: gzmlDefaultWallpaper
 
   // Signals for reactive UI updates
   signal wallpaperChanged(string screenName, string path)
@@ -1629,7 +1629,7 @@ Singleton {
     adapter: JsonAdapter {
       id: wallpaperCacheAdapter
       property var wallpapers: ({})
-      property string defaultWallpaper: root.noctaliaDefaultWallpaper
+      property string defaultWallpaper: root.gzmlDefaultWallpaper
       property var usedRandomWallpapers: ({})
     }
 
@@ -1650,8 +1650,8 @@ Singleton {
         root.defaultWallpaper = wallpaperCacheAdapter.defaultWallpaper;
         Logger.d("Wallpaper", "Loaded default wallpaper from cache:", wallpaperCacheAdapter.defaultWallpaper);
       } else {
-        root.defaultWallpaper = root.noctaliaDefaultWallpaper;
-        Logger.d("Wallpaper", "Using Noctalia default wallpaper");
+        root.defaultWallpaper = root.gzmlDefaultWallpaper;
+        Logger.d("Wallpaper", "Using GZML Shell default wallpaper");
       }
 
       Logger.d("Wallpaper", "Loaded wallpapers from cache file:", Object.keys(root.currentWallpapers).length, "screens");

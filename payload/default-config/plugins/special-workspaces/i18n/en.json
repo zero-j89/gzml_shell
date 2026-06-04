@@ -1,0 +1,97 @@
+{
+  "menu": {
+    "settings": "Widget settings"
+  },
+  "settings": {
+    "title": "Special Workspaces",
+    "description": "Configure special workspaces shown in the bar widget.",
+    "drawer": {
+      "title": "Drawer",
+      "label": "Show Drawer",
+      "tooltip": "Hide/show the drawer.",
+      "mainIcon": {
+        "label": "Drawer Icon",
+        "browseTooltip": "Browse icons"
+      },
+      "symbolColor": {
+        "label": "Icon Color",
+        "description": "Override the drawer icon color."
+      },
+      "showPill": {
+        "label": "Show Pill",
+        "description": "Show a colored circle behind the drawer icon."
+      },
+      "pillColor": {
+        "label": "Pill Color",
+        "description": "Override the drawer's pill color."
+      },
+      "focusColor": {
+        "label": "Focus Color",
+        "description": "Color of the drawer button when active."
+      },
+      "borderRadius": {
+        "label": "Button Radius",
+        "description": "Roundness of the drawer button ({value}%)."
+      },
+      "size": {
+        "label": "Size",
+        "description": "Size of the drawer button ({value}%)."
+      },
+      "expandDirection": {
+        "label": "Expand Direction",
+        "description": "Which direction the workspace pills expand from the drawer.",
+        "down": "Down",
+        "up": "Up",
+        "right": "Right",
+        "left": "Left"
+      },
+      "panelBackground": {
+        "enabled": {
+          "label": "Panel Background",
+          "description": "Show a background behind the floating panel."
+        }
+      },
+      "panelBackgroundColor": {
+        "label": "Panel Background Color",
+        "description": "Background color of the floating panel."
+      }
+    },
+    "workspaces": {
+      "title": "Workspaces",
+      "hideEmpty": {
+        "label": "Hide Empty Workspaces",
+        "description": "Hide workspaces in drawer when not focused/active."
+      },
+      "namePlaceholder": "Workspace name",
+      "iconPlaceholder": "Icon name",
+      "browseTooltip": "Browse icons",
+      "expandTooltip": "Show/hide styling options",
+      "removeTooltip": "Remove workspace",
+      "add": "Add Workspace",
+      "symbolColor": {
+        "label": "Icon Color",
+        "description": "Override this workspace's icon color."
+      },
+      "showPill": {
+        "label": "Show Pill",
+        "description": "Show a colored circle behind this workspace icon."
+      },
+      "pillColor": {
+        "label": "Pill Color",
+        "description": "Override this workspace's pill color."
+      },
+      "size": {
+        "label": "Size",
+        "description": "Size of this workspace button ({value}%)."
+      },
+      "focusColor": {
+        "label": "Focus Color",
+        "description": "Color of this workspace button when focused."
+      },
+      "borderRadius": {
+        "label": "Button Radius",
+        "description": "Roundness of this workspace button ({value}%)."
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Profili shell"
+  },
+  "panel": {
+    "title": "Profili",
+    "empty": "Nessun profilo. Salva la configurazione attuale per iniziare.",
+    "action-apply": "Applica",
+    "action-save": "Salva corrente",
+    "action-overwrite": "Sovrascrivi",
+    "action-rename": "Rinomina",
+    "action-delete": "Elimina",
+    "more-actions": "Altre azioni",
+    "include-wallpapers": "Sfondi",
+    "rename-title": "Rinomina profilo",
+    "rename-placeholder": "Nuovo nome\u2026",
+    "save-title": "Salva profilo",
+    "save-placeholder": "Nome del profilo\u2026",
+    "save-button": "Salva",
+    "search-placeholder": "Cerca profili\u2026",
+    "delete-confirm-title": "Eliminare il profilo?",
+    "delete-confirm-message": "Eliminare \"{name}\"? Questa azione non può essere annullata."
+  },
+  "settings": {
+    "dir-label": "Directory dei profili",
+    "dir-description": "Posizione in cui i profili vengono salvati su disco",
+    "dir-select": "Seleziona cartella",
+    "icon-label": "Icona del widget",
+    "icon-description": "Nome dell'icona Tabler mostrata nella barra",
+    "icon-color-label": "Colore dell'icona",
+    "icon-color-description": "Colore usato per l'icona nella barra",
+    "wallpapers-label": "Includi sfondi per impostazione predefinita",
+    "wallpapers-description": "Applica gli sfondi al caricamento di un profilo",
+    "backup-label": "Backup automatico prima di applicare",
+    "backup-description": "Salva la configurazione attuale in _backups/ prima di ogni applicazione",
+    "backup-count-label": "Numero massimo di backup",
+    "backup-count-description": "Le voci più vecchie vengono eliminate automaticamente (1\u201320)"
+  },
+  "toast": {
+    "saved": "Profilo \"{name}\" salvato",
+    "applied": "Profilo \"{name}\" applicato",
+    "deleted": "Profilo \"{name}\" eliminato"
+  },
+  "error": {
+    "name-empty": "Il nome non può essere vuoto",
+    "name-too-long": "Il nome è troppo lungo (max 64 caratteri)",
+    "name-invalid": "Il nome contiene caratteri non validi",
+    "name-exists": "Esiste già un profilo con questo nome",
+    "save-failed": "Salvataggio del profilo non riuscito",
+    "apply-failed": "Applicazione del profilo non riuscita",
+    "delete-failed": "Eliminazione del profilo non riuscita",
+    "rename-failed": "Rinomina del profilo non riuscita"
+  },
+  "ipc": {
+    "applied": "Profilo \"{name}\" applicato",
+    "not-found": "Profilo \"{name}\" non trovato"
+  }
+}

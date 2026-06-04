@@ -1,0 +1,9 @@
+{
+  "isSystemActive": false,
+  "borderSize": 2,
+  "overlayPath": "~/.cache/noctalia/HVE/overlay.conf",
+  "autoApply": true,
+  "activeAnimFile": "",
+  "activeBorderFile": "13_the_joker.conf",
+  "activeShaderFile": ""
+}

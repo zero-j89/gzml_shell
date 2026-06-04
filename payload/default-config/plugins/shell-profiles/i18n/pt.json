@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Perfis do shell"
+  },
+  "panel": {
+    "title": "Perfis",
+    "empty": "Nenhum perfil. Guarda a tua configuração atual para começar.",
+    "action-apply": "Aplicar",
+    "action-save": "Guardar atual",
+    "action-overwrite": "Substituir",
+    "action-rename": "Renomear",
+    "action-delete": "Eliminar",
+    "more-actions": "Mais ações",
+    "include-wallpapers": "Wallpapers",
+    "rename-title": "Renomear perfil",
+    "rename-placeholder": "Novo nome\u2026",
+    "save-title": "Guardar perfil",
+    "save-placeholder": "Nome do perfil\u2026",
+    "save-button": "Guardar",
+    "search-placeholder": "Pesquisar perfis\u2026",
+    "delete-confirm-title": "Eliminar perfil?",
+    "delete-confirm-message": "Eliminar \"{name}\"? Esta ação não pode ser desfeita."
+  },
+  "settings": {
+    "dir-label": "Diretório dos perfis",
+    "dir-description": "Local onde os perfis são armazenados no disco",
+    "dir-select": "Selecionar pasta",
+    "icon-label": "Ícone do widget",
+    "icon-description": "Nome do ícone Tabler mostrado na barra",
+    "icon-color-label": "Cor do ícone",
+    "icon-color-description": "Cor usada para o ícone na barra",
+    "wallpapers-label": "Incluir wallpapers por defeito",
+    "wallpapers-description": "Aplicar wallpapers ao carregar um perfil",
+    "backup-label": "Cópia de segurança automática antes de aplicar",
+    "backup-description": "Guarda a configuração atual em _backups/ antes de cada aplicação",
+    "backup-count-label": "Número máximo de cópias de segurança",
+    "backup-count-description": "As entradas mais antigas são eliminadas automaticamente (1\u201320)"
+  },
+  "toast": {
+    "saved": "Perfil \"{name}\" guardado",
+    "applied": "Perfil \"{name}\" aplicado",
+    "deleted": "Perfil \"{name}\" eliminado"
+  },
+  "error": {
+    "name-empty": "O nome não pode estar vazio",
+    "name-too-long": "O nome é demasiado longo (máx. 64 caracteres)",
+    "name-invalid": "O nome contém caracteres inválidos",
+    "name-exists": "Já existe um perfil com esse nome",
+    "save-failed": "Falha ao guardar o perfil",
+    "apply-failed": "Falha ao aplicar o perfil",
+    "delete-failed": "Falha ao eliminar o perfil",
+    "rename-failed": "Falha ao renomear o perfil"
+  },
+  "ipc": {
+    "applied": "Perfil \"{name}\" aplicado",
+    "not-found": "Perfil \"{name}\" não encontrado"
+  }
+}

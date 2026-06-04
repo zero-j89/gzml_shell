@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Shell-profielen"
+  },
+  "panel": {
+    "title": "Profielen",
+    "empty": "Geen profielen. Sla je huidige configuratie op om te beginnen.",
+    "action-apply": "Toepassen",
+    "action-save": "Huidig opslaan",
+    "action-overwrite": "Overschrijven",
+    "action-rename": "Hernoemen",
+    "action-delete": "Verwijderen",
+    "more-actions": "Meer acties",
+    "include-wallpapers": "Achtergronden",
+    "rename-title": "Profiel hernoemen",
+    "rename-placeholder": "Nieuwe naam\u2026",
+    "save-title": "Profiel opslaan",
+    "save-placeholder": "Profielnaam\u2026",
+    "save-button": "Opslaan",
+    "search-placeholder": "Profielen zoeken\u2026",
+    "delete-confirm-title": "Profiel verwijderen?",
+    "delete-confirm-message": "\"{name}\" verwijderen? Dit kan niet ongedaan worden gemaakt."
+  },
+  "settings": {
+    "dir-label": "Profielenmap",
+    "dir-description": "Locatie waar profielen op schijf worden opgeslagen",
+    "dir-select": "Map selecteren",
+    "icon-label": "Widget-pictogram",
+    "icon-description": "Naam van het Tabler-pictogram in de balk",
+    "icon-color-label": "Pictogramkleur",
+    "icon-color-description": "Kleur van het pictogram in de balk",
+    "wallpapers-label": "Standaard achtergronden opnemen",
+    "wallpapers-description": "Achtergronden toepassen bij het laden van een profiel",
+    "backup-label": "Automatisch back-up maken voor toepassen",
+    "backup-description": "Huidige configuratie opslaan in _backups/ voor elke toepassing",
+    "backup-count-label": "Maximaal aantal back-ups",
+    "backup-count-description": "Oudste vermeldingen worden automatisch verwijderd (1\u201320)"
+  },
+  "toast": {
+    "saved": "Profiel \"{name}\" opgeslagen",
+    "applied": "Profiel \"{name}\" toegepast",
+    "deleted": "Profiel \"{name}\" verwijderd"
+  },
+  "error": {
+    "name-empty": "Naam mag niet leeg zijn",
+    "name-too-long": "Naam is te lang (max. 64 tekens)",
+    "name-invalid": "Naam bevat ongeldige tekens",
+    "name-exists": "Er bestaat al een profiel met die naam",
+    "save-failed": "Profiel opslaan mislukt",
+    "apply-failed": "Profiel toepassen mislukt",
+    "delete-failed": "Profiel verwijderen mislukt",
+    "rename-failed": "Profiel hernoemen mislukt"
+  },
+  "ipc": {
+    "applied": "Profiel \"{name}\" toegepast",
+    "not-found": "Profiel \"{name}\" niet gevonden"
+  }
+}

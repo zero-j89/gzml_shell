@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Tous",
+    "images": "Images",
+    "videos": "Vidéos",
+    "shuffle": "Mélanger",
+    "live-preview": "En direct",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Ouvrir Wallcards",
+    "generate-thumbs-message": "Génération des miniatures…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Couleur de l'icône",
+      "description": "Couleur de l'icône du widget de barre"
+    },
+    "live-preview": {
+      "label": "Aperçu en direct",
+      "description": "Appliquer le fond d'écran en parcourant les cartes"
+    },
+    "default-filter": {
+      "label": "Filtre par défaut",
+      "description": "Filtre de type de fichier initial à l'ouverture"
+    },
+    "hide-shortcuts": {
+      "label": "Masquer les raccourcis",
+      "description": "Masquer le panneau des raccourcis clavier"
+    },
+    "hide-top-bar": {
+      "label": "Masquer la barre supérieure",
+      "description": "Masquer la barre d'outils au-dessus des cartes"
+    },
+    "center-card-width": {
+      "label": "Largeur de la carte centrale",
+      "description": "Largeur de la carte centrale en pourcentage de l'écran"
+    },
+    "card-height": {
+      "label": "Hauteur des cartes",
+      "description": "Hauteur des cartes de fond d'écran"
+    },
+    "strip-width": {
+      "label": "Largeur des bandes",
+      "description": "Largeur des bandes latérales"
+    },
+    "card-spacing": {
+      "label": "Espacement des cartes",
+      "description": "Espace entre les cartes"
+    },
+    "cards-shown": {
+      "label": "Cartes affichées",
+      "description": "Nombre de cartes visibles (nombres impairs recommandés)"
+    },
+    "shear-factor": {
+      "label": "Facteur de cisaillement",
+      "description": "Angle d'inclinaison de la disposition des cartes"
+    },
+    "card-animation": {
+      "label": "Animation des cartes",
+      "description": "Vitesse des transitions de cartes"
+    },
+    "background-color": {
+      "label": "Couleur de fond",
+      "description": "Couleur de la superposition assombrie"
+    },
+    "background-opacity": {
+      "label": "Opacité du fond",
+      "description": "Opacité de la superposition assombrie"
+    },
+    "window-animation-speed": {
+      "label": "Vitesse d'animation de la fenêtre",
+      "description": "Vitesse des transitions d'ouverture et de fermeture"
+    },
+    "animate-window": {
+      "label": "Animation de la fenêtre",
+      "description": "Animer les transitions d'ouverture et de fermeture"
+    },
+    "top-bar-height": {
+      "label": "Hauteur de la barre supérieure",
+      "description": "Hauteur de la barre d'outils"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVIGATION",
+      "actions": "ACTIONS",
+      "filters": "FILTRES",
+      "view": "AFFICHAGE",
+      "layout": "DISPOSITION"
+    },
+    "label": {
+      "help-title": "Raccourcis",
+      "navigate": "Naviguer",
+      "jump": "Sauter",
+      "shuffle": "Mélanger",
+      "apply-quit": "Appliquer + Quitter",
+      "apply": "Appliquer",
+      "quit": "Quitter",
+      "filter-all": "Tous",
+      "filter-images": "Images",
+      "filter-videos": "Vidéos",
+      "filter-colors": "Filtre couleur",
+      "top-bar": "Barre supérieure",
+      "live-preview": "Aperçu en direct",
+      "center-height": "Hauteur centrale",
+      "center-width": "Largeur centrale",
+      "cards-shown": "Cartes affichées",
+      "cards-spacing": "Espacement",
+      "cards-width": "Largeur des cartes",
+      "save": "Enregistrer",
+      "hide": "Masquer"
+    }
+  }
+}

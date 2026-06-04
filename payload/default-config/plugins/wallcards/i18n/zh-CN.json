@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "全部",
+    "images": "图片",
+    "videos": "视频",
+    "shuffle": "随机",
+    "live-preview": "实时",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "打开 Wallcards",
+    "generate-thumbs-message": "正在生成缩略图…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "图标颜色",
+      "description": "栏小部件图标的颜色"
+    },
+    "live-preview": {
+      "label": "实时预览",
+      "description": "浏览卡片时应用壁纸"
+    },
+    "default-filter": {
+      "label": "默认筛选",
+      "description": "打开时的初始文件类型筛选"
+    },
+    "hide-shortcuts": {
+      "label": "隐藏快捷键",
+      "description": "隐藏键盘快捷键面板"
+    },
+    "hide-top-bar": {
+      "label": "隐藏顶栏",
+      "description": "隐藏卡片上方的工具栏"
+    },
+    "center-card-width": {
+      "label": "中央卡片宽度",
+      "description": "中央卡片占屏幕的宽度百分比"
+    },
+    "card-height": {
+      "label": "卡片高度",
+      "description": "壁纸卡片的高度"
+    },
+    "strip-width": {
+      "label": "条带宽度",
+      "description": "侧面卡片条带的宽度"
+    },
+    "card-spacing": {
+      "label": "卡片间距",
+      "description": "卡片之间的间隔"
+    },
+    "cards-shown": {
+      "label": "显示卡片数",
+      "description": "可见卡片数量（建议使用奇数）"
+    },
+    "shear-factor": {
+      "label": "剪切系数",
+      "description": "卡片布局的倾斜角度"
+    },
+    "card-animation": {
+      "label": "卡片动画",
+      "description": "卡片过渡的速度"
+    },
+    "background-color": {
+      "label": "背景颜色",
+      "description": "暗化覆盖层的颜色"
+    },
+    "background-opacity": {
+      "label": "背景不透明度",
+      "description": "暗化覆盖层的不透明度"
+    },
+    "window-animation-speed": {
+      "label": "窗口动画速度",
+      "description": "打开和关闭过渡的速度"
+    },
+    "animate-window": {
+      "label": "窗口动画",
+      "description": "为打开和关闭过渡添加动画"
+    },
+    "top-bar-height": {
+      "label": "顶栏高度",
+      "description": "工具栏的高度"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "导航",
+      "actions": "操作",
+      "filters": "筛选",
+      "view": "视图",
+      "layout": "布局"
+    },
+    "label": {
+      "help-title": "快捷键",
+      "navigate": "导航",
+      "jump": "跳转",
+      "shuffle": "随机",
+      "apply-quit": "应用并退出",
+      "apply": "应用",
+      "quit": "退出",
+      "filter-all": "全部",
+      "filter-images": "图片",
+      "filter-videos": "视频",
+      "filter-colors": "颜色筛选",
+      "top-bar": "顶栏",
+      "live-preview": "实时预览",
+      "center-height": "中央高度",
+      "center-width": "中央宽度",
+      "cards-shown": "显示卡片数",
+      "cards-spacing": "间距",
+      "cards-width": "卡片宽度",
+      "save": "保存设置",
+      "hide": "隐藏"
+    }
+  }
+}

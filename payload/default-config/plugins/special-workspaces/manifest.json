@@ -1,0 +1,68 @@
+{
+  "id": "special-workspaces",
+  "name": "Special Workspaces (Hyprland)",
+  "version": "1.1.1",
+  "minNoctaliaVersion": "4.4.0",
+  "author": "Qholin",
+  "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+  "description": "Configurable Hyprland special workspaces indicator for the bar.",
+  "tags": ["Bar", "Productivity", "Hyprland"],
+  "entryPoints": {
+    "main": "Main.qml",
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml",
+    "settings": "Settings.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {
+      "mainIcon": "layout-grid",
+      "expandDirection": "up",
+      "primarySymbolColor": "none",
+      "primaryShowPill": true,
+      "primaryPillColor": "none",
+      "primarySize": 0.9,
+      "primaryBorderRadius": 1.0,
+      "primaryFocusColor": "primary",
+      "panelBackgroundColor": "none",
+      "panelBackgroundEnabled": false,
+      "workspaces": [
+        {
+          "name": "communication",
+          "icon": "message",
+          "symbolColor": "none",
+          "showPill": true,
+          "pillColor": "primary",
+          "size": 0.9,
+          "borderRadius": 1.0,
+          "focusColor": "primary"
+        },
+        {
+          "name": "music",
+          "icon": "music",
+          "symbolColor": "none",
+          "showPill": true,
+          "pillColor": "primary",
+          "size": 0.9,
+          "borderRadius": 1.0,
+          "focusColor": "primary"
+        },
+        {
+          "name": "agent",
+          "icon": "michelin-star",
+          "symbolColor": "none",
+          "showPill": true,
+          "pillColor": "primary",
+          "size": 0.9,
+          "borderRadius": 1.0,
+          "focusColor": "primary"
+        }
+      ],
+      "drawer": true,
+      "hideEmptyWorkspaces": false
+    }
+  }
+}

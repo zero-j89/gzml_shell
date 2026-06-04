@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Все",
+    "images": "Изображения",
+    "videos": "Видео",
+    "shuffle": "Перемешать",
+    "live-preview": "Живой",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Открыть Wallcards",
+    "generate-thumbs-message": "Создание миниатюр…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Цвет значка",
+      "description": "Цвет значка виджета панели"
+    },
+    "live-preview": {
+      "label": "Предпросмотр",
+      "description": "Применять обои при просмотре карточек"
+    },
+    "default-filter": {
+      "label": "Фильтр по умолчанию",
+      "description": "Начальный фильтр типа файлов при открытии"
+    },
+    "hide-shortcuts": {
+      "label": "Скрыть горячие клавиши",
+      "description": "Скрыть панель горячих клавиш"
+    },
+    "hide-top-bar": {
+      "label": "Скрыть верхнюю панель",
+      "description": "Скрыть панель инструментов над карточками"
+    },
+    "center-card-width": {
+      "label": "Ширина центральной карточки",
+      "description": "Ширина центральной карточки в процентах от экрана"
+    },
+    "card-height": {
+      "label": "Высота карточки",
+      "description": "Высота карточек обоев"
+    },
+    "strip-width": {
+      "label": "Ширина полосы",
+      "description": "Ширина боковых полос карточек"
+    },
+    "card-spacing": {
+      "label": "Расстояние между карточками",
+      "description": "Зазор между карточками"
+    },
+    "cards-shown": {
+      "label": "Видимые карточки",
+      "description": "Количество видимых карточек (рекомендуются нечётные числа)"
+    },
+    "shear-factor": {
+      "label": "Коэффициент сдвига",
+      "description": "Угол наклона расположения карточек"
+    },
+    "card-animation": {
+      "label": "Анимация карточек",
+      "description": "Скорость переходов карточек"
+    },
+    "background-color": {
+      "label": "Цвет фона",
+      "description": "Цвет затемнённого наложения"
+    },
+    "background-opacity": {
+      "label": "Прозрачность фона",
+      "description": "Прозрачность затемнённого наложения"
+    },
+    "window-animation-speed": {
+      "label": "Скорость анимации окна",
+      "description": "Скорость переходов открытия и закрытия"
+    },
+    "animate-window": {
+      "label": "Анимация окна",
+      "description": "Анимировать переходы открытия и закрытия"
+    },
+    "top-bar-height": {
+      "label": "Высота верхней панели",
+      "description": "Высота панели инструментов"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "НАВИГАЦИЯ",
+      "actions": "ДЕЙСТВИЯ",
+      "filters": "ФИЛЬТРЫ",
+      "view": "ВИД",
+      "layout": "КОМПОНОВКА"
+    },
+    "label": {
+      "help-title": "Горячие клавиши",
+      "navigate": "Навигация",
+      "jump": "Перейти",
+      "shuffle": "Перемешать",
+      "apply-quit": "Применить + Выйти",
+      "apply": "Применить",
+      "quit": "Выйти",
+      "filter-all": "Все",
+      "filter-images": "Изображения",
+      "filter-videos": "Видео",
+      "filter-colors": "Цветовой фильтр",
+      "top-bar": "Верхняя панель",
+      "live-preview": "Предпросмотр",
+      "center-height": "Высота центра",
+      "center-width": "Ширина центра",
+      "cards-shown": "Видимые карточки",
+      "cards-spacing": "Расстояние",
+      "cards-width": "Ширина карточек",
+      "save": "Сохранить настройки",
+      "hide": "Скрыть"
+    }
+  }
+}

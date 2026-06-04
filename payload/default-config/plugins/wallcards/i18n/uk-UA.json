@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Усі",
+    "images": "Зображення",
+    "videos": "Відео",
+    "shuffle": "Перемішати",
+    "live-preview": "Наживо",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Відкрити Wallcards",
+    "generate-thumbs-message": "Створення мініатюр…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Колір значка",
+      "description": "Колір значка віджета панелі"
+    },
+    "live-preview": {
+      "label": "Попередній перегляд",
+      "description": "Застосовувати шпалери під час перегляду карток"
+    },
+    "default-filter": {
+      "label": "Фільтр за замовчуванням",
+      "description": "Початковий фільтр типу файлів при відкритті"
+    },
+    "hide-shortcuts": {
+      "label": "Сховати гарячі клавіші",
+      "description": "Сховати панель гарячих клавіш"
+    },
+    "hide-top-bar": {
+      "label": "Сховати верхню панель",
+      "description": "Сховати панель інструментів над картками"
+    },
+    "center-card-width": {
+      "label": "Ширина центральної картки",
+      "description": "Ширина центральної картки у відсотках екрана"
+    },
+    "card-height": {
+      "label": "Висота картки",
+      "description": "Висота карток шпалер"
+    },
+    "strip-width": {
+      "label": "Ширина смуги",
+      "description": "Ширина бічних смуг карток"
+    },
+    "card-spacing": {
+      "label": "Відстань між картками",
+      "description": "Проміжок між картками"
+    },
+    "cards-shown": {
+      "label": "Видимі картки",
+      "description": "Кількість видимих карток (рекомендуються непарні числа)"
+    },
+    "shear-factor": {
+      "label": "Коефіцієнт зсуву",
+      "description": "Кут нахилу розташування карток"
+    },
+    "card-animation": {
+      "label": "Анімація карток",
+      "description": "Швидкість переходів карток"
+    },
+    "background-color": {
+      "label": "Колір фону",
+      "description": "Колір затемненого накладання"
+    },
+    "background-opacity": {
+      "label": "Прозорість фону",
+      "description": "Прозорість затемненого накладання"
+    },
+    "window-animation-speed": {
+      "label": "Швидкість анімації вікна",
+      "description": "Швидкість переходів відкриття та закриття"
+    },
+    "animate-window": {
+      "label": "Анімація вікна",
+      "description": "Анімувати переходи відкриття та закриття"
+    },
+    "top-bar-height": {
+      "label": "Висота верхньої панелі",
+      "description": "Висота панелі інструментів"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "НАВІГАЦІЯ",
+      "actions": "ДІЇ",
+      "filters": "ФІЛЬТРИ",
+      "view": "ВИГЛЯД",
+      "layout": "КОМПОНУВАННЯ"
+    },
+    "label": {
+      "help-title": "Гарячі клавіші",
+      "navigate": "Навігація",
+      "jump": "Перейти",
+      "shuffle": "Перемішати",
+      "apply-quit": "Застосувати + Вийти",
+      "apply": "Застосувати",
+      "quit": "Вийти",
+      "filter-all": "Усі",
+      "filter-images": "Зображення",
+      "filter-videos": "Відео",
+      "filter-colors": "Кольоровий фільтр",
+      "top-bar": "Верхня панель",
+      "live-preview": "Попередній перегляд",
+      "center-height": "Висота центру",
+      "center-width": "Ширина центру",
+      "cards-shown": "Видимі картки",
+      "cards-spacing": "Відстань",
+      "cards-width": "Ширина карток",
+      "save": "Зберегти налаштування",
+      "hide": "Сховати"
+    }
+  }
+}

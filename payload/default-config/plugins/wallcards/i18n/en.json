@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "All",
+    "images": "Images",
+    "videos": "Videos",
+    "shuffle": "Shuffle",
+    "live-preview": "Live",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Open Wallcards",
+    "generate-thumbs-message": "Generating thumbnails…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Icon Color",
+      "description": "Color of the bar widget icon"
+    },
+    "live-preview": {
+      "label": "Live Preview",
+      "description": "Apply wallpaper while browsing cards"
+    },
+    "default-filter": {
+      "label": "Default Filter",
+      "description": "Initial file type filter when opening"
+    },
+    "hide-shortcuts": {
+      "label": "Hide Shortcuts",
+      "description": "Hide the keyboard shortcuts panel"
+    },
+    "hide-top-bar": {
+      "label": "Hide Top Bar",
+      "description": "Hide the toolbar above the cards"
+    },
+    "center-card-width": {
+      "label": "Center Card Width",
+      "description": "Width of the center card as percentage of screen"
+    },
+    "card-height": {
+      "label": "Card Height",
+      "description": "Height of the wallpaper cards"
+    },
+    "strip-width": {
+      "label": "Strip Width",
+      "description": "Width of the side card strips"
+    },
+    "card-spacing": {
+      "label": "Card Spacing",
+      "description": "Gap between cards"
+    },
+    "cards-shown": {
+      "label": "Cards Shown",
+      "description": "Number of visible cards (odd numbers recommended)"
+    },
+    "shear-factor": {
+      "label": "Shear Factor",
+      "description": "Skew angle of the card layout"
+    },
+    "card-animation": {
+      "label": "Card Animation",
+      "description": "Speed of card transitions"
+    },
+    "background-color": {
+      "label": "Background Color",
+      "description": "Color of the dimmed overlay"
+    },
+    "background-opacity": {
+      "label": "Background Opacity",
+      "description": "Opacity of the dimmed overlay"
+    },
+    "window-animation-speed": {
+      "label": "Window Animation Speed",
+      "description": "Speed of open and close transitions"
+    },
+    "animate-window": {
+      "label": "Window Animation",
+      "description": "Animate the open and close transitions"
+    },
+    "top-bar-height": {
+      "label": "Top Bar Height",
+      "description": "Height of the toolbar"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVIGATION",
+      "actions": "ACTIONS",
+      "filters": "FILTERS",
+      "view": "VIEW",
+      "layout": "LAYOUT"
+    },
+    "label": {
+      "help-title": "Shortcuts",
+      "navigate": "Navigate",
+      "jump": "Jump",
+      "shuffle": "Shuffle",
+      "apply-quit": "Apply + Quit",
+      "apply": "Apply",
+      "quit": "Quit",
+      "filter-all": "All",
+      "filter-images": "Images",
+      "filter-videos": "Videos",
+      "filter-colors": "Color Filter",
+      "top-bar": "Toggle Top Bar",
+      "live-preview": "Toggle Live Preview",
+      "center-height": "Center Height",
+      "center-width": "Center Width",
+      "cards-shown": "Cards Shown",
+      "cards-spacing": "Spacing",
+      "cards-width": "Cards Width",
+      "save": "Save Settings",
+      "hide": "Hide"
+    }
+  }
+}

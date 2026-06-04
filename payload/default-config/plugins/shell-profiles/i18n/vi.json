@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Các hồ sơ"
+  },
+  "panel": {
+    "title": "Hồ sơ",
+    "empty": "Chưa có hồ sơ nào. Hãy lưu cấu hình hiện tại để bắt đầu.",
+    "action-apply": "Áp dụng",
+    "action-save": "Lưu hiện tại",
+    "action-overwrite": "Ghi đè",
+    "action-rename": "Đổi tên",
+    "action-delete": "Xóa",
+    "more-actions": "Thêm hành động",
+    "include-wallpapers": "Hình nền",
+    "rename-title": "Đổi tên hồ sơ",
+    "rename-placeholder": "Tên mới\u2026",
+    "save-title": "Lưu hồ sơ",
+    "save-placeholder": "Tên hồ sơ\u2026",
+    "save-button": "Lưu",
+    "search-placeholder": "Tìm hồ sơ…",
+    "delete-confirm-title": "Xóa hồ sơ?",
+    "delete-confirm-message": "Xóa \"{name}\"? Không thể hoàn tác."
+  },
+  "settings": {
+    "dir-label": "Thư mục hồ sơ",
+    "dir-description": "Nơi lưu các hồ sơ trên đĩa",
+    "dir-select": "Chọn thư mục",
+    "icon-label": "Biểu tượng widget",
+    "icon-description": "Tên biểu tượng Tabler hiển thị trên thanh",
+    "icon-color-label": "Màu biểu tượng",
+    "icon-color-description": "Màu dùng cho biểu tượng trên thanh",
+    "wallpapers-label": "Bao gồm hình nền theo mặc định",
+    "wallpapers-description": "Áp dụng cài đặt hình nền khi tải hồ sơ",
+    "backup-label": "Tự động sao lưu trước khi áp dụng",
+    "backup-description": "Lưu cấu hình hiện tại vào _backups/ trước mỗi lần áp dụng hồ sơ",
+    "backup-count-label": "Số bản sao lưu tối đa",
+    "backup-count-description": "Các bản cũ nhất sẽ tự động bị xóa (1\u201320)"
+  },
+  "toast": {
+    "saved": "Đã lưu hồ sơ \"{name}\"",
+    "applied": "Đã áp dụng hồ sơ \"{name}\"",
+    "deleted": "Đã xóa hồ sơ \"{name}\""
+  },
+  "error": {
+    "name-empty": "Tên không được để trống",
+    "name-too-long": "Tên quá dài (tối đa 64 ký tự)",
+    "name-invalid": "Tên chứa ký tự không hợp lệ",
+    "name-exists": "Hồ sơ với tên này đã tồn tại",
+    "save-failed": "Lưu hồ sơ thất bại",
+    "apply-failed": "Áp dụng hồ sơ thất bại",
+    "delete-failed": "Xóa hồ sơ thất bại",
+    "rename-failed": "Đổi tên hồ sơ thất bại"
+  },
+  "ipc": {
+    "applied": "Đã áp dụng hồ sơ \"{name}\"",
+    "not-found": "Không tìm thấy hồ sơ \"{name}\""
+  }
+}

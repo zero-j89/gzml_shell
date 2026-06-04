@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Wszystkie",
+    "images": "Obrazy",
+    "videos": "Filmy",
+    "shuffle": "Losuj",
+    "live-preview": "Na żywo",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Otwórz Wallcards",
+    "generate-thumbs-message": "Generowanie miniatur…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Kolor ikony",
+      "description": "Kolor ikony widżetu paska"
+    },
+    "live-preview": {
+      "label": "Podgląd na żywo",
+      "description": "Zastosuj tapetę podczas przeglądania kart"
+    },
+    "default-filter": {
+      "label": "Domyślny filtr",
+      "description": "Początkowy filtr typu pliku przy otwieraniu"
+    },
+    "hide-shortcuts": {
+      "label": "Ukryj skróty",
+      "description": "Ukryj panel skrótów klawiszowych"
+    },
+    "hide-top-bar": {
+      "label": "Ukryj górny pasek",
+      "description": "Ukryj pasek narzędzi nad kartami"
+    },
+    "center-card-width": {
+      "label": "Szerokość środkowej karty",
+      "description": "Szerokość środkowej karty jako procent ekranu"
+    },
+    "card-height": {
+      "label": "Wysokość karty",
+      "description": "Wysokość kart tapet"
+    },
+    "strip-width": {
+      "label": "Szerokość paska",
+      "description": "Szerokość bocznych pasków kart"
+    },
+    "card-spacing": {
+      "label": "Odstęp kart",
+      "description": "Przerwa między kartami"
+    },
+    "cards-shown": {
+      "label": "Widoczne karty",
+      "description": "Liczba widocznych kart (zalecane liczby nieparzyste)"
+    },
+    "shear-factor": {
+      "label": "Współczynnik ścinania",
+      "description": "Kąt pochylenia układu kart"
+    },
+    "card-animation": {
+      "label": "Animacja kart",
+      "description": "Szybkość przejść kart"
+    },
+    "background-color": {
+      "label": "Kolor tła",
+      "description": "Kolor przyciemnionej nakładki"
+    },
+    "background-opacity": {
+      "label": "Nieprzezroczystość tła",
+      "description": "Nieprzezroczystość przyciemnionej nakładki"
+    },
+    "window-animation-speed": {
+      "label": "Szybkość animacji okna",
+      "description": "Szybkość przejść otwierania i zamykania"
+    },
+    "animate-window": {
+      "label": "Animacja okna",
+      "description": "Animuj przejścia otwierania i zamykania"
+    },
+    "top-bar-height": {
+      "label": "Wysokość górnego paska",
+      "description": "Wysokość paska narzędzi"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAWIGACJA",
+      "actions": "AKCJE",
+      "filters": "FILTRY",
+      "view": "WIDOK",
+      "layout": "UKŁAD"
+    },
+    "label": {
+      "help-title": "Skróty",
+      "navigate": "Nawiguj",
+      "jump": "Skocz",
+      "shuffle": "Losuj",
+      "apply-quit": "Zastosuj + Zamknij",
+      "apply": "Zastosuj",
+      "quit": "Zamknij",
+      "filter-all": "Wszystkie",
+      "filter-images": "Obrazy",
+      "filter-videos": "Filmy",
+      "filter-colors": "Filtr kolorów",
+      "top-bar": "Górny pasek",
+      "live-preview": "Podgląd na żywo",
+      "center-height": "Wysokość środka",
+      "center-width": "Szerokość środka",
+      "cards-shown": "Widoczne karty",
+      "cards-spacing": "Odstęp",
+      "cards-width": "Szerokość kart",
+      "save": "Zapisz ustawienia",
+      "hide": "Ukryj"
+    }
+  }
+}

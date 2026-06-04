@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Shell 配置文件"
+  },
+  "panel": {
+    "title": "配置文件",
+    "empty": "暂无配置文件。保存当前配置以开始使用。",
+    "action-apply": "应用",
+    "action-save": "保存当前",
+    "action-overwrite": "覆盖",
+    "action-rename": "重命名",
+    "action-delete": "删除",
+    "more-actions": "更多操作",
+    "include-wallpapers": "壁纸",
+    "rename-title": "重命名配置文件",
+    "rename-placeholder": "新名称\u2026",
+    "save-title": "保存配置文件",
+    "save-placeholder": "配置文件名称\u2026",
+    "save-button": "保存",
+    "search-placeholder": "搜索配置文件\u2026",
+    "delete-confirm-title": "删除配置文件？",
+    "delete-confirm-message": "删除 \"{name}\"？此操作无法撤销。"
+  },
+  "settings": {
+    "dir-label": "配置文件目录",
+    "dir-description": "配置文件在磁盘上的存储位置",
+    "dir-select": "选择文件夹",
+    "icon-label": "小部件图标",
+    "icon-description": "显示在状态栏中的 Tabler 图标名称",
+    "icon-color-label": "图标颜色",
+    "icon-color-description": "状态栏图标使用的颜色",
+    "wallpapers-label": "默认包含壁纸",
+    "wallpapers-description": "加载配置文件时应用壁纸设置",
+    "backup-label": "应用前自动备份",
+    "backup-description": "每次应用前将当前配置保存到 _backups/",
+    "backup-count-label": "最大备份数量",
+    "backup-count-description": "最旧的条目将自动删除（1\u201320）"
+  },
+  "toast": {
+    "saved": "配置文件 \"{name}\" 已保存",
+    "applied": "配置文件 \"{name}\" 已应用",
+    "deleted": "配置文件 \"{name}\" 已删除"
+  },
+  "error": {
+    "name-empty": "名称不能为空",
+    "name-too-long": "名称过长（最多 64 个字符）",
+    "name-invalid": "名称包含无效字符",
+    "name-exists": "已存在同名配置文件",
+    "save-failed": "保存配置文件失败",
+    "apply-failed": "应用配置文件失败",
+    "delete-failed": "删除配置文件失败",
+    "rename-failed": "重命名配置文件失败"
+  },
+  "ipc": {
+    "applied": "配置文件 \"{name}\" 已应用",
+    "not-found": "未找到配置文件 \"{name}\""
+  }
+}

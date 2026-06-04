@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Alle",
+    "images": "Bilder",
+    "videos": "Videos",
+    "shuffle": "Mischen",
+    "live-preview": "Live",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Wallcards öffnen",
+    "generate-thumbs-message": "Miniaturbilder werden erstellt…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Symbolfarbe",
+      "description": "Farbe des Leistensymbols"
+    },
+    "live-preview": {
+      "label": "Live-Vorschau",
+      "description": "Hintergrundbild beim Durchblättern anwenden"
+    },
+    "default-filter": {
+      "label": "Standardfilter",
+      "description": "Anfänglicher Dateitypfilter beim Öffnen"
+    },
+    "hide-shortcuts": {
+      "label": "Tastenkürzel ausblenden",
+      "description": "Tastenkürzel-Leiste ausblenden"
+    },
+    "hide-top-bar": {
+      "label": "Kopfleiste ausblenden",
+      "description": "Werkzeugleiste über den Karten ausblenden"
+    },
+    "center-card-width": {
+      "label": "Breite der mittleren Karte",
+      "description": "Breite der mittleren Karte in Prozent des Bildschirms"
+    },
+    "card-height": {
+      "label": "Kartenhöhe",
+      "description": "Höhe der Hintergrundbilder-Karten"
+    },
+    "strip-width": {
+      "label": "Streifenbreite",
+      "description": "Breite der seitlichen Kartenstreifen"
+    },
+    "card-spacing": {
+      "label": "Kartenabstand",
+      "description": "Abstand zwischen den Karten"
+    },
+    "cards-shown": {
+      "label": "Angezeigte Karten",
+      "description": "Anzahl sichtbarer Karten (ungerade Zahlen empfohlen)"
+    },
+    "shear-factor": {
+      "label": "Scherungsfaktor",
+      "description": "Neigungswinkel des Kartenlayouts"
+    },
+    "card-animation": {
+      "label": "Kartenanimation",
+      "description": "Geschwindigkeit der Kartenübergänge"
+    },
+    "background-color": {
+      "label": "Hintergrundfarbe",
+      "description": "Farbe der abgedunkelten Überblendung"
+    },
+    "background-opacity": {
+      "label": "Hintergrund-Deckkraft",
+      "description": "Deckkraft der abgedunkelten Überblendung"
+    },
+    "window-animation-speed": {
+      "label": "Fensteranimation-Geschwindigkeit",
+      "description": "Geschwindigkeit der Öffnen- und Schließen-Übergänge"
+    },
+    "animate-window": {
+      "label": "Fensteranimation",
+      "description": "Öffnen- und Schließen-Übergänge animieren"
+    },
+    "top-bar-height": {
+      "label": "Kopfleistenhöhe",
+      "description": "Höhe der Werkzeugleiste"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVIGATION",
+      "actions": "AKTIONEN",
+      "filters": "FILTER",
+      "view": "ANSICHT",
+      "layout": "LAYOUT"
+    },
+    "label": {
+      "help-title": "Tastenkürzel",
+      "navigate": "Navigieren",
+      "jump": "Springen",
+      "shuffle": "Mischen",
+      "apply-quit": "Anwenden + Schließen",
+      "apply": "Anwenden",
+      "quit": "Schließen",
+      "filter-all": "Alle",
+      "filter-images": "Bilder",
+      "filter-videos": "Videos",
+      "filter-colors": "Farbfilter",
+      "top-bar": "Kopfleiste umschalten",
+      "live-preview": "Live-Vorschau umschalten",
+      "center-height": "Kartenhöhe",
+      "center-width": "Kartenbreite",
+      "cards-shown": "Angezeigte Karten",
+      "cards-spacing": "Abstand",
+      "cards-width": "Kartenbreite",
+      "save": "Einstellungen speichern",
+      "hide": "Ausblenden"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "shell-profiles",
+  "name": "Profiles",
+  "version": "1.0.1",
+  "minNoctaliaVersion": "4.6.6",
+  "author": "Archlexx",
+  "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+  "description": "Save, load, and manage Noctalia configuration profiles.",
+  "tags": [
+    "Bar",
+    "Theming",
+    "Utility",
+    "Panel"
+  ],
+  "entryPoints": {
+    "main": "Main.qml",
+    "barWidget": "BarWidget.qml",
+    "panel": "Panel.qml",
+    "settings": "Settings.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {
+      "profilesDir": "",
+      "icon": "wand",
+      "iconColor": "primary",
+      "includeWallpapers": true,
+      "lastAppliedProfile": "",
+      "backupEnabled": true,
+      "backupCount": 5
+    }
+  }
+}

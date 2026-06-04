@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Tutti",
+    "images": "Immagini",
+    "videos": "Video",
+    "shuffle": "Mescola",
+    "live-preview": "Live",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Apri Wallcards",
+    "generate-thumbs-message": "Generazione miniature…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Colore icona",
+      "description": "Colore dell'icona del widget della barra"
+    },
+    "live-preview": {
+      "label": "Anteprima dal vivo",
+      "description": "Applica lo sfondo durante la navigazione delle schede"
+    },
+    "default-filter": {
+      "label": "Filtro predefinito",
+      "description": "Filtro tipo file iniziale all'apertura"
+    },
+    "hide-shortcuts": {
+      "label": "Nascondi scorciatoie",
+      "description": "Nascondi il pannello delle scorciatoie da tastiera"
+    },
+    "hide-top-bar": {
+      "label": "Nascondi barra superiore",
+      "description": "Nascondi la barra degli strumenti sopra le schede"
+    },
+    "center-card-width": {
+      "label": "Larghezza scheda centrale",
+      "description": "Larghezza della scheda centrale in percentuale dello schermo"
+    },
+    "card-height": {
+      "label": "Altezza scheda",
+      "description": "Altezza delle schede sfondo"
+    },
+    "strip-width": {
+      "label": "Larghezza striscia",
+      "description": "Larghezza delle strisce laterali"
+    },
+    "card-spacing": {
+      "label": "Spaziatura schede",
+      "description": "Distanza tra le schede"
+    },
+    "cards-shown": {
+      "label": "Schede visibili",
+      "description": "Numero di schede visibili (numeri dispari consigliati)"
+    },
+    "shear-factor": {
+      "label": "Fattore di taglio",
+      "description": "Angolo di inclinazione del layout delle schede"
+    },
+    "card-animation": {
+      "label": "Animazione schede",
+      "description": "Velocità delle transizioni delle schede"
+    },
+    "background-color": {
+      "label": "Colore di sfondo",
+      "description": "Colore della sovrapposizione oscurata"
+    },
+    "background-opacity": {
+      "label": "Opacità dello sfondo",
+      "description": "Opacità della sovrapposizione oscurata"
+    },
+    "window-animation-speed": {
+      "label": "Velocità animazione finestra",
+      "description": "Velocità delle transizioni di apertura e chiusura"
+    },
+    "animate-window": {
+      "label": "Animazione finestra",
+      "description": "Anima le transizioni di apertura e chiusura"
+    },
+    "top-bar-height": {
+      "label": "Altezza barra superiore",
+      "description": "Altezza della barra degli strumenti"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVIGAZIONE",
+      "actions": "AZIONI",
+      "filters": "FILTRI",
+      "view": "VISTA",
+      "layout": "LAYOUT"
+    },
+    "label": {
+      "help-title": "Scorciatoie",
+      "navigate": "Naviga",
+      "jump": "Salta",
+      "shuffle": "Mescola",
+      "apply-quit": "Applica + Esci",
+      "apply": "Applica",
+      "quit": "Esci",
+      "filter-all": "Tutti",
+      "filter-images": "Immagini",
+      "filter-videos": "Video",
+      "filter-colors": "Filtro colore",
+      "top-bar": "Barra superiore",
+      "live-preview": "Anteprima dal vivo",
+      "center-height": "Altezza centrale",
+      "center-width": "Larghezza centrale",
+      "cards-shown": "Schede visibili",
+      "cards-spacing": "Spaziatura",
+      "cards-width": "Larghezza schede",
+      "save": "Salva impostazioni",
+      "hide": "Nascondi"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "screens": [
+    {
+      "name": "",
+      "light": "/home/zer0/Pictures/wallcard/Anime-Purple-eyes.png",
+      "dark": "/home/zer0/Pictures/wallcard/Dark_Nature.png"
+    },
+    {
+      "name": "DP-1",
+      "light": "/home/zer0/Pictures/wallpapers/readyornot.jpg",
+      "dark": "/home/zer0/Pictures/wallcard/Dark_Nature.png"
+    },
+    {
+      "name": "DP-3",
+      "light": "/home/zer0/Pictures/wallpapers/readyornot.jpg",
+      "dark": "/home/zer0/.cache/gzml/wallpaper-effects/wallpaper_modified_DP-3.png"
+    }
+  ]
+}

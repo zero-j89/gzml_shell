@@ -1,0 +1,97 @@
+{
+  "menu": {
+    "settings": "Eklenti ayarları"
+  },
+  "settings": {
+    "title": "Özel Çalışma Alanları",
+    "description": "Bar eklentisinde görüntülenen özel çalışma alanlarını özelleştir.",
+    "drawer": {
+      "title": "Çekmece",
+      "label": "Çekmeceyi Göster",
+      "tooltip": "Çekmeceyi gizle/göster.",
+      "mainIcon": {
+        "label": "Çekmece Simgesi",
+        "browseTooltip": "Simgelere göz at."
+      },
+      "symbolColor": {
+        "label": "Simge Rengi",
+        "description": "Çekmece simge rengini değiştir."
+      },
+      "showPill": {
+        "label": "Kapsülü Göster",
+        "description": "Çekmece simgesinin arkasında renkli daire göster."
+      },
+      "pillColor": {
+        "label": "Kapsül Rengi",
+        "description": "Çekmece kapsül rengini değiştir."
+      },
+      "focusColor": {
+        "label": "Odak Rengi",
+        "description": "Aktif çekmece buton rengi."
+      },
+      "borderRadius": {
+        "label": "Buton Yarıçapı",
+        "description": "Çekmece butonunun yuvarlaklığı (%{value})."
+      },
+      "size": {
+        "label": "Boyut",
+        "description": "Çekmece buton boyutu (%{value})."
+      },
+      "expandDirection": {
+        "label": "Genişleme Yönü",
+        "description": "Çalışma alanı kapsüllerinin çekmeceden genişleme yönünü belirle.",
+        "down": "Aşağı",
+        "up": "Yukarı",
+        "right": "Sağ",
+        "left": "Sol"
+      },
+      "panelBackground": {
+        "enabled": {
+          "label": "Panel Arka Planı",
+          "description": "Panel arka planını göster."
+        }
+      },
+      "panelBackgroundColor": {
+        "label": "Panel Arka Plan Rengi",
+        "description": "Panelin arka plan rengi."
+      }
+    },
+    "workspaces": {
+      "title": "Çalışma Alanları",
+      "hideEmpty": {
+        "label": "Boş Çalışma Alanlarını Gizle",
+        "description": "Odaklı/aktif olmayan çalışma alanlarını çekmecede gizle."
+      },
+      "namePlaceholder": "Çalışma alanı adı",
+      "iconPlaceholder": "Simge adı",
+      "browseTooltip": "Simgelere göz at.",
+      "expandTooltip": "Stil seçeneklerini göster/gizle",
+      "removeTooltip": "Çalışma alanını kaldır.",
+      "add": "Çalışma Alanı Ekle",
+      "symbolColor": {
+        "label": "Simge Rengi",
+        "description": "Bu çalışma alanının simge rengini değiştir."
+      },
+      "showPill": {
+        "label": "Kapsülü Göster",
+        "description": "Bu çalışma alanı simgesinin arkasında renkli daire göster."
+      },
+      "pillColor": {
+        "label": "Kapsül Rengi",
+        "description": "Bu çalışma alanının kapsül rengini değiştir."
+      },
+      "size": {
+        "label": "Boyut",
+        "description": "Bu çalışma alanı butonunun boyutu (%{value})."
+      },
+      "focusColor": {
+        "label": "Odak Rengi",
+        "description": "Bu çalışma alanı odaklanıldığında buton rengi."
+      },
+      "borderRadius": {
+        "label": "Buton Yarıçapı",
+        "description": "Bu çalışma alanı butonunun yuvarlaklığı (%{value})."
+      }
+    }
+  }
+}

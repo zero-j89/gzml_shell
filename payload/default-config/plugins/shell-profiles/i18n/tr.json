@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Shell profilleri"
+  },
+  "panel": {
+    "title": "Profiller",
+    "empty": "Henüz profil yok. Başlamak için mevcut yapılandırmanı kaydet.",
+    "action-apply": "Uygula",
+    "action-save": "Mevcut olanı kaydet",
+    "action-overwrite": "Üzerine yaz",
+    "action-rename": "Yeniden adlandır",
+    "action-delete": "Sil",
+    "more-actions": "Diğer işlemler",
+    "include-wallpapers": "Duvar kağıtları",
+    "rename-title": "Profili yeniden adlandır",
+    "rename-placeholder": "Yeni ad\u2026",
+    "save-title": "Profili kaydet",
+    "save-placeholder": "Profil adı\u2026",
+    "save-button": "Kaydet",
+    "search-placeholder": "Profil ara\u2026",
+    "delete-confirm-title": "Profil silinsin mi?",
+    "delete-confirm-message": "\"{name}\" silinsin mi? Bu işlem geri alınamaz."
+  },
+  "settings": {
+    "dir-label": "Profil dizini",
+    "dir-description": "Profillerin diskte saklandığı konum",
+    "dir-select": "Klasör seç",
+    "icon-label": "Widget simgesi",
+    "icon-description": "Çubukta gösterilen Tabler simge adı",
+    "icon-color-label": "Simge rengi",
+    "icon-color-description": "Çubuk simgesi için kullanılan renk",
+    "wallpapers-label": "Varsayılan olarak duvar kağıtlarını dahil et",
+    "wallpapers-description": "Profil yüklenirken duvar kağıdı ayarlarını uygula",
+    "backup-label": "Uygulamadan önce otomatik yedekle",
+    "backup-description": "Her uygulamadan önce mevcut yapılandırmayı _backups/ dizinine kaydet",
+    "backup-count-label": "Saklanacak maksimum yedek sayısı",
+    "backup-count-description": "En eski girişler otomatik olarak silinir (1\u201320)"
+  },
+  "toast": {
+    "saved": "\"{name}\" profili kaydedildi",
+    "applied": "\"{name}\" profili uygulandı",
+    "deleted": "\"{name}\" profili silindi"
+  },
+  "error": {
+    "name-empty": "Ad boş olamaz",
+    "name-too-long": "Ad çok uzun (maks. 64 karakter)",
+    "name-invalid": "Ad geçersiz karakterler içeriyor",
+    "name-exists": "Bu adda bir profil zaten mevcut",
+    "save-failed": "Profil kaydedilemedi",
+    "apply-failed": "Profil uygulanamadı",
+    "delete-failed": "Profil silinemedi",
+    "rename-failed": "Profil yeniden adlandırılamadı"
+  },
+  "ipc": {
+    "applied": "\"{name}\" profili uygulandı",
+    "not-found": "\"{name}\" profili bulunamadı"
+  }
+}

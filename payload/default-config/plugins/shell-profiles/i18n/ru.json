@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Профили оболочки"
+  },
+  "panel": {
+    "title": "Профили",
+    "empty": "Нет профилей. Сохраните текущую конфигурацию, чтобы начать.",
+    "action-apply": "Применить",
+    "action-save": "Сохранить текущий",
+    "action-overwrite": "Перезаписать",
+    "action-rename": "Переименовать",
+    "action-delete": "Удалить",
+    "more-actions": "Ещё действия",
+    "include-wallpapers": "Обои",
+    "rename-title": "Переименовать профиль",
+    "rename-placeholder": "Новое имя\u2026",
+    "save-title": "Сохранить профиль",
+    "save-placeholder": "Название профиля\u2026",
+    "save-button": "Сохранить",
+    "search-placeholder": "Поиск профилей\u2026",
+    "delete-confirm-title": "Удалить профиль?",
+    "delete-confirm-message": "Удалить \"{name}\"? Это действие нельзя отменить."
+  },
+  "settings": {
+    "dir-label": "Папка профилей",
+    "dir-description": "Место хранения профилей на диске",
+    "dir-select": "Выбрать папку",
+    "icon-label": "Значок виджета",
+    "icon-description": "Название значка Tabler в панели",
+    "icon-color-label": "Цвет значка",
+    "icon-color-description": "Цвет значка в панели",
+    "wallpapers-label": "Включать обои по умолчанию",
+    "wallpapers-description": "Применять обои при загрузке профиля",
+    "backup-label": "Автоматическое резервное копирование перед применением",
+    "backup-description": "Сохранять текущую конфигурацию в _backups/ перед каждым применением",
+    "backup-count-label": "Максимальное количество резервных копий",
+    "backup-count-description": "Старые записи удаляются автоматически (1\u201320)"
+  },
+  "toast": {
+    "saved": "Профиль \"{name}\" сохранён",
+    "applied": "Профиль \"{name}\" применён",
+    "deleted": "Профиль \"{name}\" удалён"
+  },
+  "error": {
+    "name-empty": "Имя не может быть пустым",
+    "name-too-long": "Имя слишком длинное (макс. 64 символа)",
+    "name-invalid": "Имя содержит недопустимые символы",
+    "name-exists": "Профиль с таким именем уже существует",
+    "save-failed": "Не удалось сохранить профиль",
+    "apply-failed": "Не удалось применить профиль",
+    "delete-failed": "Не удалось удалить профиль",
+    "rename-failed": "Не удалось переименовать профиль"
+  },
+  "ipc": {
+    "applied": "Профиль \"{name}\" применён",
+    "not-found": "Профиль \"{name}\" не найден"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "autoMount": false,
+  "fileBrowser": "thunar",
+  "terminalCommand": "kitty",
+  "showNotifications": true,
+  "hideWhenEmpty": true,
+  "showBadge": true,
+  "iconColor": "primary"
+}

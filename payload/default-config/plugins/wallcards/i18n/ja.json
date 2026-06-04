@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "すべて",
+    "images": "画像",
+    "videos": "動画",
+    "shuffle": "シャッフル",
+    "live-preview": "ライブ",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Wallcardsを開く",
+    "generate-thumbs-message": "サムネイルを生成中…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "アイコンの色",
+      "description": "バーウィジェットのアイコンの色"
+    },
+    "live-preview": {
+      "label": "ライブプレビュー",
+      "description": "カードを閲覧しながら壁紙を適用"
+    },
+    "default-filter": {
+      "label": "デフォルトフィルター",
+      "description": "起動時のファイルタイプフィルター"
+    },
+    "hide-shortcuts": {
+      "label": "ショートカットを非表示",
+      "description": "キーボードショートカットパネルを非表示"
+    },
+    "hide-top-bar": {
+      "label": "トップバーを非表示",
+      "description": "カード上部のツールバーを非表示"
+    },
+    "center-card-width": {
+      "label": "中央カードの幅",
+      "description": "画面に対する中央カードの幅の割合"
+    },
+    "card-height": {
+      "label": "カードの高さ",
+      "description": "壁紙カードの高さ"
+    },
+    "strip-width": {
+      "label": "ストリップ幅",
+      "description": "サイドカードストリップの幅"
+    },
+    "card-spacing": {
+      "label": "カード間隔",
+      "description": "カード間のスペース"
+    },
+    "cards-shown": {
+      "label": "表示カード数",
+      "description": "表示するカードの数（奇数推奨）"
+    },
+    "shear-factor": {
+      "label": "せん断係数",
+      "description": "カードレイアウトの傾斜角度"
+    },
+    "card-animation": {
+      "label": "カードアニメーション",
+      "description": "カード遷移の速度"
+    },
+    "background-color": {
+      "label": "背景色",
+      "description": "暗転オーバーレイの色"
+    },
+    "background-opacity": {
+      "label": "背景の不透明度",
+      "description": "暗転オーバーレイの不透明度"
+    },
+    "window-animation-speed": {
+      "label": "ウィンドウアニメーション速度",
+      "description": "開閉時の遷移速度"
+    },
+    "animate-window": {
+      "label": "ウィンドウアニメーション",
+      "description": "開閉時の遷移をアニメーション化"
+    },
+    "top-bar-height": {
+      "label": "トップバーの高さ",
+      "description": "ツールバーの高さ"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "ナビゲーション",
+      "actions": "アクション",
+      "filters": "フィルター",
+      "view": "表示",
+      "layout": "レイアウト"
+    },
+    "label": {
+      "help-title": "ショートカット",
+      "navigate": "移動",
+      "jump": "ジャンプ",
+      "shuffle": "シャッフル",
+      "apply-quit": "適用して終了",
+      "apply": "適用",
+      "quit": "終了",
+      "filter-all": "すべて",
+      "filter-images": "画像",
+      "filter-videos": "動画",
+      "filter-colors": "カラーフィルター",
+      "top-bar": "トップバー切替",
+      "live-preview": "ライブプレビュー切替",
+      "center-height": "中央の高さ",
+      "center-width": "中央の幅",
+      "cards-shown": "表示カード数",
+      "cards-spacing": "間隔",
+      "cards-width": "カード幅",
+      "save": "設定を保存",
+      "hide": "非表示"
+    }
+  }
+}

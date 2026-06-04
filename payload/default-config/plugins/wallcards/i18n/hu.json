@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Összes",
+    "images": "Képek",
+    "videos": "Videók",
+    "shuffle": "Keverés",
+    "live-preview": "Élő",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Wallcards megnyitása",
+    "generate-thumbs-message": "Miniatűrök létrehozása…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Ikon színe",
+      "description": "A sáv widget ikonjának színe"
+    },
+    "live-preview": {
+      "label": "Élő előnézet",
+      "description": "Háttérkép alkalmazása böngészés közben"
+    },
+    "default-filter": {
+      "label": "Alapértelmezett szűrő",
+      "description": "Kezdeti fájltípus-szűrő megnyitáskor"
+    },
+    "hide-shortcuts": {
+      "label": "Gyorsbillentyűk elrejtése",
+      "description": "A gyorsbillentyűk panel elrejtése"
+    },
+    "hide-top-bar": {
+      "label": "Felső sáv elrejtése",
+      "description": "Az eszköztár elrejtése a kártyák felett"
+    },
+    "center-card-width": {
+      "label": "Középső kártya szélessége",
+      "description": "A középső kártya szélessége a képernyő százalékában"
+    },
+    "card-height": {
+      "label": "Kártya magassága",
+      "description": "A háttérkép-kártyák magassága"
+    },
+    "strip-width": {
+      "label": "Csík szélessége",
+      "description": "Az oldalsó kártyacsíkok szélessége"
+    },
+    "card-spacing": {
+      "label": "Kártyák térköze",
+      "description": "Kártyák közötti rés"
+    },
+    "cards-shown": {
+      "label": "Megjelenített kártyák",
+      "description": "Látható kártyák száma (páratlan számok ajánlottak)"
+    },
+    "shear-factor": {
+      "label": "Nyírási tényező",
+      "description": "A kártya-elrendezés döntési szöge"
+    },
+    "card-animation": {
+      "label": "Kártya animáció",
+      "description": "Kártyaátmenetek sebessége"
+    },
+    "background-color": {
+      "label": "Háttérszín",
+      "description": "A sötétített fedőréteg színe"
+    },
+    "background-opacity": {
+      "label": "Háttér átlátszatlansága",
+      "description": "A sötétített fedőréteg átlátszatlansága"
+    },
+    "window-animation-speed": {
+      "label": "Ablak animáció sebessége",
+      "description": "A nyitás és zárás átmenetek sebessége"
+    },
+    "animate-window": {
+      "label": "Ablak animáció",
+      "description": "Nyitás és zárás átmenetek animálása"
+    },
+    "top-bar-height": {
+      "label": "Felső sáv magassága",
+      "description": "Az eszköztár magassága"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVIGÁCIÓ",
+      "actions": "MŰVELETEK",
+      "filters": "SZŰRŐK",
+      "view": "NÉZET",
+      "layout": "ELRENDEZÉS"
+    },
+    "label": {
+      "help-title": "Gyorsbillentyűk",
+      "navigate": "Navigálás",
+      "jump": "Ugrás",
+      "shuffle": "Keverés",
+      "apply-quit": "Alkalmazás + Kilépés",
+      "apply": "Alkalmazás",
+      "quit": "Kilépés",
+      "filter-all": "Összes",
+      "filter-images": "Képek",
+      "filter-videos": "Videók",
+      "filter-colors": "Színszűrő",
+      "top-bar": "Felső sáv",
+      "live-preview": "Élő előnézet",
+      "center-height": "Középső magasság",
+      "center-width": "Középső szélesség",
+      "cards-shown": "Megjelenített kártyák",
+      "cards-spacing": "Térköz",
+      "cards-width": "Kártyák szélessége",
+      "save": "Beállítások mentése",
+      "hide": "Elrejtés"
+    }
+  }
+}

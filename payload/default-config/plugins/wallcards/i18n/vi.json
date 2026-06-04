@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Tất cả",
+    "images": "Hình ảnh",
+    "videos": "Video",
+    "shuffle": "Xáo trộn",
+    "live-preview": "Trực tiếp",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Mở Wallcards",
+    "generate-thumbs-message": "Đang tạo hình thu nhỏ…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Màu biểu tượng",
+      "description": "Màu của biểu tượng widget thanh"
+    },
+    "live-preview": {
+      "label": "Xem trước trực tiếp",
+      "description": "Áp dụng hình nền khi duyệt thẻ"
+    },
+    "default-filter": {
+      "label": "Bộ lọc mặc định",
+      "description": "Bộ lọc loại tệp ban đầu khi mở"
+    },
+    "hide-shortcuts": {
+      "label": "Ẩn phím tắt",
+      "description": "Ẩn bảng phím tắt bàn phím"
+    },
+    "hide-top-bar": {
+      "label": "Ẩn thanh trên",
+      "description": "Ẩn thanh công cụ phía trên các thẻ"
+    },
+    "center-card-width": {
+      "label": "Chiều rộng thẻ giữa",
+      "description": "Chiều rộng thẻ giữa tính theo phần trăm màn hình"
+    },
+    "card-height": {
+      "label": "Chiều cao thẻ",
+      "description": "Chiều cao của các thẻ hình nền"
+    },
+    "strip-width": {
+      "label": "Chiều rộng dải",
+      "description": "Chiều rộng các dải thẻ bên"
+    },
+    "card-spacing": {
+      "label": "Khoảng cách thẻ",
+      "description": "Khoảng cách giữa các thẻ"
+    },
+    "cards-shown": {
+      "label": "Số thẻ hiển thị",
+      "description": "Số lượng thẻ hiển thị (khuyến nghị số lẻ)"
+    },
+    "shear-factor": {
+      "label": "Hệ số nghiêng",
+      "description": "Góc nghiêng của bố cục thẻ"
+    },
+    "card-animation": {
+      "label": "Hoạt ảnh thẻ",
+      "description": "Tốc độ chuyển đổi thẻ"
+    },
+    "background-color": {
+      "label": "Màu nền",
+      "description": "Màu của lớp phủ tối"
+    },
+    "background-opacity": {
+      "label": "Độ mờ nền",
+      "description": "Độ mờ của lớp phủ tối"
+    },
+    "window-animation-speed": {
+      "label": "Tốc độ hoạt ảnh cửa sổ",
+      "description": "Tốc độ chuyển đổi mở và đóng"
+    },
+    "animate-window": {
+      "label": "Hoạt ảnh cửa sổ",
+      "description": "Tạo hoạt ảnh cho chuyển đổi mở và đóng"
+    },
+    "top-bar-height": {
+      "label": "Chiều cao thanh trên",
+      "description": "Chiều cao của thanh công cụ"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "ĐIỀU HƯỚNG",
+      "actions": "HÀNH ĐỘNG",
+      "filters": "BỘ LỌC",
+      "view": "HIỂN THỊ",
+      "layout": "BỐ CỤC"
+    },
+    "label": {
+      "help-title": "Phím tắt",
+      "navigate": "Di chuyển",
+      "jump": "Nhảy",
+      "shuffle": "Xáo trộn",
+      "apply-quit": "Áp dụng + Thoát",
+      "apply": "Áp dụng",
+      "quit": "Thoát",
+      "filter-all": "Tất cả",
+      "filter-images": "Hình ảnh",
+      "filter-videos": "Video",
+      "filter-colors": "Lọc màu",
+      "top-bar": "Thanh trên",
+      "live-preview": "Xem trước trực tiếp",
+      "center-height": "Chiều cao giữa",
+      "center-width": "Chiều rộng giữa",
+      "cards-shown": "Số thẻ hiển thị",
+      "cards-spacing": "Khoảng cách",
+      "cards-width": "Chiều rộng thẻ",
+      "save": "Lưu cài đặt",
+      "hide": "Ẩn"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+    "rules": [
+        {
+            "action": "hide",
+            "pattern": "openrazer-daemon"
+        },
+        {
+            "action": "hide",
+            "pattern": "openrazer"
+        },
+        {
+            "action": "block",
+            "pattern": "OpenRazer"
+        },
+        {
+            "action": "hide",
+            "pattern": "razer.device1.batterymanager"
+        },
+        {
+            "action": "hide",
+            "pattern": "BatteryNotify"
+        },
+        {
+            "action": "hide",
+            "pattern": "battery"
+        },
+        {
+            "action": "block",
+            "pattern": "volume"
+        }
+    ]
+}

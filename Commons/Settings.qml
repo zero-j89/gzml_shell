@@ -151,10 +151,18 @@ Singleton {
         return;
       }
       if (error.toString().includes("No such file") || error === 2) {
-        // File doesn't exist, create it with default values
+        Logger.i("Settings", "Fresh install detected, seeding from bundled GZML defaults");
+      
         root.isFreshInstall = true;
-        writeAdapter();
-
+      
+        Quickshell.execDetached([
+          "sh",
+          "-c",
+          "cp '" + Quickshell.shellDir + "/Assets/settings-default.json' '" + settingsFile + "'"
+        ]);
+      
+        reload();
+      
         // We started without settings, we should open the setupWizard
         root.shouldOpenSetupWizard = true;
       }

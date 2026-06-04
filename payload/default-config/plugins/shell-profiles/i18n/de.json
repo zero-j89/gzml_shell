@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Shell-Profile"
+  },
+  "panel": {
+    "title": "Profile",
+    "empty": "Keine Profile vorhanden. Speichere deine aktuelle Konfiguration, um zu beginnen.",
+    "action-apply": "Anwenden",
+    "action-save": "Aktuell speichern",
+    "action-overwrite": "Überschreiben",
+    "action-rename": "Umbenennen",
+    "action-delete": "Löschen",
+    "more-actions": "Weitere Aktionen",
+    "include-wallpapers": "Hintergrundbilder",
+    "rename-title": "Profil umbenennen",
+    "rename-placeholder": "Neuer Name\u2026",
+    "save-title": "Profil speichern",
+    "save-placeholder": "Profilname\u2026",
+    "save-button": "Speichern",
+    "search-placeholder": "Profile suchen\u2026",
+    "delete-confirm-title": "Profil löschen?",
+    "delete-confirm-message": "\"{name}\" löschen? Dies kann nicht rückgängig gemacht werden."
+  },
+  "settings": {
+    "dir-label": "Profilverzeichnis",
+    "dir-description": "Speicherort der Profile auf dem Datenträger",
+    "dir-select": "Ordner auswählen",
+    "icon-label": "Widget-Symbol",
+    "icon-description": "Tabler-Symbolname in der Leiste",
+    "icon-color-label": "Symbolfarbe",
+    "icon-color-description": "Farbe des Symbols in der Leiste",
+    "wallpapers-label": "Hintergrundbilder standardmäßig einbeziehen",
+    "wallpapers-description": "Hintergrundbilder beim Laden eines Profils anwenden",
+    "backup-label": "Automatisch sichern vor dem Anwenden",
+    "backup-description": "Aktuelle Konfiguration vor jedem Anwenden in _backups/ sichern",
+    "backup-count-label": "Maximale Anzahl an Sicherungen",
+    "backup-count-description": "Älteste Einträge werden automatisch gelöscht (1\u201320)"
+  },
+  "toast": {
+    "saved": "Profil \"{name}\" gespeichert",
+    "applied": "Profil \"{name}\" angewendet",
+    "deleted": "Profil \"{name}\" gelöscht"
+  },
+  "error": {
+    "name-empty": "Der Name darf nicht leer sein",
+    "name-too-long": "Der Name ist zu lang (max. 64 Zeichen)",
+    "name-invalid": "Der Name enthält ungültige Zeichen",
+    "name-exists": "Ein Profil mit diesem Namen existiert bereits",
+    "save-failed": "Profil konnte nicht gespeichert werden",
+    "apply-failed": "Profil konnte nicht angewendet werden",
+    "delete-failed": "Profil konnte nicht gelöscht werden",
+    "rename-failed": "Profil konnte nicht umbenannt werden"
+  },
+  "ipc": {
+    "applied": "Profil \"{name}\" angewendet",
+    "not-found": "Profil \"{name}\" nicht gefunden"
+  }
+}

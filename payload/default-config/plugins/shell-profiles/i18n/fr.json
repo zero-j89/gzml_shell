@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "Profils shell"
+  },
+  "panel": {
+    "title": "Profils",
+    "empty": "Aucun profil. Sauvegardez votre configuration actuelle pour commencer.",
+    "action-apply": "Appliquer",
+    "action-save": "Sauvegarder",
+    "action-overwrite": "Écraser",
+    "action-rename": "Renommer",
+    "action-delete": "Supprimer",
+    "more-actions": "Plus d'actions",
+    "include-wallpapers": "Fonds d'écran",
+    "rename-title": "Renommer le profil",
+    "rename-placeholder": "Nouveau nom\u2026",
+    "save-title": "Sauvegarder le profil",
+    "save-placeholder": "Nom du profil\u2026",
+    "save-button": "Sauvegarder",
+    "search-placeholder": "Rechercher des profils\u2026",
+    "delete-confirm-title": "Supprimer le profil\u00a0?",
+    "delete-confirm-message": "Supprimer \"{name}\"\u00a0? Cette action est irréversible."
+  },
+  "settings": {
+    "dir-label": "Répertoire des profils",
+    "dir-description": "Emplacement de stockage des profils sur le disque",
+    "dir-select": "Sélectionner un dossier",
+    "icon-label": "Icône du widget",
+    "icon-description": "Nom de l'icône Tabler affichée dans la barre",
+    "icon-color-label": "Couleur de l'icône",
+    "icon-color-description": "Couleur utilisée pour l'icône dans la barre",
+    "wallpapers-label": "Inclure les fonds d'écran par défaut",
+    "wallpapers-description": "Appliquer les fonds d'écran lors du chargement d'un profil",
+    "backup-label": "Sauvegarde automatique avant application",
+    "backup-description": "Enregistre la config actuelle dans _backups/ avant chaque application",
+    "backup-count-label": "Nombre maximum de sauvegardes",
+    "backup-count-description": "Les entrées les plus anciennes sont supprimées automatiquement (1\u201320)"
+  },
+  "toast": {
+    "saved": "Profil \"{name}\" sauvegardé",
+    "applied": "Profil \"{name}\" appliqué",
+    "deleted": "Profil \"{name}\" supprimé"
+  },
+  "error": {
+    "name-empty": "Le nom ne peut pas être vide",
+    "name-too-long": "Le nom est trop long (64 caractères max.)",
+    "name-invalid": "Le nom contient des caractères invalides",
+    "name-exists": "Un profil avec ce nom existe déjà",
+    "save-failed": "Échec de la sauvegarde du profil",
+    "apply-failed": "Échec de l'application du profil",
+    "delete-failed": "Échec de la suppression du profil",
+    "rename-failed": "Échec du renommage du profil"
+  },
+  "ipc": {
+    "applied": "Profil \"{name}\" appliqué",
+    "not-found": "Profil \"{name}\" introuvable"
+  }
+}

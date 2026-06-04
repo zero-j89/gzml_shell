@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Tümü",
+    "images": "Resimler",
+    "videos": "Videolar",
+    "shuffle": "Karıştır",
+    "live-preview": "Canlı",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Wallcards'ı aç",
+    "generate-thumbs-message": "Küçük resimler oluşturuluyor…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Simge rengi",
+      "description": "Çubuk widget simgesinin rengi"
+    },
+    "live-preview": {
+      "label": "Canlı önizleme",
+      "description": "Kartlara göz atarken duvar kağıdını uygula"
+    },
+    "default-filter": {
+      "label": "Varsayılan filtre",
+      "description": "Açılışta başlangıç dosya türü filtresi"
+    },
+    "hide-shortcuts": {
+      "label": "Kısayolları gizle",
+      "description": "Klavye kısayolları panelini gizle"
+    },
+    "hide-top-bar": {
+      "label": "Üst çubuğu gizle",
+      "description": "Kartların üzerindeki araç çubuğunu gizle"
+    },
+    "center-card-width": {
+      "label": "Orta kart genişliği",
+      "description": "Orta kartın ekran yüzdesi olarak genişliği"
+    },
+    "card-height": {
+      "label": "Kart yüksekliği",
+      "description": "Duvar kağıdı kartlarının yüksekliği"
+    },
+    "strip-width": {
+      "label": "Şerit genişliği",
+      "description": "Yan kart şeritlerinin genişliği"
+    },
+    "card-spacing": {
+      "label": "Kart aralığı",
+      "description": "Kartlar arasındaki boşluk"
+    },
+    "cards-shown": {
+      "label": "Görünen kartlar",
+      "description": "Görünür kart sayısı (tek sayılar önerilir)"
+    },
+    "shear-factor": {
+      "label": "Kayma faktörü",
+      "description": "Kart düzeninin eğim açısı"
+    },
+    "card-animation": {
+      "label": "Kart animasyonu",
+      "description": "Kart geçişlerinin hızı"
+    },
+    "background-color": {
+      "label": "Arka plan rengi",
+      "description": "Karartılmış katmanın rengi"
+    },
+    "background-opacity": {
+      "label": "Arka plan opaklığı",
+      "description": "Karartılmış katmanın opaklığı"
+    },
+    "window-animation-speed": {
+      "label": "Pencere animasyon hızı",
+      "description": "Açma ve kapama geçişlerinin hızı"
+    },
+    "animate-window": {
+      "label": "Pencere animasyonu",
+      "description": "Açma ve kapama geçişlerini animasyonla göster"
+    },
+    "top-bar-height": {
+      "label": "Üst çubuk yüksekliği",
+      "description": "Araç çubuğunun yüksekliği"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "GEZİNME",
+      "actions": "EYLEMLER",
+      "filters": "FİLTRELER",
+      "view": "GÖRÜNÜM",
+      "layout": "DÜZEN"
+    },
+    "label": {
+      "help-title": "Kısayollar",
+      "navigate": "Gezin",
+      "jump": "Atla",
+      "shuffle": "Karıştır",
+      "apply-quit": "Uygula + Kapat",
+      "apply": "Uygula",
+      "quit": "Kapat",
+      "filter-all": "Tümü",
+      "filter-images": "Resimler",
+      "filter-videos": "Videolar",
+      "filter-colors": "Renk filtresi",
+      "top-bar": "Üst çubuk",
+      "live-preview": "Canlı önizleme",
+      "center-height": "Orta yükseklik",
+      "center-width": "Orta genişlik",
+      "cards-shown": "Görünen kartlar",
+      "cards-spacing": "Aralık",
+      "cards-width": "Kart genişliği",
+      "save": "Ayarları kaydet",
+      "hide": "Gizle"
+    }
+  }
+}

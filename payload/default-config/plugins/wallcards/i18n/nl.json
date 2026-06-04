@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Alles",
+    "images": "Afbeeldingen",
+    "videos": "Video's",
+    "shuffle": "Willekeurig",
+    "live-preview": "Live",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Wallcards openen",
+    "generate-thumbs-message": "Miniaturen genereren…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Pictogramkleur",
+      "description": "Kleur van het balkwidget-pictogram"
+    },
+    "live-preview": {
+      "label": "Live voorbeeld",
+      "description": "Achtergrond toepassen tijdens het bladeren"
+    },
+    "default-filter": {
+      "label": "Standaardfilter",
+      "description": "Initieel bestandstypefilter bij openen"
+    },
+    "hide-shortcuts": {
+      "label": "Sneltoetsen verbergen",
+      "description": "Het sneltoetsenpaneel verbergen"
+    },
+    "hide-top-bar": {
+      "label": "Bovenste balk verbergen",
+      "description": "De werkbalk boven de kaarten verbergen"
+    },
+    "center-card-width": {
+      "label": "Breedte middelste kaart",
+      "description": "Breedte van de middelste kaart als percentage van het scherm"
+    },
+    "card-height": {
+      "label": "Kaarthoogte",
+      "description": "Hoogte van de achtergrondkaarten"
+    },
+    "strip-width": {
+      "label": "Stripbreedte",
+      "description": "Breedte van de zijstroken"
+    },
+    "card-spacing": {
+      "label": "Kaartafstand",
+      "description": "Ruimte tussen kaarten"
+    },
+    "cards-shown": {
+      "label": "Zichtbare kaarten",
+      "description": "Aantal zichtbare kaarten (oneven aantallen aanbevolen)"
+    },
+    "shear-factor": {
+      "label": "Schuinfactor",
+      "description": "Hellingshoek van de kaartindeling"
+    },
+    "card-animation": {
+      "label": "Kaartanimatie",
+      "description": "Snelheid van kaartovergangen"
+    },
+    "background-color": {
+      "label": "Achtergrondkleur",
+      "description": "Kleur van de verduisterde overlay"
+    },
+    "background-opacity": {
+      "label": "Achtergrond-dekking",
+      "description": "Dekking van de verduisterde overlay"
+    },
+    "window-animation-speed": {
+      "label": "Vensteranimatiesnelheid",
+      "description": "Snelheid van open- en sluitovergangen"
+    },
+    "animate-window": {
+      "label": "Vensteranimatie",
+      "description": "Open- en sluitovergangen animeren"
+    },
+    "top-bar-height": {
+      "label": "Hoogte bovenste balk",
+      "description": "Hoogte van de werkbalk"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVIGATIE",
+      "actions": "ACTIES",
+      "filters": "FILTERS",
+      "view": "WEERGAVE",
+      "layout": "INDELING"
+    },
+    "label": {
+      "help-title": "Sneltoetsen",
+      "navigate": "Navigeren",
+      "jump": "Springen",
+      "shuffle": "Willekeurig",
+      "apply-quit": "Toepassen + Sluiten",
+      "apply": "Toepassen",
+      "quit": "Sluiten",
+      "filter-all": "Alles",
+      "filter-images": "Afbeeldingen",
+      "filter-videos": "Video's",
+      "filter-colors": "Kleurfilter",
+      "top-bar": "Bovenste balk",
+      "live-preview": "Live voorbeeld",
+      "center-height": "Middenhoogte",
+      "center-width": "Middenbreedte",
+      "cards-shown": "Zichtbare kaarten",
+      "cards-spacing": "Afstand",
+      "cards-width": "Kaartbreedte",
+      "save": "Instellingen opslaan",
+      "hide": "Verbergen"
+    }
+  }
+}

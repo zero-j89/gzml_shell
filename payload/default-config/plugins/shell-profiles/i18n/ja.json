@@ -1,0 +1,58 @@
+{
+  "widget": {
+    "tooltip": "シェルプロファイル"
+  },
+  "panel": {
+    "title": "プロファイル",
+    "empty": "プロファイルがありません。現在の設定を保存して始めましょう。",
+    "action-apply": "適用",
+    "action-save": "現在を保存",
+    "action-overwrite": "上書き",
+    "action-rename": "名前変更",
+    "action-delete": "削除",
+    "more-actions": "その他の操作",
+    "include-wallpapers": "壁紙",
+    "rename-title": "プロファイルの名前変更",
+    "rename-placeholder": "新しい名前\u2026",
+    "save-title": "プロファイルを保存",
+    "save-placeholder": "プロファイル名\u2026",
+    "save-button": "保存",
+    "search-placeholder": "プロファイルを検索\u2026",
+    "delete-confirm-title": "プロファイルを削除しますか？",
+    "delete-confirm-message": "\"{name}\" を削除しますか？この操作は元に戻せません。"
+  },
+  "settings": {
+    "dir-label": "プロファイルディレクトリ",
+    "dir-description": "ディスク上のプロファイルの保存場所",
+    "dir-select": "フォルダを選択",
+    "icon-label": "ウィジェットアイコン",
+    "icon-description": "バーに表示される Tabler アイコン名",
+    "icon-color-label": "アイコンの色",
+    "icon-color-description": "バーのアイコンに使用する色",
+    "wallpapers-label": "デフォルトで壁紙を含める",
+    "wallpapers-description": "プロファイル読み込み時に壁紙を適用する",
+    "backup-label": "適用前に自動バックアップ",
+    "backup-description": "各適用の前に現在の設定を _backups/ に保存する",
+    "backup-count-label": "保持するバックアップの最大数",
+    "backup-count-description": "古いエントリは自動的に削除されます（1\u201320）"
+  },
+  "toast": {
+    "saved": "プロファイル \"{name}\" を保存しました",
+    "applied": "プロファイル \"{name}\" を適用しました",
+    "deleted": "プロファイル \"{name}\" を削除しました"
+  },
+  "error": {
+    "name-empty": "名前は空にできません",
+    "name-too-long": "名前が長すぎます（最大 64 文字）",
+    "name-invalid": "名前に無効な文字が含まれています",
+    "name-exists": "その名前のプロファイルは既に存在します",
+    "save-failed": "プロファイルの保存に失敗しました",
+    "apply-failed": "プロファイルの適用に失敗しました",
+    "delete-failed": "プロファイルの削除に失敗しました",
+    "rename-failed": "プロファイルの名前変更に失敗しました"
+  },
+  "ipc": {
+    "applied": "プロファイル \"{name}\" を適用しました",
+    "not-found": "プロファイル \"{name}\" が見つかりません"
+  }
+}

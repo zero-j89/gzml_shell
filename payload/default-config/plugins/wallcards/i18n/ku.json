@@ -1,0 +1,116 @@
+{
+  "buttons": {
+    "all": "Hemû",
+    "images": "Wêne",
+    "videos": "Vîdeo",
+    "shuffle": "Tevlihev",
+    "live-preview": "Zindî",
+    "color-na": "✕"
+  },
+  "widget": {
+    "tooltip": "Wallcards veke",
+    "generate-thumbs-message": "Wêneyên biçûk têne çêkirin…"
+  },
+  "settings": {
+    "icon-color": {
+      "label": "Rengê îkonê",
+      "description": "Rengê îkona wîceta barê"
+    },
+    "live-preview": {
+      "label": "Pêşdîtina zindî",
+      "description": "Dîwarê bi kar bîne dema ku kartên digerin"
+    },
+    "default-filter": {
+      "label": "Parzûna standard",
+      "description": "Parzûna celebê pelê ya destpêkê dema vekirinê"
+    },
+    "hide-shortcuts": {
+      "label": "Kurterêyan veşêre",
+      "description": "Panela kurterêyên klavyeyê veşêre"
+    },
+    "hide-top-bar": {
+      "label": "Barê jorîn veşêre",
+      "description": "Amûrbarê li ser kartan veşêre"
+    },
+    "center-card-width": {
+      "label": "Firehiya karta navendî",
+      "description": "Firehiya karta navendî wek sedî ya ekranê"
+    },
+    "card-height": {
+      "label": "Bilindahiya kartê",
+      "description": "Bilindahiya kartên dîwarê"
+    },
+    "strip-width": {
+      "label": "Firehiya şirîtê",
+      "description": "Firehiya şirîtên kartên alî"
+    },
+    "card-spacing": {
+      "label": "Navbera kartan",
+      "description": "Valahiya di navbera kartan de"
+    },
+    "cards-shown": {
+      "label": "Kartên xuya",
+      "description": "Hejmara kartên xuya (jimarên taq têne pêşniyar kirin)"
+    },
+    "shear-factor": {
+      "label": "Faktora qutkirinê",
+      "description": "Goşeya meylkirina sêwirana kartan"
+    },
+    "card-animation": {
+      "label": "Anîmasyona kartê",
+      "description": "Leza veguheztinên kartan"
+    },
+    "background-color": {
+      "label": "Rengê paşperdê",
+      "description": "Rengê tebeqa tarîkirî"
+    },
+    "background-opacity": {
+      "label": "Zelalbûna paşperdê",
+      "description": "Zelalbûna tebeqa tarîkirî"
+    },
+    "window-animation-speed": {
+      "label": "Leza anîmasyona pencereyê",
+      "description": "Leza veguheztinên vekirî û girtî"
+    },
+    "animate-window": {
+      "label": "Anîmasyona pencereyê",
+      "description": "Veguheztinên vekirî û girtî bianîme"
+    },
+    "top-bar-height": {
+      "label": "Bilindahiya barê jorîn",
+      "description": "Bilindahiya amûrbarê"
+    }
+  },
+  "shortcuts": {
+    "key-separator": "/",
+    "header": {
+      "navigation": "NAVÎGASYON",
+      "actions": "ÇALAKÎ",
+      "filters": "PARZÛN",
+      "view": "DÎTIN",
+      "layout": "SÊWIRAN"
+    },
+    "label": {
+      "help-title": "Kurterê",
+      "navigate": "Navîgasyon",
+      "jump": "Bazdan",
+      "shuffle": "Tevlihev",
+      "apply-quit": "Bicîh bîne + Derkeve",
+      "apply": "Bicîh bîne",
+      "quit": "Derkeve",
+      "filter-all": "Hemû",
+      "filter-images": "Wêne",
+      "filter-videos": "Vîdeo",
+      "filter-colors": "Parzûna rengan",
+      "top-bar": "Barê jorîn",
+      "live-preview": "Pêşdîtina zindî",
+      "center-height": "Bilindahiya navendî",
+      "center-width": "Firehiya navendî",
+      "cards-shown": "Kartên xuya",
+      "cards-spacing": "Navber",
+      "cards-width": "Firehiya kartan",
+      "save": "Mîhengan tomar bike",
+      "hide": "Veşêre"
+    }
+  }
+}

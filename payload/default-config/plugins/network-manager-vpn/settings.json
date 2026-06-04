@@ -1,0 +1,6 @@
+{
+  "displayMode": "onhover",
+  "disconnectedColor": "none",
+  "connectedColor": "primary",
+  "disableToastNotifications": false
+}

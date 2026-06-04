@@ -1,0 +1,32 @@
+{
+  "id": "hello-world",
+  "name": "Hello World",
+  "version": "1.2.4",
+  "minNoctaliaVersion": "4.6.6",
+  "author": "Noctalia Team",
+  "official": true,
+  "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+  "description": "A simple Hello World plugin demonstrating functionalities. For developers only.",
+  "tags": [
+    "Development"
+  ],
+  "entryPoints": {
+    "main": "Main.qml",
+    "barWidget": "BarWidget.qml",
+    "desktopWidget": "DesktopWidget.qml",
+    "desktopWidgetSettings": "DesktopWidgetSettings.qml",
+    "controlCenterWidget": "ControlCenterWidget.qml",
+    "panel": "Panel.qml",
+    "settings": "Settings.qml"
+  },
+  "dependencies": {
+    "plugins": []
+  },
+  "metadata": {
+    "defaultSettings": {
+      "message": "Hello World",
+      "iconColor": "primary"
+    }
+  }
+}

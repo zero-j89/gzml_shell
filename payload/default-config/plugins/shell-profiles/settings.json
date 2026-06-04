@@ -1,0 +1,9 @@
+{
+  "profilesDir": "/home/zer0/.config/noctalia/profiles/",
+  "icon": "biohazard",
+  "iconColor": "primary",
+  "includeWallpapers": true,
+  "lastAppliedProfile": "Black And Blue",
+  "backupEnabled": true,
+  "backupCount": 5
+}

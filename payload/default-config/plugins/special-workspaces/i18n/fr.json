@@ -1,0 +1,97 @@
+{
+  "menu": {
+    "settings": "Paramètres du widget"
+  },
+  "settings": {
+    "title": "Espaces de travail spéciaux",
+    "description": "Configurez les espaces de travail spéciaux affichés dans le widget de la barre.",
+    "drawer": {
+      "title": "Tiroir",
+      "label": "Afficher le tiroir",
+      "tooltip": "Masquer/afficher le tiroir.",
+      "mainIcon": {
+        "label": "Icône du tiroir",
+        "browseTooltip": "Parcourir les icônes"
+      },
+      "symbolColor": {
+        "label": "Couleur de l'icône",
+        "description": "Personnaliser la couleur de l'icône du tiroir."
+      },
+      "showPill": {
+        "label": "Afficher la pastille",
+        "description": "Afficher un cercle coloré derrière l'icône du tiroir."
+      },
+      "pillColor": {
+        "label": "Couleur de la pastille",
+        "description": "Personnaliser la couleur de la pastille du tiroir."
+      },
+      "focusColor": {
+        "label": "Couleur d'activation",
+        "description": "Couleur du bouton du tiroir lorsqu'il est actif."
+      },
+      "borderRadius": {
+        "label": "Arrondi du bouton",
+        "description": "Arrondi du bouton du tiroir ({value}%)."
+      },
+      "size": {
+        "label": "Taille",
+        "description": "Taille du bouton du tiroir ({value}%)."
+      },
+      "expandDirection": {
+        "label": "Direction d'extension",
+        "description": "La direction dans laquelle les éléments s'étendent depuis le tiroir.",
+        "down": "Vers le bas",
+        "up": "Vers le haut",
+        "right": "Vers la droite",
+        "left": "Vers la gauche"
+      },
+      "panelBackground": {
+        "enabled": {
+          "label": "Arrière-plan du panneau",
+          "description": "Afficher un arrière-plan derrière le panneau flottant."
+        }
+      },
+      "panelBackgroundColor": {
+        "label": "Couleur d'arrière-plan du panneau",
+        "description": "Couleur d'arrière-plan du panneau flottant."
+      }
+    },
+    "workspaces": {
+      "title": "Espaces de travail",
+      "hideEmpty": {
+        "label": "Masquer les espaces vides",
+        "description": "Masquer les espaces de travail dans le tiroir lorsqu'ils ne sont pas actifs."
+      },
+      "namePlaceholder": "Nom de l'espace",
+      "iconPlaceholder": "Nom de l'icône",
+      "browseTooltip": "Parcourir les icônes",
+      "expandTooltip": "Afficher/masquer les options de style",
+      "removeTooltip": "Supprimer l'espace de travail",
+      "add": "Ajouter un espace de travail",
+      "symbolColor": {
+        "label": "Couleur de l'icône",
+        "description": "Personnaliser la couleur de l'icône de cet espace de travail."
+      },
+      "showPill": {
+        "label": "Afficher la pastille",
+        "description": "Afficher un cercle coloré derrière l'icône de cet espace de travail."
+      },
+      "pillColor": {
+        "label": "Couleur de la pastille",
+        "description": "Personnaliser la couleur de la pastille de cet espace de travail."
+      },
+      "size": {
+        "label": "Taille",
+        "description": "Taille du bouton de cet espace de travail ({value}%)."
+      },
+      "focusColor": {
+        "label": "Couleur d'activation",
+        "description": "Couleur du bouton de cet espace de travail lorsqu'il est actif."
+      },
+      "borderRadius": {
+        "label": "Arrondi du bouton",
+        "description": "Arrondi du bouton de cet espace de travail ({value}%)."
+      }
+    }
+  }
+}
