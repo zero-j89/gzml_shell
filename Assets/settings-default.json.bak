@@ -93,7 +93,6 @@
     "animationSpeed": 1,
     "animationDisabled": false,
     "compactLockScreen": false,
-    "lockScreenVideoBackground": true,
     "lockScreenAnimations": false,
     "lockOnSuspend": true,
     "showSessionButtonsOnLockScreen": true,

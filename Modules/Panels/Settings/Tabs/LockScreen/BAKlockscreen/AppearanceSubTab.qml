@@ -120,13 +120,4 @@ ColumnLayout {
     text: ((Settings.data.general.lockScreenTint) * 100).toFixed(0) + "%"
     defaultValue: Settings.getDefaultValue("general.lockScreenTint")
   }
-
-    NToggle {
-        label: "Video Background"
-        description: "Use the GZML Shell lock screen video instead of the current wallpaper."
-        checked: Settings.data.general.lockScreenVideoBackground ?? false
-        onToggled: checked => Settings.data.general.lockScreenVideoBackground = checked
-        defaultValue: false
-    }
-
 }

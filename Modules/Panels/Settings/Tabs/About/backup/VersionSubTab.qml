@@ -324,9 +324,9 @@ ColumnLayout {
     Layout.alignment: Qt.AlignHCenter
     spacing: Style.marginXL
 
-    // gzml logo
+    // Noctalia logo
     Image {
-      source: "../../../../../Assets/gzml-small.png"
+      source: "../../../../../Assets/noctalia.svg"
       width: 96 * Style.uiScaleRatio
       height: width
       fillMode: Image.PreserveAspectFit
@@ -395,7 +395,7 @@ ColumnLayout {
           spacing: Style.marginS
 
           NText {
-            text: "v0.5"
+            text: "v0.3"
             color: Color.mOnSurface
             font.weight: Style.fontWeightBold
           }
@@ -422,7 +422,7 @@ ColumnLayout {
               onExited: TooltipService.hide()
               onClicked: {
                 if (root.commitInfo) {
-                  Quickshell.execDetached(["xdg-open", "https://github.com/zero-j89/Gzml-Shell"]);
+                  Quickshell.execDetached(["xdg-open", "https://github.com/noctalia-dev/noctalia-shell/commit/" + root.commitInfo]);
                 }
               }
             }
@@ -517,7 +517,7 @@ ColumnLayout {
               onEntered: TooltipService.show(qsRevisionText, I18n.tr("panels.about.view-commit"))
               onExited: TooltipService.hide()
               onClicked: {
-                Quickshell.execDetached(["xdg-open", "https://github.com/noctalia-dev/noctalia-shell"]);
+                Quickshell.execDetached(["xdg-open", "https://github.com/noctalia-dev/noctalia-qs/commit/" + root.qsRevision]);
               }
             }
           }

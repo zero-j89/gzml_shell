@@ -229,10 +229,7 @@ Item {
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 100 + bottomContainer.deltaY
     radius: Style.radiusL
-    // GZML: translucent glass instead of solid surface
-    color: Qt.alpha(Color.mSurface, 0.22)
-    border.color: Qt.alpha(Color.mPrimary, 0.22)
-    border.width: 1
+    color: Color.mSurface
 
     width: Settings.data.general.showHibernateOnLockScreen ? 860 : 810
 
@@ -743,7 +740,7 @@ Item {
           Layout.fillWidth: true
           Layout.preferredHeight: 48
           radius: Style.iRadiusL
-          color: Qt.alpha(Color.mSurface, 0.26)
+          color: Color.mSurface
           border.color: passwordInput.activeFocus ? Color.mPrimary : Qt.alpha(Color.mOutline, 0.3)
           border.width: passwordInput.activeFocus ? 2 : 1
 

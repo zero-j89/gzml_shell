@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Effects
-import QtMultimedia
 import Quickshell
 import qs.Commons
 import qs.Services.Compositor
@@ -14,8 +13,6 @@ Item {
   // Cached wallpaper path - exposed for parent components
   property string resolvedWallpaperPath: ""
   property color tintColor: Settings.data.colorSchemes.darkMode ? Color.mSurface : Color.mOnSurface
-  property bool useVideoBackground: Settings.data.general.lockScreenVideoBackground || false
-  property string videoBackgroundPath: Qt.resolvedUrl("background/bg.mp4")
 
   required property var screen
 
@@ -109,42 +106,12 @@ Item {
   // Background - solid color or black fallback
   Rectangle {
     anchors.fill: parent
-    color: root.useVideoBackground ? "#000000" : (Settings.data.wallpaper.useSolidColor ? Settings.data.wallpaper.solidColor : "#000000")
-  }
-
-  MediaPlayer {
-    id: lockBgPlayer
-    source: root.useVideoBackground ? root.videoBackgroundPath : ""
-    videoOutput: lockBgVideo
-    autoPlay: root.useVideoBackground
-    loops: MediaPlayer.Infinite
-
-    onErrorOccurred: {
-      Logger.w("LockScreenBackground", "Video background error:", errorString);
-    }
-  }
-
-  VideoOutput {
-    id: lockBgVideo
-    anchors.fill: parent
-    visible: root.useVideoBackground
-    fillMode: VideoOutput.PreserveAspectCrop
-  }
-
-  Connections {
-    target: root
-    function onUseVideoBackgroundChanged() {
-      if (root.useVideoBackground) {
-        lockBgPlayer.play();
-      } else {
-        lockBgPlayer.stop();
-      }
-    }
+    color: Settings.data.wallpaper.useSolidColor ? Settings.data.wallpaper.solidColor : "#000000"
   }
 
   Image {
     id: lockBgImage
-    visible: !root.useVideoBackground && source !== "" && Settings.data.wallpaper.enabled && !Settings.data.wallpaper.useSolidColor && (!PowerProfileService.noctaliaPerformanceMode || !Settings.data.noctaliaPerformance.disableWallpaper)
+    visible: source !== "" && Settings.data.wallpaper.enabled && !Settings.data.wallpaper.useSolidColor && (!PowerProfileService.noctaliaPerformanceMode || !Settings.data.noctaliaPerformance.disableWallpaper)
     anchors.fill: parent
     fillMode: Image.PreserveAspectCrop
     source: resolvedWallpaperPath
@@ -170,7 +137,7 @@ Item {
   }
 
   Rectangle {
-    visible: root.useVideoBackground || !Settings.data.wallpaper.useSolidColor
+    visible: !Settings.data.wallpaper.useSolidColor
     anchors.fill: parent
     gradient: Gradient {
       GradientStop {
