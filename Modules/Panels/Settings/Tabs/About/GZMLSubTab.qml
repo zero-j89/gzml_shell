@@ -66,7 +66,7 @@ ColumnLayout {
     }
 
     function syncButtons() {
-        runner.command = ["bash", "-lc", "~/.config/hypr/UserScripts/SyncGZMLButtons.sh"]
+        runner.command = ["bash", "-lc", "'" + Quickshell.shellDir + "/Assets/ButtonSync/ButtonSync.sh'"]
         runner.running = true
     }
 
