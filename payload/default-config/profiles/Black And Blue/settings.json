@@ -93,6 +93,12 @@
         "widgets": {
             "center": [
                 {
+                    "colorName": "primary",
+                    "hideWhenIdle": true,
+                    "id": "AudioVisualizer",
+                    "width": 200
+                },
+                {
                     "characterCount": 2,
                     "colorizeIcons": true,
                     "emptyColor": "secondary",
@@ -135,41 +141,10 @@
                     "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
-                    "icon": "zodiac-gemini",
+                    "icon": "atom-2",
                     "iconColor": "none",
                     "id": "Launcher",
                     "useDistroLogo": false
-                },
-                {
-                    "defaultSettings": {
-                        "aurCmd": "paru -Qua 2>/dev/null",
-                        "aurHomepageCmd": "LC_ALL=C paru -Si {id} 2>/dev/null | awk '/^URL/ {print $3}'",
-                        "boldText": true,
-                        "boldVer": true,
-                        "boldVerDesktop": true,
-                        "boldVerPanel": true,
-                        "closeButton": true,
-                        "closeOnSettings": false,
-                        "customIconPath": "",
-                        "desktopTip": true,
-                        "enableColorization": false,
-                        "flatpak": true,
-                        "hideOnEmpty": false,
-                        "hoverTip": true,
-                        "iconColor": "none",
-                        "iconName": "arrow-big-down-lines",
-                        "noctalia": true,
-                        "panelContext": true,
-                        "panelTooltip": true,
-                        "refreshInterval": 120,
-                        "refreshTimer": true,
-                        "systemCmd": "checkupdates 2>/dev/null",
-                        "toast": true,
-                        "tooltip": true,
-                        "updateCmd": "ghostty -e bash -c 'echo \"Updating System...\";paru; flatpak update; read -n 1 -p \"Press any key to exit...\"'",
-                        "useDistroLogo": false
-                    },
-                    "id": "plugin:arch-updater"
                 },
                 {
                     "defaultSettings": {
@@ -204,41 +179,6 @@
                     "textColor": "none",
                     "useMonospaceFont": false,
                     "usePadding": false
-                },
-                {
-                    "colorizeSystemIcon": "none",
-                    "colorizeSystemText": "none",
-                    "generalTooltipText": "",
-                    "hideMode": "alwaysExpanded",
-                    "icon": "asset",
-                    "iconPosition": "left",
-                    "id": "CustomButton",
-                    "ipcIdentifier": "",
-                    "leftClickExec": "sh -c 'nvidia-settings'",
-                    "leftClickUpdateText": true,
-                    "maxTextLength": {
-                        "horizontal": 10,
-                        "vertical": 10
-                    },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
-                    "parseJson": false,
-                    "rightClickExec": "",
-                    "rightClickUpdateText": false,
-                    "showExecTooltip": false,
-                    "showIcon": true,
-                    "showTextTooltip": true,
-                    "textCollapse": "",
-                    "textCommand": "",
-                    "textIntervalMs": 3000,
-                    "textStream": false,
-                    "wheelDownExec": "",
-                    "wheelDownUpdateText": false,
-                    "wheelExec": "",
-                    "wheelMode": "unified",
-                    "wheelUpExec": "",
-                    "wheelUpUpdateText": false,
-                    "wheelUpdateText": false
                 },
                 {
                     "iconColor": "none",
@@ -335,55 +275,18 @@
                     "id": "plugin:privacy-indicator"
                 },
                 {
-                    "colorizeSystemIcon": "error",
-                    "colorizeSystemText": "none",
-                    "generalTooltipText": "ProtonVPN",
-                    "hideMode": "alwaysExpanded",
-                    "icon": "brand-nord-vpn",
-                    "iconPosition": "left",
-                    "id": "CustomButton",
-                    "ipcIdentifier": "",
-                    "leftClickExec": "Command:\nprotonvpn-app",
-                    "leftClickUpdateText": false,
-                    "maxTextLength": {
-                        "horizontal": 10,
-                        "vertical": 10
-                    },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
-                    "parseJson": false,
-                    "rightClickExec": "",
-                    "rightClickUpdateText": false,
-                    "showExecTooltip": true,
-                    "showIcon": true,
-                    "showTextTooltip": true,
-                    "textCollapse": "",
-                    "textCommand": "",
-                    "textIntervalMs": 3000,
-                    "textStream": false,
-                    "wheelDownExec": "",
-                    "wheelDownUpdateText": false,
-                    "wheelExec": "",
-                    "wheelMode": "unified",
-                    "wheelUpExec": "",
-                    "wheelUpUpdateText": false,
-                    "wheelUpdateText": false
-                },
-                {
-                    "displayMode": "onhover",
-                    "iconColor": "error",
-                    "id": "VPN",
-                    "textColor": "none"
-                },
-                {
                     "colorizeDistroLogo": false,
-                    "colorizeSystemIcon": "primary",
+                    "colorizeSystemIcon": "none",
                     "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
-                    "icon": "noctalia",
+                    "icon": "crystal-ball",
                     "id": "ControlCenter",
-                    "useDistroLogo": true
+                    "useDistroLogo": false
+                },
+                {
+                    "iconColor": "none",
+                    "id": "SessionMenu"
                 }
             ]
         }
@@ -454,59 +357,18 @@
         "shortcuts": {
             "left": [
                 {
-                    "enableOnStateLogic": true,
-                    "generalTooltipText": "CPU Mode",
-                    "icon": "bong",
-                    "id": "CustomButton",
-                    "onClicked": "sh -c '/home/zer0/.config/hypr/scripts/TogglePerformance.sh'",
-                    "onMiddleClicked": "",
-                    "onRightClicked": "",
-                    "showExecTooltip": false,
-                    "stateChecksJson": "[{\"command\":\"sh -c 'test \\\"$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)\\\" != \\\"performance\\\"'\",\"icon\":\"bong\"},{\"command\":\"sh -c 'test \\\"$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)\\\" = \\\"performance\\\"'\",\"icon\":\"bong-filled\"}]"
-                },
-                {
                     "id": "GZMLPerformance"
-                },
-                {
-                    "enableOnStateLogic": false,
-                    "generalTooltipText": "Kitty Themes",
-                    "icon": "adjustments",
-                    "id": "CustomButton",
-                    "onClicked": "bash -lc 'bash ~/.config/hypr/scripts/Kitty_themes.sh'",
-                    "onMiddleClicked": "",
-                    "onRightClicked": "",
-                    "showExecTooltip": false,
-                    "stateChecksJson": "[]"
-                },
-                {
-                    "enableOnStateLogic": false,
-                    "generalTooltipText": "Animations and Wallpaper Effects",
-                    "icon": "3d-rotate",
-                    "id": "CustomButton",
-                    "onClicked": "bash -lc 'bash ~/.config/hypr/scripts/Animations.sh'",
-                    "onMiddleClicked": "",
-                    "onRightClicked": "bash -lc ~/.config/hypr/UserScripts/WallpaperEffects.sh",
-                    "showExecTooltip": false,
-                    "stateChecksJson": "[]"
                 },
                 {
                     "enableOnStateLogic": false,
                     "generalTooltipText": "Profile Switcher",
                     "icon": "biohazard",
                     "id": "CustomButton",
-                    "onClicked": "qs -p ~/.config/quickshell-noctalia ipc call plugin:shell-profiles toggleProfiles",
+                    "onClicked": "qs -p ~/Projects/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
                     "onMiddleClicked": "",
-                    "onRightClicked": "qs -p ~/.config/quickshell-noctalia ipc call plugin:shell-profiles toggleProfiles",
+                    "onRightClicked": "qs -p ~/Projects/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
                     "showExecTooltip": false,
                     "stateChecksJson": "[]"
-                }
-            ],
-            "right": [
-                {
-                    "id": "NightLight"
-                },
-                {
-                    "id": "DarkMode"
                 },
                 {
                     "defaultSettings": {
@@ -526,6 +388,34 @@
                         "videoPath": ""
                     },
                     "id": "plugin:screen-toolkit"
+                },
+                {
+                    "defaultSettings": {
+                        "autoPaste": false,
+                        "autoPasteDelay": 300,
+                        "autoPasteOnRightClick": false,
+                        "cardColors": {
+                        },
+                        "customColors": {
+                        },
+                        "enableTodoIntegration": false,
+                        "fullscreenMode": false,
+                        "hidePanelBackground": false,
+                        "notecardsEnabled": true,
+                        "panelHeight": 0,
+                        "panelWidth": 1450,
+                        "pincardsEnabled": true,
+                        "showCloseButton": true
+                    },
+                    "id": "plugin:clipper"
+                }
+            ],
+            "right": [
+                {
+                    "id": "NightLight"
+                },
+                {
+                    "id": "DarkMode"
                 },
                 {
                     "id": "Network"
@@ -636,7 +526,7 @@
         "animationDisabled": false,
         "animationSpeed": 1.5,
         "autoStartAuth": false,
-        "avatarImage": "/home/zer0/Downloads/GZML.png",
+        "avatarImage": "",
         "boxRadiusRatio": 1,
         "clockFormat": "ddd MMM d h:mm AP MM/dd/yyyy ",
         "clockStyle": "custom",
@@ -684,12 +574,12 @@
         "passwordChars": false,
         "radiusRatio": 2,
         "reverseScroll": false,
-        "scaleRatio": 0.9500000000000001,
+        "scaleRatio": 1,
         "screenRadiusRatio": 1.12,
         "shadowDirection": "bottom",
         "shadowOffsetX": 0,
         "shadowOffsetY": 3,
-        "showChangelogOnStartup": true,
+        "showChangelogOnStartup": false,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": true,
         "showSessionButtonsOnLockScreen": true,
@@ -958,7 +848,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/zer0/Pictures/wallcard",
+        "directory": "/home/zer0/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": true,
         "enabled": true,
         "favorites": [
@@ -969,7 +859,7 @@
         "linkLightAndDarkWallpapers": false,
         "monitorDirectories": [
             {
-                "directory": "/home/zer0/Pictures/wallcard",
+                "directory": "",
                 "name": "DP-1",
                 "wallpaper": ""
             }
