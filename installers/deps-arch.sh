@@ -23,7 +23,6 @@ install_dependencies() {
   )
 
   local aur_deps=(
-    matugen-bin
   )
 
   local missing_pacman=()
@@ -35,6 +34,11 @@ install_dependencies() {
   for pkg in "${pacman_deps[@]}"; do
     pacman -Qi "$pkg" >/dev/null 2>&1 || missing_pacman+=("$pkg")
   done
+
+  # matugen may be installed as either repo package "matugen" or AUR package "matugen-bin".
+  if ! pacman -Qi matugen >/dev/null 2>&1 && ! pacman -Qi matugen-bin >/dev/null 2>&1; then
+    missing_aur+=("matugen-bin")
+  fi
 
   for pkg in "${aur_deps[@]}"; do
     pacman -Qi "$pkg" >/dev/null 2>&1 || missing_aur+=("$pkg")
@@ -52,8 +56,11 @@ install_dependencies() {
   echo
 
   if ! ask_yes_no "Install missing dependencies now?"; then
+    echo
     echo "Dependency installation skipped."
-    exit 1
+    echo "GZML Shell will still be installed, but some features may not work until missing dependencies are installed."
+    echo
+    return
   fi
 
   if [ "${#missing_pacman[@]}" -gt 0 ]; then
