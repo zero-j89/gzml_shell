@@ -156,4 +156,3 @@ verify_install
 launch_prompt
 EOF
 
-chmod +x install.sh
