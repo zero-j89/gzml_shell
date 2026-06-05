@@ -57,32 +57,16 @@
         "middleClickAction": "launcherPanel",
         "middleClickCommand": "",
         "middleClickFollowMouse": true,
-        "monitors": [
-            "DP-3",
-            "DP-1"
-        ],
+        "monitors": [],
         "mouseWheelAction": "workspace",
         "mouseWheelWrap": true,
         "outerCorners": true,
-        "position": "top",
+        "position": "left",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
         "rightClickFollowMouse": true,
-        "screenOverrides": [
-            {
-                "density": "comfortable",
-                "enabled": true,
-                "name": "DP-1",
-                "position": "bottom"
-            },
-            {
-                "density": "default",
-                "enabled": true,
-                "name": "DP-3",
-                "position": "left"
-            }
-        ],
+        "screenOverrides": [],
         "showCapsule": false,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
@@ -313,7 +297,7 @@
         "generationMethod": "tonal-spot",
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
-        "monitorForColors": "DP-3",
+        "monitorForColors": "",
         "predefinedScheme": "Ayu",
         "schedulingMode": "off",
         "syncGsettings": false,
@@ -429,49 +413,7 @@
         "enabled": false,
         "gridSnap": false,
         "gridSnapScale": false,
-        "monitorWidgets": [
-            {
-                "name": "DP-3",
-                "widgets": []
-            },
-            {
-                "name": "DP-1",
-                "widgets": [
-                    {
-                        "id": "Weather",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "x": 55,
-                        "y": 95
-                    },
-                    {
-                        "clockColor": "primary",
-                        "clockStyle": "minimal",
-                        "customFont": "",
-                        "format": "h:mm AP ddd MMM d yyyy",
-                        "id": "Clock",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "useCustomFont": false,
-                        "x": 20,
-                        "y": 27
-                    },
-                    {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "bottom",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "statType": "CPU",
-                        "x": 618,
-                        "y": 3274
-                    }
-                ]
-            }
-        ],
+        "monitorWidgets": [],
         "overviewEnabled": true
     },
     "dock": {
@@ -495,10 +437,7 @@
         "launcherIconColor": "none",
         "launcherPosition": "end",
         "launcherUseDistroLogo": false,
-        "monitors": [
-            "DP-1",
-            "DP-3"
-        ],
+        "monitors": [],
         "onlySameOutput": true,
         "pinnedApps": [],
         "pinnedStatic": true,
@@ -650,9 +589,7 @@
         "enabled": true,
         "location": "top_right",
         "lowUrgencyDuration": 1,
-        "monitors": [
-            "DP-1"
-        ],
+        "monitors": [],
         "normalUrgencyDuration": 3,
         "overlayLayer": true,
         "respectExpireTimeout": false,
@@ -682,9 +619,7 @@
             3
         ],
         "location": "bottom_right",
-        "monitors": [
-            "DP-1"
-        ],
+        "monitors": [],
         "overlayLayer": true
     },
     "plugins": {
@@ -843,13 +778,7 @@
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
         "linkLightAndDarkWallpapers": false,
-        "monitorDirectories": [
-            {
-                "directory": "",
-                "name": "DP-1",
-                "wallpaper": ""
-            }
-        ],
+        "monitorDirectories": [],
         "overviewBlur": 0.4,
         "overviewEnabled": false,
         "overviewTint": 0.6,
