@@ -1972,8 +1972,8 @@
       "not-installed": "wlsunset not installed"
     },
     "noctalia-performance": {
-      "disabled": "Performance mode disabled",
-      "enabled": "Performance mode enabled",
+      "disabled": "Performance Mode Disabled",
+      "enabled": "Performance Mode Enabled",
       "label": "GZML Performance"
     },
     "power-profile": {
@@ -2035,7 +2035,7 @@
     "next-media": "Next track",
     "next-month": "Next month",
     "night-light-not-installed": "Night Light (not available)",
-    "noctalia-performance-enabled": "GZML performance mode",
+    "noctalia-performance-enabled": "GZML Performance Mode",
     "open-annotation-tool": "Open with annotation tool",
     "open-control-center": "Control center",
     "open-notification-history-enable-dnd": "Notification history",
