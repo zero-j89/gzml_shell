@@ -270,16 +270,41 @@ SmartPanel {
                     wrapMode: Text.WordWrap
                   }
                 }
+              // Noctalia acknowledgement
+              Rectangle {
+                Layout.fillWidth: true
+                Layout.topMargin: Style.marginM
+                color: Color.mSurface
+                radius: Style.radiusL
+                border.color: Color.mOutline
+                border.width: 1
+                implicitHeight: thanksColumn.implicitHeight + Style.margin2M
 
-                // Telemetry toggle
-                NToggle {
-                  Layout.fillWidth: true
-                  Layout.topMargin: Style.marginM
-                  label: I18n.tr("panels.about.telemetry-enabled")
-                  description: I18n.tr("panels.about.telemetry-desc")
-                  checked: Settings.data.general.telemetryEnabled
-                  onToggled: checked => Settings.data.general.telemetryEnabled = checked
+                Column {
+                  id: thanksColumn
+                  anchors.fill: parent
+                  anchors.margins: Style.marginL
+                  spacing: Style.marginM
+
+                  NText {
+                    width: parent.width
+                    text: "Thank you to the Noctalia developers"
+                    pointSize: Style.fontSizeL
+                    font.weight: Font.Bold
+                    color: Color.mOnSurface
+                    horizontalAlignment: Text.AlignHCenter
+                  }
+
+                  NText {
+                    width: parent.width
+                    text: "GZML Shell is built upon the Noctalia v4 foundation. Special thanks to the original Noctalia developers, contributors, and the Quickshell community for making projects like this possible."
+                    pointSize: Style.fontSizeS
+                    color: Color.mOnSurfaceVariant
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                  }
                 }
+              }
               }
             }
           }
