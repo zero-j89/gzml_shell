@@ -216,7 +216,8 @@ ShellRoot {
       } else {
         // No wizard needed - init telemetry and show changelog
         TelemetryService.init();
-        UpdateService.checkTelemetryWizardOrChangelog();
+        // GZML Shell: disable upstream telemetry/changelog popup on startup
+        TelemetryService.init();
         return;
       }
     }
