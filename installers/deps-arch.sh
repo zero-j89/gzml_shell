@@ -22,9 +22,6 @@ install_dependencies() {
     pavucontrol
   )
 
-  local aur_deps=(
-  )
-
   local missing_pacman=()
   local missing_aur=()
 
@@ -35,18 +32,14 @@ install_dependencies() {
     pacman -Qi "$pkg" >/dev/null 2>&1 || missing_pacman+=("$pkg")
   done
 
-  # matugen may be installed as either repo package "matugen" or AUR package "matugen-bin".
+  # Accept either package as satisfying the matugen dependency.
   if ! pacman -Qi matugen >/dev/null 2>&1 && ! pacman -Qi matugen-bin >/dev/null 2>&1; then
     missing_aur+=("matugen-bin")
   fi
 
-  for pkg in "${aur_deps[@]}"; do
-    pacman -Qi "$pkg" >/dev/null 2>&1 || missing_aur+=("$pkg")
-  done
-
   if [ "${#missing_pacman[@]}" -eq 0 ] && [ "${#missing_aur[@]}" -eq 0 ]; then
-    echo "All dependencies are already installed."
-    return
+    echo "All required dependencies are already installed."
+    return 0
   fi
 
   echo
@@ -57,25 +50,47 @@ install_dependencies() {
 
   if ! ask_yes_no "Install missing dependencies now?"; then
     echo
-    echo "Dependency installation skipped."
-    echo "GZML Shell will still be installed, but some features may not work until missing dependencies are installed."
+    echo "Skipping dependency installation."
+    echo "Continuing with GZML Shell installation anyway."
+    echo "Some features may not work until the missing dependencies are installed."
     echo
-    return
+    return 0
   fi
 
   if [ "${#missing_pacman[@]}" -gt 0 ]; then
-    sudo pacman -S --needed "${missing_pacman[@]}"
+    echo
+    echo "Installing pacman dependencies..."
+    if ! sudo pacman -S --needed "${missing_pacman[@]}"; then
+      echo
+      echo "WARNING: Some pacman dependencies failed to install."
+      echo "Continuing with GZML Shell installation anyway."
+      echo
+    fi
   fi
 
   if [ "${#missing_aur[@]}" -gt 0 ]; then
+    echo
+    echo "Installing AUR dependencies..."
+
     if command -v yay >/dev/null 2>&1; then
-      yay -S --needed "${missing_aur[@]}"
+      if ! yay -S --needed "${missing_aur[@]}"; then
+        echo
+        echo "WARNING: Some AUR dependencies failed to install."
+        echo "Continuing with GZML Shell installation anyway."
+        echo
+      fi
     elif command -v paru >/dev/null 2>&1; then
-      paru -S --needed "${missing_aur[@]}"
+      if ! paru -S --needed "${missing_aur[@]}"; then
+        echo
+        echo "WARNING: Some AUR dependencies failed to install."
+        echo "Continuing with GZML Shell installation anyway."
+        echo
+      fi
     else
-      echo "ERROR: Missing AUR deps but yay/paru was not found:"
-      printf '  %s\n' "${missing_aur[@]}"
-      exit 1
+      echo
+      echo "WARNING: AUR dependencies are missing, but yay/paru was not found."
+      echo "Continuing with GZML Shell installation anyway."
+      echo
     fi
   fi
 }
