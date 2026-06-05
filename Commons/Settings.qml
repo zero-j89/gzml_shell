@@ -510,7 +510,7 @@ Quickshell.execDetached([
             "id": "WallpaperSelector"
           },
           {
-            "id": "NoctaliaPerformance"
+            "id": "GZMLPerformance"
           }
         ]
         property list<var> right: [
