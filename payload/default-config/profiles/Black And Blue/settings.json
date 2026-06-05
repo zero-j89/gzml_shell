@@ -364,9 +364,9 @@
                     "generalTooltipText": "Profile Switcher",
                     "icon": "biohazard",
                     "id": "CustomButton",
-                    "onClicked": "qs -p ~/Projects/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
+                    "onClicked": "qs -p ~/.local/share/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
                     "onMiddleClicked": "",
-                    "onRightClicked": "qs -p ~/Projects/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
+                    "onRightClicked": "qs -p ~/.local/share/gzml-shell ipc call plugin:shell-profiles toggleProfiles",
                     "showExecTooltip": false,
                     "stateChecksJson": "[]"
                 },
