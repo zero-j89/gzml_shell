@@ -5,8 +5,16 @@ APP_NAME="GZML Shell"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INSTALLERS_DIR="$SRC_DIR/installers"
 
+# Installed / update-replaced source copy
 INSTALL_DIR="$HOME/.local/share/gzml-shell"
+
+# GZML user profile/config payload seeded from payload/default-config
 CONFIG_DIR="$HOME/.config/gzml-shell"
+
+# Quickshell-facing user layer, equivalent to quickshell-noctalia
+QS_CONFIG_DIR="$HOME/.config/quickshell-gzml"
+
+# Runtime/cache data
 CACHE_DIR="$HOME/.cache/gzml-shell"
 
 detect_distro() {
@@ -66,6 +74,40 @@ install_shell_source() {
   echo "$SRC_DIR" > "$INSTALL_DIR/repo-path"
 }
 
+install_quickshell_layer() {
+  echo
+  echo "Installing Quickshell config layer..."
+
+  mkdir -p "$QS_CONFIG_DIR"
+
+  # Keep this layer user-owned and stable across updates.
+  # The installed shell source remains the hard copy in ~/.local/share/gzml-shell.
+  cat > "$QS_CONFIG_DIR/source-path" <<EOF
+$INSTALL_DIR
+EOF
+
+  cat > "$QS_CONFIG_DIR/config-path" <<EOF
+$CONFIG_DIR
+EOF
+
+  cat > "$QS_CONFIG_DIR/cache-path" <<EOF
+$CACHE_DIR
+EOF
+
+  # Transitional launcher marker. Telemetry/backend cleanup can start reading these env vars.
+  cat > "$QS_CONFIG_DIR/env" <<EOF
+GZML_SHELL_SOURCE="$INSTALL_DIR"
+GZML_SHELL_CONFIG="$CONFIG_DIR"
+GZML_SHELL_QS_CONFIG="$QS_CONFIG_DIR"
+GZML_SHELL_CACHE="$CACHE_DIR"
+EOF
+
+  # For now, keep the actual launch pointed at the installed hard copy until the QML
+  # telemetry/path audit is complete. This prevents Quickshell.shellDir-based code
+  # from breaking before it is migrated to the GZML_SHELL_* paths.
+  ln -sfn "$INSTALL_DIR/shell.qml" "$QS_CONFIG_DIR/shell.qml"
+}
+
 seed_user_config() {
   echo
   echo "Checking user config..."
@@ -93,12 +135,26 @@ install_launcher() {
 
   cat > "$HOME/.local/bin/gzml-shell" <<'LAUNCHER'
 #!/usr/bin/env bash
-exec qs -p "$HOME/.local/share/gzml-shell" "$@"
+set -euo pipefail
+
+INSTALL_DIR="$HOME/.local/share/gzml-shell"
+CONFIG_DIR="$HOME/.config/gzml-shell"
+QS_CONFIG_DIR="$HOME/.config/quickshell-gzml"
+CACHE_DIR="$HOME/.cache/gzml-shell"
+
+export GZML_SHELL_SOURCE="$INSTALL_DIR"
+export GZML_SHELL_CONFIG="$CONFIG_DIR"
+export GZML_SHELL_QS_CONFIG="$QS_CONFIG_DIR"
+export GZML_SHELL_CACHE="$CACHE_DIR"
+
+# Temporary compatibility launch:
+# keep qs -p pointed at the installed hard copy until QML path telemetry
+# is migrated away from Quickshell.shellDir assumptions.
+exec qs -p "$INSTALL_DIR" "$@"
 LAUNCHER
 
   chmod +x "$HOME/.local/bin/gzml-shell"
 }
-
 
 install_updater() {
   echo
@@ -108,8 +164,7 @@ install_updater() {
 
   cat > "$HOME/.local/bin/gzml-shell-update" <<'UPDATER'
 #!/usr/bin/env bash
-
-set -e
+set -euo pipefail
 
 REPO_FILE="$HOME/.local/share/gzml-shell/repo-path"
 
@@ -131,7 +186,10 @@ if [ ! -d "$REPO/.git" ]; then
     exit 1
 fi
 
-echo "Updating GZML Shell..."
+echo "Updating GZML Shell from:"
+echo "  $REPO"
+echo
+
 git -C "$REPO" pull --ff-only
 
 echo
@@ -145,7 +203,6 @@ UPDATER
   chmod +x "$HOME/.local/bin/gzml-shell-update"
 }
 
-
 verify_install() {
   echo
   echo "Verifying install..."
@@ -153,6 +210,8 @@ verify_install() {
   [ -d "$INSTALL_DIR" ] || { echo "Missing $INSTALL_DIR"; exit 1; }
   [ -d "$INSTALL_DIR/payload/default-config" ] || { echo "Missing payload/default-config"; exit 1; }
   [ -f "$CONFIG_DIR/settings.json" ] || { echo "Missing $CONFIG_DIR/settings.json"; exit 1; }
+  [ -d "$QS_CONFIG_DIR" ] || { echo "Missing $QS_CONFIG_DIR"; exit 1; }
+  [ -L "$QS_CONFIG_DIR/shell.qml" ] || { echo "Missing $QS_CONFIG_DIR/shell.qml symlink"; exit 1; }
   [ -d "$CACHE_DIR" ] || { echo "Missing $CACHE_DIR"; exit 1; }
 
   echo "Install verified."
@@ -161,9 +220,10 @@ verify_install() {
 launch_prompt() {
   echo
   echo "$APP_NAME installed."
-  echo "Source: $INSTALL_DIR"
-  echo "Config: $CONFIG_DIR"
-  echo "Cache:  $CACHE_DIR"
+  echo "Source:          $INSTALL_DIR"
+  echo "Config:          $CONFIG_DIR"
+  echo "Quickshell layer: $QS_CONFIG_DIR"
+  echo "Cache:           $CACHE_DIR"
   echo
 
   if ask_yes_no "Launch GZML Shell now?"; then
@@ -213,6 +273,7 @@ FIRST_RUN=0
 
 install_dependencies
 install_shell_source
+install_quickshell_layer
 install_launcher
 install_updater
 seed_user_config

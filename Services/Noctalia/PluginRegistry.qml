@@ -9,7 +9,9 @@ import qs.Commons
 Singleton {
   id: root
 
-  readonly property string pluginsDir: Settings.configDir + "plugins"
+  readonly property string bundledPluginsDir: Quickshell.shellDir + "/payload/default-config/plugins"
+  readonly property string userPluginsDir: Quickshell.env("HOME") + "/.config/quickshell-gzml/plugins"
+  readonly property string pluginsDir: userPluginsDir
   readonly property string pluginsFile: Settings.configDir + "plugins.json"
 
   readonly property int currentVersion: 2
@@ -91,6 +93,7 @@ Singleton {
 
   // In-memory plugin cache (populated by scanning disk)
   property var installedPlugins: ({}) // { pluginId: manifest }
+  property var pluginDirs: ({}) // { pluginId: absolute plugin directory }
   property var pluginStates: ({}) // { pluginId: { enabled: bool } }
   property var pluginSources: [] // Array of { name, url }
   property var pluginLoadVersions: ({}) // { pluginId: versionNumber } - for cache busting
@@ -129,136 +132,23 @@ Singleton {
 
       // Migrate from v1 to v2 (add sourceUrl to states)
       root.migratePluginData();
-
-      // Scan plugin folder to discover installed plugins
-      scanPluginFolder();
-    }
-
-    onLoadFailed: function (error) {
-      Logger.w("PluginRegistry", "Failed to load plugins.json, will create it:", error);
-      // Initialize defaults and continue
-      root.pluginStates = {};
-      root.pluginSources = [
-            {
-              "name": "Noctalia Plugins",
-              "url": "https://github.com/noctalia-dev/noctalia-plugins",
-              "enabled": true
-            }
-          ];
-      // Scan for installed plugins
-      root.scanPluginFolder();
     }
   }
 
-  function init() {
-    Logger.d("PluginRegistry", "Initialized");
-    // Force instantiation of PluginService to set up signal listener
-    PluginService.initialized;
-  }
-
-  // Migrate plugin data from older versions
-  function migratePluginData() {
-    var needsSave = false;
-
-    // Migration v1 -> v2: add sourceUrl to states
-    for (var pluginId in root.pluginStates) {
-      if (root.pluginStates[pluginId].sourceUrl === undefined) {
-        Logger.i("PluginRegistry", "Migrating plugin data to v2 (adding sourceUrl)");
-
-        var newStates = {};
-        for (var id in root.pluginStates) {
-          // For v1 -> v2 migration, we assume plugins are from main source
-          // Custom plugins installed before this feature need to be reinstalled
-          newStates[id] = {
-            enabled: root.pluginStates[id].enabled,
-            sourceUrl: root.mainSourceUrl
-          };
-        }
-        root.pluginStates = newStates;
-        needsSave = true;
-        break;
-      }
-    }
-
-    // Migration: rename "Official Noctalia Plugins" -> "Noctalia Plugins"
-    var newSources = [];
-    var sourcesChanged = false;
-    for (var i = 0; i < root.pluginSources.length; i++) {
-      var source = root.pluginSources[i];
-      if (source.name === "Official Noctalia Plugins") {
-        newSources.push({
-                          name: "Noctalia Plugins",
-                          url: source.url,
-                          enabled: source.enabled
-                        });
-        sourcesChanged = true;
-        Logger.i("PluginRegistry", "Migrating source name: 'Official Noctalia Plugins' -> 'Noctalia Plugins'");
-      } else {
-        newSources.push(source);
-      }
-    }
-    if (sourcesChanged) {
-      root.pluginSources = newSources;
-      needsSave = true;
-    }
-
-    if (needsSave) {
-      root.save();
-      Logger.i("PluginRegistry", "Migration complete");
-    }
-  }
-
-  // Ensure plugins directory exists
-  function ensurePluginsDirectory() {
-    var mkdirProcess = Qt.createQmlObject(`
-      import QtQuick
-      import Quickshell.Io
-      Process {
-        command: ["mkdir", "-p", "${root.pluginsDir}"]
-      }
-    `, root, "MkdirPlugins");
-
-    mkdirProcess.exited.connect(function (exitCode) {
-      if (exitCode === 0) {
-        Logger.d("PluginRegistry", "Plugins directory ensured:", root.pluginsDir);
-      } else {
-        Logger.e("PluginRegistry", "Failed to create plugins directory");
-      }
-      mkdirProcess.destroy();
-    });
-
-    mkdirProcess.running = true;
-  }
-
-  // Ensure plugins.json exists (create minimal one if it doesn't)
-  function ensurePluginsFile() {
-    var checkProcess = Qt.createQmlObject(`
-      import QtQuick
-      import Quickshell.Io
-      Process {
-        command: ["sh", "-c", "test -f '${root.pluginsFile}' || echo '{\\"version\\":${root.currentVersion},\\"states\\":{},\\"sources\\":[]}' > '${root.pluginsFile}'"]
-      }
-    `, root, "EnsurePluginsFile");
-
-    checkProcess.exited.connect(function (exitCode) {
-      if (exitCode === 0) {
-        Logger.d("PluginRegistry", "Plugins file ensured:", root.pluginsFile);
-      }
-      checkProcess.destroy();
-    });
-
-    checkProcess.running = true;
-  }
-
-  // Scan plugin folder to discover installed plugins (single process reads all manifests)
+  // Scan bundled and user plugin folders to discover installed plugins.
+  // Bundled plugins live in the installed shell source.
+  // User/custom plugins live in ~/.config/quickshell-gzml/plugins and override bundled plugins with the same id.
   function scanPluginFolder() {
-    Logger.i("PluginRegistry", "Scanning plugin folder:", root.pluginsDir);
+    Logger.i("PluginRegistry", "Scanning bundled plugin folder:", root.bundledPluginsDir);
+    Logger.i("PluginRegistry", "Scanning user plugin folder:", root.userPluginsDir);
+
+    root.pluginDirs = ({});
 
     var scanProcess = Qt.createQmlObject(`
       import QtQuick
       import Quickshell.Io
       Process {
-        command: ["sh", "-c", "for d in '${root.pluginsDir}'/*/; do [ -d \\"$d\\" ] || continue; [ -f \\"$d/manifest.json\\" ] || continue; echo \\"@@PLUGIN@@$(basename \\"$d\\")\\" ; cat \\"$d/manifest.json\\" ; done"]
+        command: ["sh", "-c", "for base in '${root.bundledPluginsDir}' '${root.userPluginsDir}'; do [ -d \"$base\" ] || continue; for d in \"$base\"/*/; do [ -d \"$d\" ] || continue; [ -f \"$d/manifest.json\" ] || continue; id=$(basename \"$d\"); echo \"@@PLUGIN@@$id@@DIR@@$d\" ; cat \"$d/manifest.json\" ; done; done"]
         stdout: StdioCollector {}
         running: true
       }
@@ -275,10 +165,13 @@ Singleton {
         if (newlineIdx === -1)
           continue;
 
-        var pluginId = section.substring(0, newlineIdx).trim();
+        var header = section.substring(0, newlineIdx).trim();
         var manifestJson = section.substring(newlineIdx + 1).trim();
+        var headerParts = header.split("@@DIR@@");
+        var pluginId = headerParts[0] || "";
+        var pluginDir = headerParts.length > 1 ? headerParts[1] : "";
 
-        if (!pluginId || !manifestJson)
+        if (!pluginId || !pluginDir || !manifestJson)
           continue;
 
         try {
@@ -288,7 +181,8 @@ Singleton {
           if (validation.valid) {
             manifest.compositeKey = pluginId;
             root.installedPlugins[pluginId] = manifest;
-            Logger.i("PluginRegistry", "Loaded plugin:", pluginId, "-", manifest.name);
+            root.pluginDirs[pluginId] = pluginDir;
+            Logger.i("PluginRegistry", "Loaded plugin:", pluginId, "-", manifest.name, "from", pluginDir);
 
             if (!root.pluginStates[pluginId]) {
               root.pluginStates[pluginId] = {
@@ -312,7 +206,7 @@ Singleton {
 
   // Load a single plugin's manifest from disk
   function loadPluginManifest(pluginId) {
-    var manifestPath = root.pluginsDir + "/" + pluginId + "/manifest.json";
+    var manifestPath = root.getPluginDir(pluginId) + "/manifest.json";
 
     var catProcess = Qt.createQmlObject(`
       import QtQuick
@@ -569,7 +463,10 @@ Singleton {
 
   // Get plugin directory path
   function getPluginDir(pluginId) {
-    return root.pluginsDir + "/" + pluginId;
+    // Bundled plugins live in the installed shell source.
+    // User-installed/custom plugins live in ~/.config/quickshell-gzml/plugins.
+    // If a plugin was discovered during scan, use that recorded path.
+    return root.pluginDirs[pluginId] || (root.userPluginsDir + "/" + pluginId);
   }
 
   // Get plugin settings file path
