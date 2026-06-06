@@ -1,7 +1,6 @@
 # GZML Shell
 
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
-<img width="2560" height="1440" alt="onboarding-welcome1" src="https://github.com/user-attachments/assets/2de3cfd7-ff6f-41e1-ac54-3dbc69266f3b" />
 ![GZML Shell Welcome Screen](https://github.com/zero-j89/gzml_shell/blob/main/Assets/screenshots/onboarding-welcome1.png?raw=true)
 Unlike traditional dotfile collections or configuration overlays, GZML Shell is packaged as its own shell environment. Updates are designed to preserve user configuration, allowing the shell itself to evolve independently from personal settings, profiles, themes, and customizations. The  project focuses on flexibility, long-term maintainability, and user ownership of configuration while providing an approachable first run experience for new users.
 
@@ -153,8 +152,7 @@ The updater will:
 ##
 
 The installer checks for required dependencies, asks before installing missing packages, installs the shell source, creates the initial user configuration when needed, and preserves existing user settings during future updates.
-<img width="2560" height="1440" alt="onboarding-welcome" src="https://github.com/user-attachments/assets/f8ad2fd4-cca1-4281-9a7c-f9dbcd540e4a" />
-(Assets/screenshots/onboarding-welcome.png)
+![GZML Shell Onboarding Tab](./Assets/screenshots/onboarding-welcome.png)
 ## Profiles
 
 GZML Shell includes a built in profile system that allows users to maintain multiple independent shell configurations.
