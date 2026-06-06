@@ -3,9 +3,13 @@
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
 <img width="2560" height="1440" alt="onboarding-welcome1" src="https://github.com/user-attachments/assets/2de3cfd7-ff6f-41e1-ac54-3dbc69266f3b" />
 
-Unlike traditional dotfile collections or configuration overlays, GZML Shell is packaged as its own shell environment. Updates are designed to preserve user configuration, allowing the shell itself to evolve independently from personal settings, profiles, themes, and customizations.
+Unlike traditional dotfile collections or configuration overlays, GZML Shell is packaged as its own shell environment. Updates are designed to preserve user configuration, allowing the shell itself to evolve independently from personal settings, profiles, themes, and customizations. The  project focuses on flexibility, long-term maintainability, and user ownership of configuration while providing an approachable first run experience for new users.
 
-The project focuses on flexibility, long-term maintainability, and user ownership of configuration while providing an approachable first-run experience for new users.
+The GZML Shell is a fork and continuation of the Noctalia V4 Quickshell based experience. This project would not exist without the incredible work of the Noctalia developers and contributors. Full credit goes to the original Noctalia team for creating the foundation upon which GZML Shell is built.
+
+While GZML Shell originated from the Noctalia V4 codebase, it is now maintained as an independent project with its own goals, architecture, features, and development roadmap. GZML Shell is not affiliated with, endorsed by, or maintained by the original Noctalia developers, and they are not responsible for the support, maintenance, or development of this fork.
+
+The goal of GZML Shell is to provide a feature rich, Quickshell based desktop experience while maintaining compatibility with existing user workflows and offering a straightforward migration path for users who wish to continue using a V4-style environment. 
 
 ## Installation
 ## Dependencies
