@@ -642,9 +642,8 @@ Singleton {
       return true;
     }
 
-    // Remove plugin widget from bar before unloading
-    var widgetId = "plugin:" + compositeKey;
-    removeWidgetFromBar(widgetId);
+    // Disable/unload without deleting saved bar layout
+    // Disable should not delete saved bar layout.
 
     PluginRegistry.setPluginEnabled(compositeKey, false);
     unloadPlugin(compositeKey);
