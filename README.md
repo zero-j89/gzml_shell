@@ -165,6 +165,51 @@ GZML Shell supports optional plugins and modular functionality, including compat
 
 Only the plugins required by the factory default configuration are enabled by default. Additional plugins remain available for users who wish to extend functionality without forcing unnecessary components into every installation.
 
+##
+## Migrating from Noctalia (Optional)
+
+GZML Shell includes a built in migration utility for users coming from Noctalia.
+
+The migration tool can import:
+
+* Profiles
+* Color schemes
+* Colors
+* Notification rules
+* User templates
+* Compatible plugin settings
+* Compatible shell settings
+
+The migration process automatically sanitizes imported settings and converts known Noctalia-specific paths and IPC references to their GZML Shell equivalents where applicable.
+
+Your original Noctalia configuration is never modified and remains available as a fallback.
+
+### Preview Migration
+
+Preview all changes without modifying any files:
+
+```bash
+gzml-shell-migrate --dry-run
+```
+
+### Run Migration
+
+Import your existing Noctalia configuration:
+
+```bash
+gzml-shell-migrate
+```
+
+### Notes
+
+* Existing GZML Shell configurations are automatically backed up before migration.
+* Unsupported or unknown plugin configurations may be disabled for compatibility.
+* Plugin settings that rely on Noctalia-specific IPC behavior may require manual adjustment.
+* Your original `~/.config/noctalia` configuration is preserved and can still be used independently of GZML Shell.
+
+Migration is completely optional. GZML Shell can always be used as a fresh installation without importing any previous configuration.
+
+
 ## IPC Commands
 
 GZML Shell exposes functionality through Quickshell IPC, allowing integration with keybinds, scripts, launchers, automation tools, and external applications.
