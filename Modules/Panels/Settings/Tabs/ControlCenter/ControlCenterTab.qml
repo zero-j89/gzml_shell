@@ -82,22 +82,32 @@ ColumnLayout {
     // Starts empty
     cardsModel = [];
 
-    // Add the cards available in settings
-    for (var i = 0; i < Settings.data.controlCenter.cards.length; i++) {
-      const settingCard = Settings.data.controlCenter.cards[i];
+  // Add the cards available in settings.
+  // Preserve unknown/plugin/custom cards instead of dropping them.
+  for (var i = 0; i < Settings.data.controlCenter.cards.length; i++) {
+    const settingCard = Settings.data.controlCenter.cards[i];
+    var matched = false;
 
-      for (var j = 0; j < cardsDefault.length; j++) {
-        if (settingCard.id === cardsDefault[j].id) {
-          var card = cardsDefault[j];
-          card.enabled = settingCard.enabled;
-          // Auto-disable weather card if weather is disabled
-          if (card.id === "weather-card" && !Settings.data.location.weatherEnabled) {
-            card.enabled = false;
-          }
-          cardsModel.push(card);
+    for (var j = 0; j < cardsDefault.length; j++) {
+      if (settingCard.id === cardsDefault[j].id) {
+        var card = Object.assign({}, cardsDefault[j]);
+        card.enabled = settingCard.enabled;
+
+        // Auto-disable weather card if weather is disabled
+        if (card.id === "weather-card" && !Settings.data.location.weatherEnabled) {
+          card.enabled = false;
         }
+
+        cardsModel.push(card);
+        matched = true;
+        break;
       }
     }
+
+    if (!matched && settingCard && settingCard.id) {
+      cardsModel.push(Object.assign({}, settingCard));
+    }
+  }
 
     // Add any missing cards from default
     for (var i = 0; i < cardsDefault.length; i++) {
