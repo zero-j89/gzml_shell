@@ -30,25 +30,103 @@ ColumnLayout {
         return fileName.replace(".sh", "").replace(/([a-z])([A-Z])/g, "$1 $2")
     }
 
+    function shellQuote(value) {
+        return "'" + String(value).replace(/'/g, "'\\''") + "'"
+    }
+
+    function isEffectPath(path) {
+        return path && path.indexOf(cacheDir + "/") === 0
+    }
+
+    function activeFromPath(path, screenName) {
+        if (!isEffectPath(path))
+            return "Disable"
+
+        var base = path.split("/").pop().replace(".png", "")
+        var prefix = screenName + "_"
+
+        if (base.indexOf(prefix) === 0)
+            return base.substring(prefix.length)
+
+        return "Disable"
+    }
+
+    function stateOriginalFile(screenName) {
+        return cacheDir + "/" + screenName + ".original"
+    }
+
+    function stateActiveFile(screenName) {
+        return cacheDir + "/" + screenName + ".active"
+    }
+
+    function defaultWallpaper() {
+        return Quickshell.shellDir + "/Assets/Wallpaper/gzml-shell.png"
+    }
+
+    function syncEffectState() {
+        var screenName = currentScreenName()
+        if (screenName === "")
+            return
+
+        var current = WallpaperService.getWallpaper(screenName)
+
+        if (!isEffectPath(current)) {
+            originalWallpaper = current || ""
+            activeEffect = "Disable"
+            return
+        }
+
+        activeEffect = activeFromPath(current, screenName)
+
+        stateReader.command = [
+            "bash",
+            "-lc",
+            "cat " + shellQuote(stateOriginalFile(screenName)) + " 2>/dev/null || true"
+        ]
+        stateReader.running = true
+    }
+
     function applyEffect(fileName) {
         var screenName = currentScreenName()
         if (screenName === "")
             return
 
+        var current = WallpaperService.getWallpaper(screenName)
+
         if (fileName === "Disable.sh") {
-            if (originalWallpaper !== "") {
-                WallpaperService.changeWallpaper(originalWallpaper, screenName)
-            }
+            var restore = originalWallpaper
+
+            if (!restore || restore === "" || isEffectPath(restore))
+                restore = defaultWallpaper()
+
+            WallpaperService.changeWallpaper(restore, screenName)
+
+            originalWallpaper = restore
             activeEffect = "Disable"
+            pendingOutput = ""
+            pendingScreen = ""
+
+            stateWriter.command = [
+                "bash",
+                "-lc",
+                "mkdir -p " + shellQuote(cacheDir) +
+                " && rm -f " + shellQuote(stateActiveFile(screenName)) +
+                " && printf '%s\n' " + shellQuote(restore) + " > " + shellQuote(stateOriginalFile(screenName))
+            ]
+            stateWriter.running = true
             return
         }
 
-        var current = WallpaperService.getWallpaper(screenName)
         if (!current || current === "")
-            return
+            current = defaultWallpaper()
 
-        if (originalWallpaper === "" || current.indexOf(cacheDir) !== 0)
+        // Only update the original source when the current wallpaper is a real wallpaper.
+        // If the current wallpaper is already an effect cache file, keep using the saved original.
+        if (!isEffectPath(current))
             originalWallpaper = current
+
+        if (!originalWallpaper || originalWallpaper === "" || isEffectPath(originalWallpaper))
+            originalWallpaper = defaultWallpaper()
 
         var effectName = fileName.replace(".sh", "")
         var output = cacheDir + "/" + screenName + "_" + effectName + ".png"
@@ -59,15 +137,42 @@ ColumnLayout {
         runner.command = [
             "bash",
             "-lc",
-            "mkdir -p '" + cacheDir + "' && '" + effectsDir + "/" + fileName + "' '" + originalWallpaper + "' '" + output + "'"
+            "mkdir -p " + shellQuote(cacheDir) +
+            " && printf '%s\n' " + shellQuote(originalWallpaper) + " > " + shellQuote(stateOriginalFile(screenName)) +
+            " && printf '%s\n' " + shellQuote(effectName) + " > " + shellQuote(stateActiveFile(screenName)) +
+            " && " + shellQuote(effectsDir + "/" + fileName) + " " + shellQuote(originalWallpaper) + " " + shellQuote(output)
         ]
         runner.running = true
         activeEffect = effectName
     }
 
     function syncButtons() {
-        runner.command = ["bash", "-lc", "'" + Quickshell.shellDir + "/Assets/ButtonSync/ButtonSync.sh'"]
-        runner.running = true
+        buttonSyncRunner.command = ["bash", "-lc", shellQuote(Quickshell.shellDir + "/Assets/ButtonSync/ButtonSync.sh")]
+        buttonSyncRunner.running = true
+    }
+
+    Component.onCompleted: syncEffectState()
+
+    Process {
+        id: stateReader
+
+        stdout: StdioCollector {
+            onStreamFinished: {
+                var saved = this.text.trim()
+                if (saved !== "" && !root.isEffectPath(saved))
+                    root.originalWallpaper = saved
+                else if (root.originalWallpaper === "")
+                    root.originalWallpaper = root.defaultWallpaper()
+            }
+        }
+    }
+
+    Process {
+        id: stateWriter
+    }
+
+    Process {
+        id: buttonSyncRunner
     }
 
     Process {
