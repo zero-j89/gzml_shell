@@ -1,7 +1,7 @@
 # GZML Shell
 
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
-![GZML Shell Welcome Screen](https://github.com/zero-j89/gzml_shell/blob/main/Assets/screenshots/onboarding-welcome1.png?raw=true)
+![GZML Shell Onboarding Tab](./Assets/screenshots/onboarding-welcome1.png)
 Unlike traditional dotfile collections or configuration overlays, GZML Shell is packaged as its own shell environment. Updates are designed to preserve user configuration, allowing the shell itself to evolve independently from personal settings, profiles, themes, and customizations. The  project focuses on flexibility, long-term maintainability, and user ownership of configuration while providing an approachable first run experience for new users.
 
 The GZML Shell is a fork and continuation of the Noctalia V4 Quickshell based experience. This project would not exist without the incredible work of the Noctalia developers and contributors. Full credit goes to the original Noctalia team for creating the foundation upon which GZML Shell is built.
