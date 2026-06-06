@@ -170,19 +170,19 @@ GZML Shell exposes functionality through Quickshell IPC, allowing integration wi
 ### Profile Switcher
 
 ```bash
-qs -p ~/.local/share/gzml-shell ipc call plugin:shell-profiles toggleProfiles
+qs -p ~/.config/quickshell-gzml ipc call plugin:shell-profiles toggleProfiles
 ```
 
 ### Wallpaper Selector
 
 ```bash
-qs -p ~/.local/share/gzml-shell ipc call plugin:wallcards toggle
+qs -p ~/.config/quickshell-gzml ipc call plugin:wallcards toggle
 ```
 
 ### IPC Discovery
 
 ```bash
-qs -p ~/.local/share/gzml-shell ipc show
+qs -p ~/.config/quickshell-gzml ipc call plugin: ipc show
 ```
 
 or, depending on the installed Quickshell version:
