@@ -942,10 +942,6 @@ Singleton {
 
     // Unregister from DesktopWidgetRegistry
     if (plugin.manifest.entryPoints && plugin.manifest.entryPoints.desktopWidget) {
-      // Only remove settings when uninstalling, not during hot reload
-      if (!preserveSettings) {
-        removePluginDesktopWidgetsFromSettings(pluginId);
-      }
       DesktopWidgetRegistry.unregisterPluginWidget(pluginId);
     }
 
