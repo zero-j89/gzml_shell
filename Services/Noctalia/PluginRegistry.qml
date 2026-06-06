@@ -9,18 +9,31 @@ import qs.Commons
 Singleton {
   id: root
 
-  readonly property string bundledPluginsDir: Quickshell.shellDir + "/payload/default-config/plugins"
-  readonly property string userPluginsDir: Quickshell.env("HOME") + "/.config/quickshell-gzml/plugins"
+  readonly property string bundledPluginsDir: Quickshell.env("GZML_SHELL_SOURCE") + "/payload/default-config/plugins"
+  readonly property string userPluginsDir: Quickshell.env("GZML_SHELL_QS_CONFIG") + "/plugins"
   readonly property string pluginsDir: userPluginsDir
-  readonly property string pluginsFile: Settings.configDir + "plugins.json"
+  readonly property string pluginsFile: Quickshell.env("GZML_SHELL_CONFIG") + "/plugins.json"
 
   readonly property int currentVersion: 2
   // Main source URL - plugins from this source keep plain IDs
   readonly property string mainSourceUrl: "https://github.com/noctalia-dev/noctalia-plugins"
 
   Component.onCompleted: {
+    root.init();
+  }
+
+  function init() {
     ensurePluginsDirectory();
     ensurePluginsFile();
+    scanPluginFolder();
+  }
+
+  function ensurePluginsDirectory() {
+    Quickshell.execDetached(["mkdir", "-p", root.userPluginsDir]);
+  }
+
+  function migratePluginData() {
+    // Compatibility no-op for now.
   }
 
   // Generate a short hash (6 characters) from a source URL
