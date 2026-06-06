@@ -1,28 +1,161 @@
 # GZML Shell
 
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
+<img width="2560" height="1440" alt="onboarding-welcome1" src="https://github.com/user-attachments/assets/2de3cfd7-ff6f-41e1-ac54-3dbc69266f3b" />
 
 Unlike traditional dotfile collections or configuration overlays, GZML Shell is packaged as its own shell environment. Updates are designed to preserve user configuration, allowing the shell itself to evolve independently from personal settings, profiles, themes, and customizations.
 
 The project focuses on flexibility, long-term maintainability, and user ownership of configuration while providing an approachable first-run experience for new users.
 
 ## Installation
+## Dependencies
 
-Current development and testing primarily targets Arch-based distributions, with additional installer support planned for Fedora, Debian/Ubuntu, and openSUSE families.
+### Arch Linux (Recommended)
+
+Current development and testing primarily targets Arch-based distributions, with additional expirmental installer support for Fedora, Debian/Ubuntu, and openSUSE families.
+
+For Arch-based users the installer will automatically check for required dependencies and, with your permission, attempt to install any missing packages using your system package manager.
+
+Required packages include:
+
+```bash
+quickshell
+qt6-declarative
+qt6-svg
+qt6-multimedia
+qt6-5compat
+jq
+rsync
+git
+python
+wl-clipboard
+grim
+slurp
+swappy
+brightnessctl
+pamixer
+playerctl
+networkmanager
+bluez
+bluez-utils
+pavucontrol
+matugen
+```
+
+---
+
+### Fedora (Experimental)
+
+Please install the required dependencies manually before running the installer.
+
+```bash
+sudo dnf install \
+  quickshell \
+  git \
+  rsync \
+  jq \
+  python3 \
+  wl-clipboard \
+  grim \
+  slurp \
+  swappy \
+  brightnessctl \
+  playerctl \
+  NetworkManager \
+  bluez \
+  bluez-tools \
+  pavucontrol \
+  qt6-qtdeclarative \
+  qt6-qtsvg \
+  qt6-qtmultimedia
+```
+
+> Note: Depending on your Fedora version, Quickshell may require enabling a COPR repository or manual installation.
+
+---
+
+### Debian / Ubuntu (Experimental)
+
+Please install the required dependencies manually before running the installer.
+
+```bash
+sudo apt install \
+  git \
+  rsync \
+  jq \
+  python3 \
+  wl-clipboard \
+  brightnessctl \
+  playerctl \
+  network-manager \
+  bluez \
+  pavucontrol \
+  qml6-module-qtquick \
+  qml6-module-qtquick-controls \
+  qml6-module-qtmultimedia
+```
+
+> Note: Quickshell is not currently available in many Debian/Ubuntu repositories and may need to be built or installed manually.
+
+---
+
+### openSUSE (Experimental)
+
+Please install the required dependencies manually before running the installer.
+
+```bash
+sudo zypper install \
+  quickshell \
+  git \
+  rsync \
+  jq \
+  python3 \
+  wl-clipboard \
+  grim \
+  slurp \
+  swappy \
+  brightnessctl \
+  playerctl \
+  NetworkManager \
+  bluez \
+  pavucontrol \
+  qt6-declarative \
+  qt6-svg \
+  qt6-multimedia
+```
+
+> Note: Package names may vary slightly between openSUSE releases.
+
+If a dependency is unavailable in your distribution's repositories, please consult your distribution's documentation or install the equivalent package manually before running the installer or open up a support ticket here on the repo.
 
 ```bash
 git clone https://github.com/zero-j89/gzml_shell.git
 cd gzml_shell
-./install.sh
 ```
+Then run:
+```bash
+bash ./install.sh
+```
+To update the repo simply run:
+```bash
+gzml-shell-update
+```
+The updater will:
+
+- Pull the latest changes from the original GZML Shell source repository
+- Re-run the installer
+- Preserve your existing user configuration
+  
+##
 
 The installer checks for required dependencies, asks before installing missing packages, installs the shell source, creates the initial user configuration when needed, and preserves existing user settings during future updates.
+<img width="2560" height="1440" alt="onboarding-welcome" src="https://github.com/user-attachments/assets/f8ad2fd4-cca1-4281-9a7c-f9dbcd540e4a" />
 
 ## Profiles
 
-GZML Shell includes a built-in profile system that allows users to maintain multiple independent shell configurations.
+GZML Shell includes a built in profile system that allows users to maintain multiple independent shell configurations.
 
-Profiles are user-created and user-managed. The project intentionally ships with a clean default experience rather than preloaded personal profiles.
+Profiles are user created and user-managed. The project intentionally ships with a clean default experience rather than preloaded personal profiles.
 
 ## Plugins
 
@@ -49,13 +182,13 @@ qs -p ~/.local/share/gzml-shell ipc call plugin:wallcards toggle
 ### IPC Discovery
 
 ```bash
-qs -p ~/.local/share/gzml-shell ipc
+qs -p ~/.local/share/gzml-shell ipc show
 ```
 
 or, depending on the installed Quickshell version:
 
 ```bash
-qs -p ~/.local/share/gzml-shell ipc list
+qs ipc list
 ```
 
 Additional IPC endpoints will be documented as the API stabilizes.
@@ -65,22 +198,26 @@ Additional IPC endpoints will be documented as the API stabilizes.
 To launch GZML Shell automatically, add the launch command to your compositor or session startup configuration:
 
 ```bash
-qs -p ~/.local/share/gzml-shell
+gzml-shell
 ```
 
 For Hyprland Lua configurations:
 
 ```lua
-hl.exec_once("qs -p ~/.local/share/gzml-shell")
+hl.exec_once("gzml-shell")
 ```
 
 For legacy Hyprland `.conf` configurations(Soon to be outdated)2:
 
 ```ini
-exec-once = qs -p ~/.local/share/gzml-shell
+exec-once = gzml-shell
 ```
 
 Equivalent startup methods can be used with other compositors and desktop environments.
+
+## About
+
+GZML-Shell is built on the original Noctalia V4 Quickshell engine. It delivers all of Noctalia’s signature customization features while introducing extra quality of life tools and long overdue bug fixes. As Noctalia transitions to its new C++ V5 architecture, many community members will miss the classic V4 Quickshell experience. This project was born out of a desire to keep that beloved environment alive, fully supported, and enhanced for a broader audience. What began as a private, independent test environment originally built to teach my growing nephew the ropes of Linux and electronics has evolved into a feature rich, out of the box alternative to stock Noctalia. We have an exciting roadmap ahead, including options for an extra customizable taskbar, and we are fully committed to long term community support.
 
 ## Credits
 
