@@ -129,6 +129,22 @@ GZML_SHELL_CACHE="$CACHE_DIR"
 EOF2
 }
 
+install_noctalia_plugin_compat() {
+  echo
+  echo "Installing Noctalia plugin compatibility layer..."
+
+  mkdir -p "$HOME/.config/noctalia"
+  mkdir -p "$QS_CONFIG_DIR/plugins"
+
+  if [ -e "$HOME/.config/noctalia/plugins" ] && [ ! -L "$HOME/.config/noctalia/plugins" ]; then
+    echo "Existing ~/.config/noctalia/plugins detected."
+    echo "Leaving it untouched to avoid data loss."
+    return 0
+  fi
+
+  ln -sfn "$QS_CONFIG_DIR/plugins" "$HOME/.config/noctalia/plugins"
+}
+
 seed_user_config() {
   echo
   echo "Checking user config..."
@@ -294,6 +310,7 @@ FIRST_RUN=0
 install_dependencies
 install_shell_source
 install_quickshell_layer
+install_noctalia_plugin_compat
 install_launcher
 install_updater
 seed_user_config
