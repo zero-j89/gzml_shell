@@ -170,7 +170,7 @@ Singleton {
       import QtQuick
       import Quickshell.Io
       Process {
-        command: ["sh", "-c", "for base in '${root.bundledPluginsDir}' '${root.userPluginsDir}'; do [ -d \"$base\" ] || continue; for d in \"$base\"/*/; do [ -d \"$d\" ] || continue; [ -f \"$d/manifest.json\" ] || continue; id=$(basename \"$d\"); echo \"@@PLUGIN@@$id@@DIR@@$d\" ; cat \"$d/manifest.json\" ; done; done"]
+        command: ["sh", "-c", "for base in '${root.bundledPluginsDir}' '${root.userPluginsDir}'; do [ -d \\\"$base\\\" ] || continue; for d in \\\"$base\\\"/*/; do [ -d \\\"$d\\\" ] || continue; [ -f \\\"$d/manifest.json\\\" ] || continue; id=$(basename \\\"$d\\\"); echo \"@@PLUGIN@@$id@@DIR@@$d\" ; cat \\\"$d/manifest.json\\\" ; done; done"]
         stdout: StdioCollector {}
         running: true
       }
