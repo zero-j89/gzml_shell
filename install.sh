@@ -238,6 +238,45 @@ UPDATER
   chmod +x "$HOME/.local/bin/gzml-shell-update"
 }
 
+install_migrator() {
+  echo
+  echo "Installing migration command..."
+
+  mkdir -p "$HOME/.local/bin"
+  mkdir -p "$INSTALL_DIR/scripts"
+
+  if [ -f "$INSTALL_DIR/migrate-noctalia-to-gzml.py" ]; then
+    cp "$INSTALL_DIR/migrate-noctalia-to-gzml.py" \
+       "$INSTALL_DIR/scripts/migrate-noctalia-to-gzml.py"
+  elif [ -f "$SRC_DIR/migrate-noctalia-to-gzml.py" ]; then
+    cp "$SRC_DIR/migrate-noctalia-to-gzml.py" \
+       "$INSTALL_DIR/scripts/migrate-noctalia-to-gzml.py"
+  else
+    echo "WARNING: migrate-noctalia-to-gzml.py not found."
+    echo "Migration command will be installed, but it will not work until the script exists."
+  fi
+
+  cat > "$HOME/.local/bin/gzml-shell-migrate" <<'MIGRATOR'
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT="$HOME/.local/share/gzml-shell/scripts/migrate-noctalia-to-gzml.py"
+
+if [ ! -f "$SCRIPT" ]; then
+    echo "Migration script not found:"
+    echo "  $SCRIPT"
+    echo
+    echo "Make sure migrate-noctalia-to-gzml.py exists in the GZML Shell repository, then run:"
+    echo "  gzml-shell-update"
+    exit 1
+fi
+
+exec python3 "$SCRIPT" "$@"
+MIGRATOR
+
+  chmod +x "$HOME/.local/bin/gzml-shell-migrate"
+}
+
 verify_install() {
   echo
   echo "Verifying install..."
@@ -313,6 +352,7 @@ install_quickshell_layer
 install_noctalia_plugin_compat
 install_launcher
 install_updater
+install_migrator
 seed_user_config
 verify_install
 launch_prompt
