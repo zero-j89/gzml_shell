@@ -190,7 +190,8 @@ echo "Updating GZML Shell from:"
 echo "  $REPO"
 echo
 
-git -C "$REPO" pull --ff-only
+git -C "$REPO" fetch origin
+git -C "$REPO" reset --hard origin/main
 
 echo
 echo "Running installer..."
