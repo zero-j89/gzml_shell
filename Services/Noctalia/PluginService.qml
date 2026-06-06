@@ -67,7 +67,10 @@ Singleton {
 
   // Watch for pluginContainer to be set
   onPluginContainerChanged: {
-    if (root.pluginContainer && root.needsInit) {
+    if (!root.pluginContainer || root.initialized)
+      return;
+
+    if (root.needsInit || PluginRegistry.getAllInstalledPluginIds().length > 0) {
       Logger.d("PluginService", "Plugin container now available, initializing plugins");
       root.needsInit = false;
       root.init();

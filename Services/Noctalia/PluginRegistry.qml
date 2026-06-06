@@ -25,7 +25,6 @@ Singleton {
   function init() {
     ensurePluginsDirectory();
     ensurePluginsFile();
-    scanPluginFolder();
   }
 
   function ensurePluginsDirectory() {
@@ -33,8 +32,8 @@ Singleton {
   }
 
   function ensurePluginsFile() {
-    // FileView/JsonAdapter handles creation when saved.
-    // Keep this function so init can continue into scanPluginFolder().
+    // FileView/JsonAdapter owns plugins.json. This function exists so startup
+    // can continue even when the file is created/loaded asynchronously.
     if (!root.pluginStates)
       root.pluginStates = ({});
     if (!root.pluginSources)
@@ -154,7 +153,18 @@ Singleton {
 
       // Migrate from v1 to v2 (add sourceUrl to states)
       root.migratePluginData();
+
+      // Scan only after plugins.json has loaded so enabled states are available
+      // before PluginService reacts to pluginsChanged().
+      root.scanPluginFolder();
     }
+  }
+
+  // Scan bundled and user plugin folders to discover installed plugins.
+  // Bundled plugins live in the installed shell source.
+  // User/custom plugins live in ~/.config/quickshell-gzml/plugins and override bundled plugins with the same id.
+  function shellQuote(value) {
+    return "'" + String(value).replace(/'/g, "'\\''") + "'";
   }
 
   // Scan bundled and user plugin folders to discover installed plugins.
@@ -164,17 +174,30 @@ Singleton {
     Logger.i("PluginRegistry", "Scanning bundled plugin folder:", root.bundledPluginsDir);
     Logger.i("PluginRegistry", "Scanning user plugin folder:", root.userPluginsDir);
 
+    root.installedPlugins = ({});
     root.pluginDirs = ({});
 
-    var scanProcess = Qt.createQmlObject(`
-      import QtQuick
-      import Quickshell.Io
-      Process {
-        command: ["sh", "-c", "for base in '${root.bundledPluginsDir}' '${root.userPluginsDir}'; do [ -d \\\"$base\\\" ] || continue; for d in \\\"$base\\\"/*/; do [ -d \\\"$d\\\" ] || continue; [ -f \\\"$d/manifest.json\\\" ] || continue; id=$(basename \\\"$d\\\"); echo \"@@PLUGIN@@$id@@DIR@@$d\" ; cat \\\"$d/manifest.json\\\" ; done; done"]
-        stdout: StdioCollector {}
-        running: true
-      }
-    `, root, "ScanAllPlugins");
+    var scanCommand = "for base in " + shellQuote(root.bundledPluginsDir) + " " + shellQuote(root.userPluginsDir) + "; do "
+      + "[ -d \"$base\" ] || continue; "
+      + "for d in \"$base\"/*/; do "
+      + "[ -d \"$d\" ] || continue; "
+      + "[ -f \"$d/manifest.json\" ] || continue; "
+      + "id=$(basename \"$d\"); "
+      + "printf '@@PLUGIN@@%s@@DIR@@%s\\n' \"$id\" \"$d\"; "
+      + "cat \"$d/manifest.json\"; "
+      + "printf '\\n'; "
+      + "done; "
+      + "done";
+
+    var qml = 'import QtQuick\n'
+      + 'import Quickshell.Io\n'
+      + 'Process {\n'
+      + '  command: ' + JSON.stringify(["bash", "-lc", scanCommand]) + '\n'
+      + '  stdout: StdioCollector {}\n'
+      + '  running: true\n'
+      + '}';
+
+    var scanProcess = Qt.createQmlObject(qml, root, "ScanAllPlugins");
 
     scanProcess.exited.connect(function (exitCode) {
       var output = String(scanProcess.stdout.text || "");
@@ -190,10 +213,10 @@ Singleton {
         var header = section.substring(0, newlineIdx).trim();
         var manifestJson = section.substring(newlineIdx + 1).trim();
         var headerParts = header.split("@@DIR@@");
-        var pluginId = headerParts[0] || "";
+        var folderId = headerParts[0] || "";
         var pluginDir = headerParts.length > 1 ? headerParts[1] : "";
 
-        if (!pluginId || !pluginDir || !manifestJson)
+        if (!folderId || !pluginDir || !manifestJson)
           continue;
 
         try {
@@ -201,6 +224,7 @@ Singleton {
           var validation = validateManifest(manifest);
 
           if (validation.valid) {
+            var pluginId = manifest.id || folderId;
             manifest.compositeKey = pluginId;
             root.installedPlugins[pluginId] = manifest;
             root.pluginDirs[pluginId] = pluginDir;
@@ -208,15 +232,16 @@ Singleton {
 
             if (!root.pluginStates[pluginId]) {
               root.pluginStates[pluginId] = {
-                enabled: false
+                enabled: false,
+                sourceUrl: root.mainSourceUrl
               };
             }
             loadedCount++;
           } else {
-            Logger.e("PluginRegistry", "Invalid manifest for", pluginId + ":", validation.error);
+            Logger.e("PluginRegistry", "Invalid manifest for", folderId + ":", validation.error);
           }
         } catch (e) {
-          Logger.e("PluginRegistry", "Failed to parse manifest for", pluginId + ":", e.toString());
+          Logger.e("PluginRegistry", "Failed to parse manifest for", folderId + ":", e.toString());
         }
       }
 
