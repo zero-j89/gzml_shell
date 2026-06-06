@@ -92,7 +92,7 @@ Item {
   // Retry mechanism to cope with early evaluation before registry is ready
   Timer {
     id: retryTimer
-    interval: 150
+    interval: 250
     repeat: true
     running: false
     property int attempts: 0
@@ -104,7 +104,7 @@ Item {
         attempts = 0;
         return;
       }
-      if (attempts >= 20) { // ~3s max
+      if (attempts >= 160) { // ~40s max
         stop();
         attempts = 0;
         Logger.w("ControlCenterWidgetLoader", "Giving up waiting for widget:", widgetId);
