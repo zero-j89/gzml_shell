@@ -32,6 +32,15 @@ Singleton {
     Quickshell.execDetached(["mkdir", "-p", root.userPluginsDir]);
   }
 
+  function ensurePluginsFile() {
+    // FileView/JsonAdapter handles creation when saved.
+    // Keep this function so init can continue into scanPluginFolder().
+    if (!root.pluginStates)
+      root.pluginStates = ({});
+    if (!root.pluginSources)
+      root.pluginSources = [];
+  }
+
   function migratePluginData() {
     // Compatibility no-op for now.
   }
