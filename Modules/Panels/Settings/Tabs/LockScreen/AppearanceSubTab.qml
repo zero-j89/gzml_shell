@@ -59,6 +59,14 @@ ColumnLayout {
     visible: Settings.data.general.clockStyle === "custom"
     onTokenClicked: token => root.insertToken(token)
   }
+  
+  NToggle {
+      label: "Video Background"
+      description: "Use the GZML Shell lock screen video instead of the current wallpaper."
+      checked: Settings.data.general.lockScreenVideoBackground ?? false
+      onToggled: checked => Settings.data.general.lockScreenVideoBackground = checked
+      defaultValue: false
+  }
 
   NToggle {
     label: I18n.tr("panels.lock-screen.password-chars-label")
@@ -120,13 +128,5 @@ ColumnLayout {
     text: ((Settings.data.general.lockScreenTint) * 100).toFixed(0) + "%"
     defaultValue: Settings.getDefaultValue("general.lockScreenTint")
   }
-
-    NToggle {
-        label: "Video Background"
-        description: "Use the GZML Shell lock screen video instead of the current wallpaper."
-        checked: Settings.data.general.lockScreenVideoBackground ?? false
-        onToggled: checked => Settings.data.general.lockScreenVideoBackground = checked
-        defaultValue: false
-    }
 
 }
