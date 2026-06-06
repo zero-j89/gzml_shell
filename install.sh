@@ -1,4 +1,3 @@
-cat > install.sh <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -63,6 +62,8 @@ install_shell_source() {
     echo "ERROR: payload/default-config missing after install."
     exit 1
   fi
+
+  echo "$SRC_DIR" > "$INSTALL_DIR/repo-path"
 }
 
 seed_user_config() {
@@ -83,6 +84,67 @@ seed_user_config() {
   cp -a "$INSTALL_DIR/payload/default-config/." "$CONFIG_DIR/"
   FIRST_RUN=1
 }
+
+install_launcher() {
+  echo
+  echo "Installing launcher command..."
+
+  mkdir -p "$HOME/.local/bin"
+
+  cat > "$HOME/.local/bin/gzml-shell" <<'LAUNCHER'
+#!/usr/bin/env bash
+exec qs -p "$HOME/.local/share/gzml-shell" "$@"
+LAUNCHER
+
+  chmod +x "$HOME/.local/bin/gzml-shell"
+}
+
+
+install_updater() {
+  echo
+  echo "Installing updater command..."
+
+  mkdir -p "$HOME/.local/bin"
+
+  cat > "$HOME/.local/bin/gzml-shell-update" <<'UPDATER'
+#!/usr/bin/env bash
+
+set -e
+
+REPO_FILE="$HOME/.local/share/gzml-shell/repo-path"
+
+if [ ! -f "$REPO_FILE" ]; then
+    echo "Repository path file not found:"
+    echo "  $REPO_FILE"
+    echo
+    echo "Please reinstall GZML Shell."
+    exit 1
+fi
+
+REPO="$(cat "$REPO_FILE")"
+
+if [ ! -d "$REPO/.git" ]; then
+    echo "GZML Shell repository not found:"
+    echo "  $REPO"
+    echo
+    echo "Please reinstall GZML Shell."
+    exit 1
+fi
+
+echo "Updating GZML Shell..."
+git -C "$REPO" pull --ff-only
+
+echo
+echo "Running installer..."
+bash "$REPO/install.sh"
+
+echo
+echo "Update complete."
+UPDATER
+
+  chmod +x "$HOME/.local/bin/gzml-shell-update"
+}
+
 
 verify_install() {
   echo
@@ -106,13 +168,13 @@ launch_prompt() {
 
   if ask_yes_no "Launch GZML Shell now?"; then
     if [ "$FIRST_RUN" = "1" ]; then
-      GZML_SHELL_FIRST_RUN=1 qs -p "$INSTALL_DIR"
+      GZML_SHELL_FIRST_RUN=1 "$HOME/.local/bin/gzml-shell"
     else
-      qs -p "$INSTALL_DIR"
+      "$HOME/.local/bin/gzml-shell"
     fi
   else
     echo "Launch later with:"
-    echo "  qs -p $INSTALL_DIR"
+    echo "  gzml-shell"
   fi
 }
 
@@ -151,8 +213,8 @@ FIRST_RUN=0
 
 install_dependencies
 install_shell_source
+install_launcher
+install_updater
 seed_user_config
 verify_install
 launch_prompt
-EOF
-
