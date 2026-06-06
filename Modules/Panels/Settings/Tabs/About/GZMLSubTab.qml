@@ -39,7 +39,12 @@ ColumnLayout {
             if (originalWallpaper !== "") {
                 WallpaperService.changeWallpaper(originalWallpaper, screenName)
             }
+
+            originalWallpaper = ""
+            pendingOutput = ""
+            pendingScreen = ""
             activeEffect = "Disable"
+
             return
         }
 
@@ -59,7 +64,7 @@ ColumnLayout {
         runner.command = [
             "bash",
             "-lc",
-            "mkdir -p '" + cacheDir + "' && '" + effectsDir + "/" + fileName + "' '" + originalWallpaper + "' '" + output + "'"
+            "mkdir -p '" + cacheDir + "' && rm -f '" + cacheDir + "/" + screenName + "_'*.png && '" + effectsDir + "/" + fileName + "' '" + originalWallpaper + "' '" + output + "'"
         ]
         runner.running = true
         activeEffect = effectName
