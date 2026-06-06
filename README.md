@@ -1,4 +1,4 @@
-# GZML Shell
+# GZML Shell -temporarily down while we address telemetry back end fixes. do not download until this message is gone nor run the update command if you have current working version.
 
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
 <img width="2560" height="1440" alt="onboarding-welcome1" src="https://github.com/user-attachments/assets/2de3cfd7-ff6f-41e1-ac54-3dbc69266f3b" />
