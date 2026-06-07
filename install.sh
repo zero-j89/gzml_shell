@@ -20,6 +20,18 @@ QS_CONFIG_DIR="$HOME/.config/quickshell-gzml"
 # Runtime/cache data.
 CACHE_DIR="$HOME/.cache/gzml-shell"
 
+# Nix packaging metadata.
+# These belong in the repo root and hard installed source copy, not in the
+# live Quickshell config layer. Nix users consume these directly from the repo
+# or from the hard source artifact.
+NIX_FILES=(
+  "flake.nix"
+  "nix/package.nix"
+  "nix/shell.nix"
+  "nix/home-module.nix"
+  "nix/nixos-module.nix"
+)
+
 detect_distro() {
   if [ ! -f /etc/os-release ]; then
     echo "unknown"
@@ -79,6 +91,26 @@ force_quickshell_reload_event() {
   fi
 }
 
+<<<<<<< HEAD
+=======
+verify_nix_files_in_source() {
+  local missing=0
+
+  for nix_file in "${NIX_FILES[@]}"; do
+    if [ ! -f "$INSTALL_DIR/$nix_file" ]; then
+      echo "WARNING: Missing optional Nix packaging file in hard source: $nix_file"
+      missing=1
+    fi
+  done
+
+  if [ "$missing" = "0" ]; then
+    echo "Nix packaging files installed in hard source."
+  else
+    echo "Nix packaging files are incomplete. Non-Nix install can continue."
+  fi
+}
+
+>>>>>>> 94ed6e8e3 (Add Nix support and update release defaults)
 install_shell_source() {
   echo
   echo "Installing hard shell source..."
@@ -99,6 +131,8 @@ install_shell_source() {
   fi
 
   echo "$SRC_DIR" > "$INSTALL_DIR/repo-path"
+
+  verify_nix_files_in_source
 }
 
 install_quickshell_layer() {
@@ -119,6 +153,11 @@ install_quickshell_layer() {
   rsync -a --delete \
     --exclude 'payload' \
     --exclude 'repo-path' \
+<<<<<<< HEAD
+=======
+    --exclude 'flake.nix' \
+    --exclude 'nix' \
+>>>>>>> 94ed6e8e3 (Add Nix support and update release defaults)
     --exclude '.git' \
     --exclude '.gitignore' \
     --exclude 'install.sh' \
@@ -309,6 +348,8 @@ verify_install() {
 
   [ -d "$INSTALL_DIR" ] || { echo "Missing $INSTALL_DIR"; exit 1; }
   [ -d "$INSTALL_DIR/payload/default-config" ] || { echo "Missing payload/default-config"; exit 1; }
+  [ -f "$INSTALL_DIR/flake.nix" ] || echo "WARNING: Missing $INSTALL_DIR/flake.nix"
+  [ -d "$INSTALL_DIR/nix" ] || echo "WARNING: Missing $INSTALL_DIR/nix"
   [ -f "$CONFIG_DIR/settings.json" ] || { echo "Missing $CONFIG_DIR/settings.json"; exit 1; }
   [ -d "$QS_CONFIG_DIR" ] || { echo "Missing $QS_CONFIG_DIR"; exit 1; }
   [ -f "$QS_CONFIG_DIR/shell.qml" ] || { echo "Missing $QS_CONFIG_DIR/shell.qml"; exit 1; }
