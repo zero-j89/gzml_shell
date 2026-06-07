@@ -26,7 +26,5 @@
     "top_bar_height": 30,
     "iconColor": "none",
     "directory": "/home/zer0/Pictures/Wallpapers",
-    "wallpaper": {
-        "useOriginalImages": false
-    }
+    "wallpaper": {}
 }
