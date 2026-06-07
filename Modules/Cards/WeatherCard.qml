@@ -23,10 +23,10 @@ NBox {
   readonly property bool isDayTime: weatherReady ? LocationService.data.weather.current_weather.is_day : true
   readonly property bool isRaining: testEffects === "rain" || (testEffects === "" && ((currentWeatherCode >= 51 && currentWeatherCode <= 67) || (currentWeatherCode >= 80 && currentWeatherCode <= 82)))
   readonly property bool isSnowing: testEffects === "snow" || (testEffects === "" && ((currentWeatherCode >= 71 && currentWeatherCode <= 77) || (currentWeatherCode >= 85 && currentWeatherCode <= 86)))
-  readonly property bool isCloudy: testEffects === "cloud" || (testEffects === "" && (currentWeatherCode === 3))
+  readonly property bool isCloudy: testEffects === "cloud" || (testEffects === "" && !isRaining && !isSnowing && !isFoggy && (currentWeatherCode === 1 || currentWeatherCode === 2 || currentWeatherCode === 3))
   readonly property bool isFoggy: testEffects === "fog" || (testEffects === "" && (currentWeatherCode >= 40 && currentWeatherCode <= 49))
-  readonly property bool isClearDay: testEffects === "clear_day" || (testEffects === "" && (currentWeatherCode === 0 && isDayTime))
-  readonly property bool isClearNight: testEffects === "clear_night" || (testEffects === "" && (currentWeatherCode === 0 && !isDayTime))
+  readonly property bool isClearDay: testEffects === "clear_day" || (testEffects === "" && isDayTime && !isRaining && !isSnowing && !isFoggy && !isCloudy)
+  readonly property bool isClearNight: testEffects === "clear_night" || (testEffects === "" && !isDayTime && !isRaining && !isSnowing && !isFoggy)
 
   visible: Settings.data.location.weatherEnabled
   implicitHeight: Math.max(100 * Style.uiScaleRatio, content.implicitHeight + Style.margin2XL)
