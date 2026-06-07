@@ -63,7 +63,7 @@ install_shell_source() {
   rm -rf "$INSTALL_DIR"
   mkdir -p "$INSTALL_DIR"
 
-  rsync -a \
+  rsync -a --checksum \
     --exclude '.git' \
     --exclude '.gitignore' \
     --exclude 'install.sh' \
@@ -92,7 +92,7 @@ install_quickshell_layer() {
     tmp_plugins=""
   fi
 
-  rsync -a --delete \
+  rsync -a --delete --checksum \
     --exclude 'payload' \
     --exclude 'repo-path' \
     --exclude '.git' \
@@ -127,6 +127,16 @@ GZML_SHELL_CONFIG="$CONFIG_DIR"
 GZML_SHELL_QS_CONFIG="$QS_CONFIG_DIR"
 GZML_SHELL_CACHE="$CACHE_DIR"
 EOF2
+
+  # Quickshell usually hot-reloads changed QML, but rsync/update workflows can
+  # preserve timestamps or replace files in ways that do not always trigger a
+  # visible reload. Touch the runnable layer after sync so a running shell sees
+  # an update event without killing the user's session.
+  find "$QS_CONFIG_DIR" -type f \( -name "*.qml" -o -name "*.js" -o -name "*.json" \) -exec touch {} +
+
+  if [ -f "$QS_CONFIG_DIR/shell.qml" ]; then
+    touch "$QS_CONFIG_DIR/shell.qml"
+  fi
 }
 
 install_noctalia_plugin_compat() {
@@ -309,7 +319,7 @@ launch_prompt() {
 
   if is_gzml_shell_running; then
     echo "GZML Shell is already running."
-    echo "Updated files are in place; Quickshell should reload changes automatically."
+    echo "Updated files are in place and the Quickshell layer was touched to trigger reload."
     return
   fi
 
