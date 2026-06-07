@@ -141,26 +141,74 @@ def recursive_sanitize(obj: Any) -> Any:
 
 
 def stable_key(value: Any) -> str:
-    """Return a deterministic key for de-duplicating settings list entries."""
+    """Return a deterministic fallback key for de-duplicating settings list entries."""
     try:
         return json.dumps(value, sort_keys=True, separators=(",", ":"))
     except TypeError:
         return repr(value)
 
 
+SEMANTIC_LIST_KEYS = (
+    "id",
+    "pluginId",
+    "plugin",
+    "name",
+    "module",
+    "component",
+    "widget",
+    "card",
+    "button",
+    "action",
+    "command",
+    "label",
+    "title",
+    "type",
+)
+
+
+def semantic_list_key(value: Any) -> str:
+    """
+    Return a practical identity key for list items.
+
+    This prevents duplicate bar/card/button/plugin entries when the Noctalia item
+    and the GZML stock item represent the same thing but differ in extra fields,
+    paths, labels, icons, or defaults.
+    """
+    if isinstance(value, dict):
+        for key in SEMANTIC_LIST_KEYS:
+            found = value.get(key)
+            if isinstance(found, str) and found.strip():
+                return f"{key}:{rewrite_string(found).strip().lower()}"
+            if isinstance(found, (int, float, bool)):
+                return f"{key}:{found}"
+
+        # Common nested shapes used by layout/config entries.
+        for nested_key in ("source", "plugin", "item", "data"):
+            nested = value.get(nested_key)
+            if isinstance(nested, dict):
+                nested_identity = semantic_list_key(nested)
+                if not nested_identity.startswith("stable:"):
+                    return f"{nested_key}.{nested_identity}"
+
+    if isinstance(value, str):
+        return f"str:{rewrite_string(value).strip().lower()}"
+
+    return f"stable:{stable_key(value)}"
+
+
 def merge_lists_preserve_user_then_stock(user_list: list[Any], stock_list: list[Any]) -> list[Any]:
     """
-    Merge list-like config sections without dropping stock GZML entries.
+    Merge list-like config sections without creating doubles.
 
     Noctalia user layout/order is kept first, then missing stock GZML entries
-    are appended. This protects stock buttons/cards/plugins such as clipper/USB
-    while still preserving old user customization.
+    are appended. Deduping uses semantic identity fields first instead of the
+    whole object, because stock GZML buttons/cards may have newer fields.
     """
     merged: list[Any] = []
     seen: set[str] = set()
 
     for item in user_list + stock_list:
-        key = stable_key(item)
+        key = semantic_list_key(item)
         if key in seen:
             continue
         seen.add(key)
@@ -262,11 +310,17 @@ def sanitize_plugins(
         sanitized_state = recursive_sanitize(new_state)
 
         if plugin_name in migrated["states"]:
-            # Merge old Noctalia state into stock GZML state without losing GZML fields.
-            migrated["states"][plugin_name] = deep_merge_user_over_stock(
-                sanitized_state,
-                migrated["states"][plugin_name],
-            )
+            # Stock GZML plugins should keep their stock schema/metadata.
+            # Only carry over the enabled flag when the migrated plugin is allowed.
+            # This prevents old Noctalia plugin state from breaking newer bundled plugins.
+            existing_state = migrated["states"][plugin_name]
+            if isinstance(existing_state, dict):
+                existing_state["enabled"] = bool(was_enabled and should_preserve)
+                if was_enabled and not should_preserve:
+                    existing_state["migrationNote"] = "Disabled during Noctalia -> GZML migration until plugin compatibility is confirmed."
+                migrated["states"][plugin_name] = recursive_sanitize(existing_state)
+            else:
+                migrated["states"][plugin_name] = sanitized_state
         else:
             migrated["states"][plugin_name] = sanitized_state
 
