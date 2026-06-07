@@ -30,7 +30,6 @@ Variants {
       readonly property real edgeSmoothness: Settings.data.wallpaper.transitionEdgeSmoothness
       readonly property var allTransitions: WallpaperService.allTransitions
       readonly property bool transitioning: transitionAnimation.running
-      readonly property bool shaderActive: transitionAnimation.running || nextWallpaper.pendingTransition || transitionProgress > 0.0
 
       // Wipe direction: 0=left, 1=right, 2=up, 3=down
       property real wipeDirection: 0
@@ -153,23 +152,14 @@ Variants {
         onTriggered: _executeStartupTransition()
       }
 
-      Rectangle {
-        id: solidWallpaper
-        anchors.fill: parent
-        color: root._solidColor1
-        visible: wallpaperReady && root.isSolid1 && !root.shaderActive
-      }
-
       Image {
         id: currentWallpaper
 
-        anchors.fill: parent
         source: ""
-        fillMode: root.fillMode
         smooth: true
         mipmap: false
-        visible: wallpaperReady && !root.isSolid1 && !root.shaderActive
-        cache: true
+        visible: false
+        cache: true // Cached so Overview can share the same texture
         asynchronous: true
         onStatusChanged: {
           if (status === Image.Error) {
@@ -185,9 +175,7 @@ Variants {
 
         property bool pendingTransition: false
 
-        anchors.fill: parent
         source: ""
-        fillMode: root.fillMode
         smooth: true
         mipmap: false
         visible: false
@@ -210,13 +198,11 @@ Variants {
         }
       }
 
-      // Dynamic shader loader - only exists while a wallpaper transition is active.
-      // Idle wallpaper rendering uses the plain Image/Rectangle above to avoid
-      // keeping ShaderEffect transition machinery alive on every monitor.
+      // Dynamic shader loader - only loads the active transition shader
       Loader {
         id: shaderLoader
         anchors.fill: parent
-        active: root.shaderActive
+        active: true
 
         sourceComponent: {
           switch (transitionType) {
@@ -245,7 +231,7 @@ Variants {
           anchors.fill: parent
 
           property variant source1: currentWallpaper
-          property variant source2: nextWallpaper.status === Image.Ready ? nextWallpaper : currentWallpaper
+          property variant source2: nextWallpaper.status === Image.Ready ? nextWallpaper : currentWallpaper.status === Image.Ready ? nextWallpaper : currentWallpaper
           property real progress: root.transitionProgress
 
           // Fill mode properties
@@ -464,7 +450,6 @@ Variants {
           // Now clear nextWallpaper after currentWallpaper has the new source
           // Force complete cleanup to free texture memory
           Qt.callLater(() => {
-                         nextWallpaper.pendingTransition = false;
                          nextWallpaper.source = "";
                          isSolid2 = false;
                          Qt.callLater(() => {
@@ -595,7 +580,6 @@ Variants {
           _solidColor1 = colorStr;
           // Clear image sources for memory efficiency
           currentWallpaper.source = "";
-          nextWallpaper.pendingTransition = false;
           nextWallpaper.source = "";
           if (!wallpaperReady) {
             wallpaperReady = true;
@@ -604,7 +588,6 @@ Variants {
         }
 
         // Clear nextWallpaper completely to free texture memory
-        nextWallpaper.pendingTransition = false;
         nextWallpaper.source = "";
         nextWallpaper.sourceSize = undefined;
 
