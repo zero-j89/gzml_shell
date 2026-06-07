@@ -1,9 +1,10 @@
 {
-  "autoMount": false,
-  "fileBrowser": "thunar",
-  "terminalCommand": "kitty",
-  "showNotifications": true,
-  "hideWhenEmpty": true,
-  "showBadge": true,
-  "iconColor": "primary"
+    "autoMount": false,
+    "fileBrowser": "thunar",
+    "terminalCommand": "kitty",
+    "showNotifications": true,
+    "hideWhenEmpty": true,
+    "showBadge": true,
+    "iconColor": "primary",
+    "wallpaper": {}
 }
