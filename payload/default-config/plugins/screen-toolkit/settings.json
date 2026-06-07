@@ -1,33 +1,36 @@
 {
-  "colorHistory": [
-    "#3E7B8D"
-  ],
-  "paletteColors": "",
-  "installedLangs": [
-    "eng"
-  ],
-  "transAvailable": false,
-  "selectedOcrLang": "eng",
-  "screenshotPath": "",
-  "videoPath": "",
-  "filenameFormat": "",
-  "detectedRecorder": "",
-  "recordSkipConfirmation": false,
-  "recordCopyToClipboard": false,
-  "gifMaxSeconds": 30,
-  "detectedCompositor": "hyprland",
-  "stateIsRunning": false,
-  "stateActiveTool": "",
-  "stateMirrorVisible": false,
-  "resultHex": "",
-  "resultRgb": "",
-  "resultHsv": "",
-  "resultHsl": "",
-  "colorCapturePath": "",
-  "colorCacheBust": 0,
-  "ocrResult": "",
-  "ocrCapturePath": "",
-  "qrResult": "",
-  "qrCapturePath": "",
-  "translateResult": ""
+    "colorHistory": [
+        "#3E7B8D"
+    ],
+    "paletteColors": "",
+    "installedLangs": [
+        "eng"
+    ],
+    "transAvailable": false,
+    "selectedOcrLang": "eng",
+    "screenshotPath": "",
+    "videoPath": "",
+    "filenameFormat": "",
+    "detectedRecorder": "",
+    "recordSkipConfirmation": false,
+    "recordCopyToClipboard": false,
+    "gifMaxSeconds": 30,
+    "detectedCompositor": "hyprland",
+    "stateIsRunning": false,
+    "stateActiveTool": "",
+    "stateMirrorVisible": false,
+    "resultHex": "",
+    "resultRgb": "",
+    "resultHsv": "",
+    "resultHsl": "",
+    "colorCapturePath": "",
+    "colorCacheBust": 0,
+    "ocrResult": "",
+    "ocrCapturePath": "",
+    "qrResult": "",
+    "qrCapturePath": "",
+    "translateResult": "",
+    "wallpaper": {
+        "useOriginalImages": false
+    }
 }
