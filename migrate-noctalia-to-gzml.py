@@ -200,14 +200,23 @@ def merge_lists_preserve_user_then_stock(user_list: list[Any], stock_list: list[
     """
     Merge list-like config sections without creating doubles.
 
-    Noctalia user layout/order is kept first, then missing stock GZML entries
-    are appended. Deduping uses semantic identity fields first instead of the
-    whole object, because stock GZML buttons/cards may have newer fields.
+    User/Noctalia layout arrays are authoritative and are never truncated to
+    match stock GZML defaults. This fixes left-side bar/card layouts where a
+    user may have more entries than the default config.
+
+    Merge order:
+    1. Keep every migrated user item in order.
+    2. Append only missing stock GZML items.
     """
     merged: list[Any] = []
     seen: set[str] = set()
 
-    for item in user_list + stock_list:
+    for item in user_list:
+        key = semantic_list_key(item)
+        seen.add(key)
+        merged.append(copy.deepcopy(item))
+
+    for item in stock_list:
         key = semantic_list_key(item)
         if key in seen:
             continue
@@ -215,6 +224,31 @@ def merge_lists_preserve_user_then_stock(user_list: list[Any], stock_list: list[
         merged.append(copy.deepcopy(item))
 
     return merged
+
+
+def dedupe_lists_recursively(obj: Any) -> Any:
+    """
+    Remove accidental duplicate list entries recursively without imposing max length.
+
+    This keeps the first occurrence, which should be the migrated user item when
+    merging user settings over stock GZML defaults.
+    """
+    if isinstance(obj, dict):
+        return {k: dedupe_lists_recursively(v) for k, v in obj.items()}
+
+    if isinstance(obj, list):
+        out: list[Any] = []
+        seen: set[str] = set()
+        for item in obj:
+            cleaned = dedupe_lists_recursively(item)
+            key = semantic_list_key(cleaned)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(cleaned)
+        return out
+
+    return obj
 
 
 def deep_merge_user_over_stock(user_value: Any, stock_value: Any) -> Any:
