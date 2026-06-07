@@ -26,4 +26,13 @@ ColumnLayout {
     defaultValue: !Settings.getDefaultValue("noctaliaPerformance.disableDesktopWidgets")
     onToggled: checked => Settings.data.noctaliaPerformance.disableDesktopWidgets = !checked
   }
+  NToggle {
+    Layout.fillWidth: true
+    label: "Disable audio visualizers in performance mode"
+    description: "Hide audio spectrum/CAVA visualizers while Performance Mode is enabled."
+    checked: !Settings.data.noctaliaPerformance.disableAudioVisualizers
+    defaultValue: !Settings.getDefaultValue("noctaliaPerformance.disableAudioVisualizers")
+    onToggled: checked => Settings.data.noctaliaPerformance.disableAudioVisualizers = !checked
+  }
+
 }
