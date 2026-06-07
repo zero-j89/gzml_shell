@@ -199,6 +199,7 @@ Import your existing Noctalia configuration:
 ```bash
 gzml-shell-migrate
 ```
+Keep your .config/noctalia folder in the same location for addtional/user plugin support untill furthur notice.
 
 ### Notes
 
