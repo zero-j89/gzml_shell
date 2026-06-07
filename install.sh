@@ -26,6 +26,7 @@ CACHE_DIR="$HOME/.cache/gzml-shell"
 # or from the hard source artifact.
 NIX_FILES=(
   "flake.nix"
+  "flake.lock"
   "nix/package.nix"
   "nix/shell.nix"
   "nix/home-module.nix"
@@ -91,8 +92,6 @@ force_quickshell_reload_event() {
   fi
 }
 
-<<<<<<< HEAD
-=======
 verify_nix_files_in_source() {
   local missing=0
 
@@ -110,7 +109,6 @@ verify_nix_files_in_source() {
   fi
 }
 
->>>>>>> 94ed6e8e3 (Add Nix support and update release defaults)
 install_shell_source() {
   echo
   echo "Installing hard shell source..."
@@ -153,11 +151,9 @@ install_quickshell_layer() {
   rsync -a --delete \
     --exclude 'payload' \
     --exclude 'repo-path' \
-<<<<<<< HEAD
-=======
     --exclude 'flake.nix' \
+    --exclude 'flake.lock' \
     --exclude 'nix' \
->>>>>>> 94ed6e8e3 (Add Nix support and update release defaults)
     --exclude '.git' \
     --exclude '.gitignore' \
     --exclude 'install.sh' \
