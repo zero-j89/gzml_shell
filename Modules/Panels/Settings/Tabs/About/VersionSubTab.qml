@@ -128,7 +128,7 @@ ColumnLayout {
   }
 
   function copyInfoToClipboard() {
-    let info = "GZML Shell: v0.3";
+    let info = "GZML Shell: v0.6";
     if (root.isGitVersion && root.commitInfo) {
       info += " (" + root.commitInfo + ")";
     }
@@ -395,7 +395,7 @@ ColumnLayout {
           spacing: Style.marginS
 
           NText {
-            text: "v0.5"
+            text: "v0.6"
             color: Color.mOnSurface
             font.weight: Style.fontWeightBold
           }
@@ -422,7 +422,7 @@ ColumnLayout {
               onExited: TooltipService.hide()
               onClicked: {
                 if (root.commitInfo) {
-                  Quickshell.execDetached(["xdg-open", "https://github.com/zero-j89/Gzml-Shell"]);
+                  Quickshell.execDetached(["xdg-open", "https://github.com/zero-j89/gzml_shell"]);
                 }
               }
             }
