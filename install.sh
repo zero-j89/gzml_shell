@@ -292,6 +292,12 @@ verify_install() {
   echo "Install verified."
 }
 
+is_gzml_shell_running() {
+  pgrep -f "qs .*\.config/quickshell-gzml" >/dev/null 2>&1 ||
+    pgrep -f "quickshell-gzml" >/dev/null 2>&1 ||
+    pgrep -f "gzml-shell" >/dev/null 2>&1
+}
+
 launch_prompt() {
   echo
   echo "$APP_NAME installed."
@@ -300,6 +306,12 @@ launch_prompt() {
   echo "Quickshell layer: $QS_CONFIG_DIR"
   echo "Cache:            $CACHE_DIR"
   echo
+
+  if is_gzml_shell_running; then
+    echo "GZML Shell is already running."
+    echo "Updated files are in place; Quickshell should reload changes automatically."
+    return
+  fi
 
   if ask_yes_no "Launch GZML Shell now?"; then
     if [ "$FIRST_RUN" = "1" ]; then
