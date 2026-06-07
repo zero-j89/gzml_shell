@@ -46,6 +46,7 @@ GZML_NATIVE_OR_KNOWN_COMPATIBLE_PLUGINS: set[str] = {
     "privacy-indicator",
     "special-workspaces",
     "hyprland-visual-editor",
+    "usb-drive-manager",
 }
 
 # Plugins that should never be blindly enabled from Noctalia state.
@@ -60,7 +61,6 @@ FORCE_DISABLE_BY_DEFAULT: set[str] = {
     "network-manager-vpn",
     "sys-info-widget",
     "tamagotchi",
-    "usb-drive-manager",
     "video-wallpaper",
 }
 
