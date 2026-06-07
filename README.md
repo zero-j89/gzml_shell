@@ -269,7 +269,7 @@ Or if in StarupApps:
 run("gzml-shell")
 ```
 
-Equivalent startup methods can be used with other compositors and desktop environments.
+Equivalent startup methods can be used with other compositors.
 
 ## About
 
