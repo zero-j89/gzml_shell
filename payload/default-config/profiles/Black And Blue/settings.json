@@ -17,8 +17,7 @@
         "iconMode": "native",
         "ignoreMouseInput": false,
         "overviewLayer": false,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "position": "top_left",
         "screenshotAnnotationTool": "",
         "showCategories": true,
@@ -28,8 +27,7 @@
         "viewMode": "grid"
     },
     "audio": {
-        "mprisBlacklist": [
-        ],
+        "mprisBlacklist": [],
         "preferredPlayer": "pipewire",
         "spectrumFrameRate": 60,
         "spectrumMirrored": true,
@@ -215,8 +213,7 @@
             ],
             "right": [
                 {
-                    "blacklist": [
-                    ],
+                    "blacklist": [],
                     "chevronColor": "none",
                     "colorizeIcons": false,
                     "drawerEnabled": true,
@@ -239,10 +236,8 @@
                         "autoPaste": false,
                         "autoPasteDelay": 300,
                         "autoPasteOnRightClick": false,
-                        "cardColors": {
-                        },
-                        "customColors": {
-                        },
+                        "cardColors": {},
+                        "customColors": {},
                         "enableTodoIntegration": false,
                         "fullscreenMode": false,
                         "hidePanelBackground": false,
@@ -292,8 +287,7 @@
         }
     },
     "brightness": {
-        "backlightDeviceMappings": [
-        ],
+        "backlightDeviceMappings": [],
         "brightnessStep": 5,
         "enableDdcSupport": true,
         "enforceMinimum": true
@@ -372,16 +366,14 @@
                 },
                 {
                     "defaultSettings": {
-                        "colorHistory": [
-                        ],
+                        "colorHistory": [],
                         "detectedCompositor": "",
                         "detectedRecorder": "",
                         "filenameFormat": "",
                         "installedLangs": [
                             "eng"
                         ],
-                        "paletteColors": [
-                        ],
+                        "paletteColors": [],
                         "screenshotPath": "",
                         "selectedOcrLang": "eng",
                         "transAvailable": false,
@@ -394,10 +386,8 @@
                         "autoPaste": false,
                         "autoPasteDelay": 300,
                         "autoPasteOnRightClick": false,
-                        "cardColors": {
-                        },
-                        "customColors": {
-                        },
+                        "cardColors": {},
+                        "customColors": {},
                         "enableTodoIntegration": false,
                         "fullscreenMode": false,
                         "hidePanelBackground": false,
@@ -442,8 +432,7 @@
         "monitorWidgets": [
             {
                 "name": "DP-3",
-                "widgets": [
-                ]
+                "widgets": []
             },
             {
                 "name": "DP-1",
@@ -511,8 +500,7 @@
             "DP-3"
         ],
         "onlySameOutput": true,
-        "pinnedApps": [
-        ],
+        "pinnedApps": [],
         "pinnedStatic": true,
         "position": "bottom",
         "showDockIndicator": true,
@@ -567,8 +555,7 @@
         "lockScreenAnimations": true,
         "lockScreenBlur": 0,
         "lockScreenCountdownDuration": 30000,
-        "lockScreenMonitors": [
-        ],
+        "lockScreenMonitors": [],
         "lockScreenTint": 0,
         "lockScreenVideoBackground": true,
         "passwordChars": false,
@@ -851,8 +838,7 @@
         "directory": "/home/zer0/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": true,
         "enabled": true,
-        "favorites": [
-        ],
+        "favorites": [],
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
