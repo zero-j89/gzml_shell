@@ -585,6 +585,7 @@ Quickshell.execDetached([
     property JsonObject noctaliaPerformance: JsonObject {
       property bool disableWallpaper: true
       property bool disableDesktopWidgets: true
+      property bool disableAudioVisualizers: true
     }
 
     // dock
