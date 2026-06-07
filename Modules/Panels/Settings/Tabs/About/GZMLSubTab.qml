@@ -291,7 +291,7 @@ ColumnLayout {
 
             NButton {
                 Layout.fillWidth: true
-                text: "Sync Custom Buttons Across Profiles"
+                text: "Sync Cards/Widgets/Tray Icons Across Profiles"
                 onClicked: root.syncButtons()
             }
         }
