@@ -178,16 +178,7 @@ ColumnLayout {
     Layout.fillWidth: true
   }
 
-  NToggle {
-    label: I18n.tr("panels.wallpaper.settings-use-original-images-label")
-    description: I18n.tr("panels.wallpaper.settings-use-original-images-description")
-    checked: Settings.data.wallpaper.useOriginalImages
-    enabled: Settings.data.wallpaper.enabled
-    onToggled: checked => Settings.data.wallpaper.useOriginalImages = checked
-    defaultValue: Settings.getDefaultValue("wallpaper.useOriginalImages")
-  }
-
-  RowLayout {
+RowLayout {
     spacing: Style.marginM
     Layout.fillWidth: true
     enabled: Settings.data.wallpaper.enabled
