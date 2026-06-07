@@ -259,7 +259,7 @@ def normalized_card_id(value: Any) -> str:
         return rewrite_string(value).strip().lower().replace("_", "-").replace(" ", "-")
 
     if isinstance(value, dict):
-        for key in ("id", "name", "pluginId", "plugin", "module", "component", "widget", "card", "button", "type", "title", "label"):
+        for key in ("id", "name", "pluginId", "plugin", "module", "component", "widget", "card", "button", "type", "title", "label", "generalTooltipText"):
             found = value.get(key)
             if isinstance(found, str) and found.strip():
                 return rewrite_string(found).strip().lower().replace("_", "-").replace(" ", "-")
@@ -267,13 +267,29 @@ def normalized_card_id(value: Any) -> str:
     return ""
 
 
+def object_text(value: Any) -> str:
+    """Flatten an object to searchable lowercase text for protected custom buttons."""
+    if isinstance(value, str):
+        return rewrite_string(value).lower()
+    if isinstance(value, dict):
+        return " ".join(object_text(v) for v in value.values())
+    if isinstance(value, list):
+        return " ".join(object_text(v) for v in value)
+    return str(value).lower()
+
+
 def is_profile_switcher_card(value: Any) -> bool:
     cid = normalized_card_id(value)
     compact = cid.replace("-", "")
+    blob = object_text(value)
+
     return (
         cid in PROTECTED_CARD_IDS
         or compact in PROTECTED_CARD_IDS
         or ("profile" in cid and ("switch" in cid or "shell" in cid))
+        or "plugin:shell-profiles" in blob
+        or "toggleprofiles" in blob
+        or "profile switcher" in blob
     )
 
 
@@ -443,6 +459,86 @@ def restore_stock_profile_switchers(migrated: dict[str, Any], stock_settings: di
     return migrated
 
 
+
+def collect_profile_switcher_objects(obj: Any) -> list[Any]:
+    """Collect exact stock custom button/profile switcher objects from stock settings."""
+    found: list[Any] = []
+    if isinstance(obj, dict):
+        if is_profile_switcher_card(obj):
+            found.append(copy.deepcopy(obj))
+        for value in obj.values():
+            found.extend(collect_profile_switcher_objects(value))
+    elif isinstance(obj, list):
+        for item in obj:
+            found.extend(collect_profile_switcher_objects(item))
+    return found
+
+
+def has_profile_switcher_object(obj: Any) -> bool:
+    if isinstance(obj, dict):
+        if is_profile_switcher_card(obj):
+            return True
+        return any(has_profile_switcher_object(v) for v in obj.values())
+    if isinstance(obj, list):
+        return any(has_profile_switcher_object(v) for v in obj)
+    return False
+
+
+def inject_profile_switcher_into_profile_card(obj: Any, stock_profile_button: Any) -> Any:
+    """
+    If profile-card survived but its custom profile switcher button was removed,
+    inject the stock button into the first plausible child list inside that card.
+    """
+    if isinstance(obj, dict):
+        is_profile_card = normalized_card_id(obj) == "profile-card" or obj.get("id") == "profile-card"
+
+        fixed = {k: inject_profile_switcher_into_profile_card(v, stock_profile_button) for k, v in obj.items()}
+
+        if is_profile_card and not has_profile_switcher_object(fixed):
+            # Prefer existing list fields likely to hold custom buttons.
+            for key in ("buttons", "customButtons", "items", "widgets", "cards", "actions"):
+                if isinstance(fixed.get(key), list):
+                    if len(fixed[key]) >= 5:
+                        fixed[key][-1] = copy.deepcopy(stock_profile_button)
+                    else:
+                        fixed[key].append(copy.deepcopy(stock_profile_button))
+                    return fixed
+
+            # Fallback: create customButtons if no list exists.
+            fixed["customButtons"] = [copy.deepcopy(stock_profile_button)]
+
+        return fixed
+
+    if isinstance(obj, list):
+        return [inject_profile_switcher_into_profile_card(item, stock_profile_button) for item in obj]
+
+    return obj
+
+
+def restore_stock_profile_button(migrated: dict[str, Any], stock_settings: dict[str, Any] | None) -> dict[str, Any]:
+    """
+    Restore the actual custom button that calls shell-profiles toggleProfiles.
+
+    This handles GZML's setup where the profile switcher is not a native card
+    entry but a custom button embedded in the profile-card/card section.
+    """
+    if not isinstance(stock_settings, dict):
+        return migrated
+
+    stock_buttons = [
+        item for item in collect_profile_switcher_objects(stock_settings)
+        if "plugin:shell-profiles" in object_text(item) or "toggleprofiles" in object_text(item)
+    ]
+
+    if not stock_buttons:
+        return migrated
+
+    if has_profile_switcher_object(migrated):
+        return migrated
+
+    return inject_profile_switcher_into_profile_card(migrated, stock_buttons[0])
+
+
 def sanitize_settings(settings: dict[str, Any], existing_settings: dict[str, Any] | None = None) -> dict[str, Any]:
     user_settings = recursive_sanitize(copy.deepcopy(settings))
 
@@ -469,7 +565,9 @@ def sanitize_settings(settings: dict[str, Any], existing_settings: dict[str, Any
             if isinstance(item, dict) and isinstance(item.get("wallpaper"), str):
                 item["wallpaper"] = sanitize_wallpaper_path(item["wallpaper"])
 
-    migrated = restore_stock_profile_switchers(migrated, stock_settings if isinstance(existing_settings, dict) else None)
+    stock_for_restore = stock_settings if isinstance(existing_settings, dict) else None
+    migrated = restore_stock_profile_switchers(migrated, stock_for_restore)
+    migrated = restore_stock_profile_button(migrated, stock_for_restore)
 
     return migrated
 
