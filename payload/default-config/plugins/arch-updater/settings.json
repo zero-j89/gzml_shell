@@ -25,7 +25,5 @@
     "boldVerPanel": true,
     "boldVerDesktop": true,
     "hoverTip": true,
-    "wallpaper": {
-        "useOriginalImages": false
-    }
+    "wallpaper": {}
 }
