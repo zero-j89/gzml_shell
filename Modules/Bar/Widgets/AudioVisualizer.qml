@@ -4,6 +4,7 @@ import Quickshell
 import qs.Commons
 import qs.Modules.Bar.Extras
 import qs.Services.Media
+import qs.Services.Power
 import qs.Services.UI
 import qs.Widgets
 import qs.Widgets.AudioSpectrum
@@ -43,7 +44,15 @@ Item {
 
   readonly property color fillColor: Color.resolveColorKey(colorName)
 
-  readonly property bool shouldShow: (currentVisualizerType !== "" && currentVisualizerType !== "none") && (!hideWhenIdle || MediaService.isPlaying)
+  readonly property bool visualizerDisabledByPerformance:
+    PowerProfileService.noctaliaPerformanceMode
+    && Settings.data.noctaliaPerformance
+    && Settings.data.noctaliaPerformance.disableAudioVisualizers === true
+
+  readonly property bool shouldShow:
+    !visualizerDisabledByPerformance
+    && (currentVisualizerType !== "" && currentVisualizerType !== "none")
+    && (!hideWhenIdle || MediaService.isPlaying)
 
   // Register/unregister with SpectrumService based on visibility (use screenName — screen can be null after DPMS/output changes)
   readonly property string spectrumComponentId: "bar:audiovisualizer:" + screenName + ":" + root.section + ":" + root.sectionWidgetIndex
