@@ -1,29 +1,32 @@
 {
-  "animation_cards_duration": 700,
-  "animation_window_duration": 1100,
-  "animate_window": false,
-  "background_color": "#000000",
-  "background_opacity": 0.65,
-  "card_height": 350,
-  "card_spacing": 10,
-  "card_strip_width": 150,
-  "cards_shown": 13,
-  "center_width_ratio": 0.45,
-  "image_filter": [
-    "png",
-    "jpg",
-    "jpeg"
-  ],
-  "video_filter": [
-    "mp4",
-    "avi"
-  ],
-  "hide_help": false,
-  "hide_top_bar": false,
-  "live_preview": false,
-  "selected_filter": "all",
-  "shear_factor": -0.09999999999999998,
-  "top_bar_height": 30,
-  "iconColor": "none",
-  "directory": "/home/zer0/Pictures/Wallpapers"
+    "animation_cards_duration": 700,
+    "animation_window_duration": 1100,
+    "animate_window": false,
+    "background_color": "#000000",
+    "background_opacity": 0.65,
+    "card_height": 350,
+    "card_spacing": 10,
+    "card_strip_width": 150,
+    "cards_shown": 13,
+    "center_width_ratio": 0.45,
+    "image_filter": [
+        "png",
+        "jpg",
+        "jpeg"
+    ],
+    "video_filter": [
+        "mp4",
+        "avi"
+    ],
+    "hide_help": false,
+    "hide_top_bar": false,
+    "live_preview": false,
+    "selected_filter": "all",
+    "shear_factor": -0.09999999999999998,
+    "top_bar_height": 30,
+    "iconColor": "none",
+    "directory": "/home/zer0/Pictures/Wallpapers",
+    "wallpaper": {
+        "useOriginalImages": false
+    }
 }

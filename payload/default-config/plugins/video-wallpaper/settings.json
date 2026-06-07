@@ -1,25 +1,28 @@
 {
-  "activeBackend": "qt6-multimedia",
-  "automationMode": "random",
-  "automationTime": 300,
-  "fillMode": "fit",
-  "mpvSocket": "/tmp/mpv-socket",
-  "profile": "default",
-  "volume": 1,
-  "wallpapersFolder": "~/Pictures/Wallpapers",
-  "thumbCacheReady": false,
-  "enabled": true,
-  "monitorSpecific": false,
-  "DP-3": {
-    "currentWallpaper": "",
-    "volume": 1,
-    "automation": false,
+    "activeBackend": "qt6-multimedia",
     "automationMode": "random",
     "automationTime": 300,
-    "hardwareAcceleration": false,
+    "fillMode": "fit",
+    "mpvSocket": "/tmp/mpv-socket",
     "profile": "default",
-    "fillMode": "",
-    "orientation": 0
-  },
-  "automationCustomTime": []
+    "volume": 1,
+    "wallpapersFolder": "~/Pictures/Wallpapers",
+    "thumbCacheReady": false,
+    "enabled": true,
+    "monitorSpecific": false,
+    "DP-3": {
+        "currentWallpaper": "",
+        "volume": 1,
+        "automation": false,
+        "automationMode": "random",
+        "automationTime": 300,
+        "hardwareAcceleration": false,
+        "profile": "default",
+        "fillMode": "",
+        "orientation": 0
+    },
+    "automationCustomTime": [],
+    "wallpaper": {
+        "useOriginalImages": false
+    }
 }
