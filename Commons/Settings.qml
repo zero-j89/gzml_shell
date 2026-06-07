@@ -28,7 +28,7 @@ Singleton {
   readonly property int settingsVersion: 59
   property bool isDebug: Quickshell.env("NOCTALIA_DEBUG") === "1"
   readonly property string shellName: "gzml-shell"
-  readonly property string configDir: ensureTrailingSlash(Quickshell.env("GZML_SHELL_CONFIG_DIR") || (Quickshell.env("XDG_CONFIG_HOME") || Quickshell.env("HOME") + "/.config") + "/" + shellName + "/")
+  readonly property string configDir: ensureTrailingSlash(Quickshell.env("GZML_SHELL_CONFIG") || (Quickshell.env("XDG_CONFIG_HOME") || Quickshell.env("HOME") + "/.config") + "/" + shellName + "/")
   readonly property string cacheDir: ensureTrailingSlash(Quickshell.env("GZML_SHELL_CACHE_DIR") || (Quickshell.env("XDG_CACHE_HOME") || Quickshell.env("HOME") + "/.cache") + "/" + shellName + "/")
 
   readonly property string settingsFile: Quickshell.env("GZML_SHELL_SETTINGS_FILE") || (configDir + "settings.json")
