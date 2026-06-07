@@ -4,9 +4,9 @@ Migrate user-owned Noctalia v4 configuration into GZML Shell safely.
 
 What this does:
 - Backs up the existing GZML config before writing.
-- Copies safe user data from ~/.config/noctalia to ~/.config/gzml-shell.
+- Copies/merges safe user data from ~/.config/noctalia to ~/.config/gzml-shell.
 - Rewrites old Noctalia paths/IPCs to GZML Shell paths/IPCs.
-- Sanitizes plugin state so unsupported Noctalia plugins do not auto-enable and break IPC.
+- Merges plugin state without removing stock GZML plugins, while disabling unsupported Noctalia plugins by default.
 - Avoids copying cache-generated wallpaper-effect paths as permanent wallpapers.
 
 Run:
@@ -140,8 +140,67 @@ def recursive_sanitize(obj: Any) -> Any:
     return obj
 
 
-def sanitize_settings(settings: dict[str, Any]) -> dict[str, Any]:
-    migrated = recursive_sanitize(copy.deepcopy(settings))
+def stable_key(value: Any) -> str:
+    """Return a deterministic key for de-duplicating settings list entries."""
+    try:
+        return json.dumps(value, sort_keys=True, separators=(",", ":"))
+    except TypeError:
+        return repr(value)
+
+
+def merge_lists_preserve_user_then_stock(user_list: list[Any], stock_list: list[Any]) -> list[Any]:
+    """
+    Merge list-like config sections without dropping stock GZML entries.
+
+    Noctalia user layout/order is kept first, then missing stock GZML entries
+    are appended. This protects stock buttons/cards/plugins such as clipper/USB
+    while still preserving old user customization.
+    """
+    merged: list[Any] = []
+    seen: set[str] = set()
+
+    for item in user_list + stock_list:
+        key = stable_key(item)
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(copy.deepcopy(item))
+
+    return merged
+
+
+def deep_merge_user_over_stock(user_value: Any, stock_value: Any) -> Any:
+    """
+    Recursively merge sanitized Noctalia settings into existing GZML defaults.
+
+    - Dicts are merged recursively.
+    - Lists keep the user's Noctalia order and append missing GZML stock entries.
+    - Scalars from Noctalia override stock values.
+    - Missing Noctalia sections keep stock GZML defaults.
+    """
+    if isinstance(user_value, dict) and isinstance(stock_value, dict):
+        merged = copy.deepcopy(stock_value)
+        for key, value in user_value.items():
+            if key in merged:
+                merged[key] = deep_merge_user_over_stock(value, merged[key])
+            else:
+                merged[key] = copy.deepcopy(value)
+        return merged
+
+    if isinstance(user_value, list) and isinstance(stock_value, list):
+        return merge_lists_preserve_user_then_stock(user_value, stock_value)
+
+    return copy.deepcopy(user_value)
+
+
+def sanitize_settings(settings: dict[str, Any], existing_settings: dict[str, Any] | None = None) -> dict[str, Any]:
+    user_settings = recursive_sanitize(copy.deepcopy(settings))
+
+    if isinstance(existing_settings, dict):
+        stock_settings = recursive_sanitize(copy.deepcopy(existing_settings))
+        migrated = deep_merge_user_over_stock(user_settings, stock_settings)
+    else:
+        migrated = user_settings
 
     # Ensure GZML-specific known settings don't accidentally get disabled by older Noctalia files.
     general = migrated.setdefault("general", {})
@@ -163,7 +222,11 @@ def sanitize_settings(settings: dict[str, Any]) -> dict[str, Any]:
     return migrated
 
 
-def sanitize_plugins(plugins: dict[str, Any], preserve_plugins: set[str]) -> dict[str, Any]:
+def sanitize_plugins(
+    plugins: dict[str, Any],
+    preserve_plugins: set[str],
+    existing_plugins: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     allowed = GZML_NATIVE_OR_KNOWN_COMPATIBLE_PLUGINS | preserve_plugins
 
     migrated: dict[str, Any] = {
@@ -172,9 +235,15 @@ def sanitize_plugins(plugins: dict[str, Any], preserve_plugins: set[str]) -> dic
         "version": plugins.get("version", 2),
     }
 
+    # Start from the freshly installed GZML plugin state so stock plugins remain visible.
+    if isinstance(existing_plugins, dict):
+        migrated["sources"] = copy.deepcopy(existing_plugins.get("sources", []))
+        migrated["states"] = copy.deepcopy(existing_plugins.get("states", {}))
+        migrated["version"] = existing_plugins.get("version", migrated["version"])
+
     states = plugins.get("states", {})
     if not isinstance(states, dict):
-        return migrated
+        return recursive_sanitize(migrated)
 
     for plugin_name, state in states.items():
         if not isinstance(state, dict):
@@ -190,9 +259,18 @@ def sanitize_plugins(plugins: dict[str, Any], preserve_plugins: set[str]) -> dic
         if was_enabled and not should_preserve:
             new_state["migrationNote"] = "Disabled during Noctalia -> GZML migration until plugin compatibility is confirmed."
 
-        migrated["states"][plugin_name] = recursive_sanitize(new_state)
+        sanitized_state = recursive_sanitize(new_state)
 
-    return migrated
+        if plugin_name in migrated["states"]:
+            # Merge old Noctalia state into stock GZML state without losing GZML fields.
+            migrated["states"][plugin_name] = deep_merge_user_over_stock(
+                sanitized_state,
+                migrated["states"][plugin_name],
+            )
+        else:
+            migrated["states"][plugin_name] = sanitized_state
+
+    return recursive_sanitize(migrated)
 
 
 def copy_path(src: Path, dst: Path, dry_run: bool = False) -> None:
@@ -253,7 +331,11 @@ def migrate(source: Path, target: Path, preserve_plugins: set[str], dry_run: boo
     if settings_path.exists():
         try:
             settings = load_json(settings_path)
-            write_json(target / "settings.json", sanitize_settings(settings), dry_run=dry_run)
+            existing_settings = None
+            target_settings_path = target / "settings.json"
+            if target_settings_path.exists():
+                existing_settings = load_json(target_settings_path)
+            write_json(target_settings_path, sanitize_settings(settings, existing_settings), dry_run=dry_run)
             if dry_run:
                 log("DRY RUN: settings.json would be sanitized and migrated")
             else:
@@ -267,7 +349,11 @@ def migrate(source: Path, target: Path, preserve_plugins: set[str], dry_run: boo
     if plugins_path.exists():
         try:
             plugins = load_json(plugins_path)
-            write_json(target / "plugins.json", sanitize_plugins(plugins, preserve_plugins), dry_run=dry_run)
+            existing_plugins = None
+            target_plugins_path = target / "plugins.json"
+            if target_plugins_path.exists():
+                existing_plugins = load_json(target_plugins_path)
+            write_json(target_plugins_path, sanitize_plugins(plugins, preserve_plugins, existing_plugins), dry_run=dry_run)
             if dry_run:
                 log("DRY RUN: plugins.json would be sanitized and migrated")
             else:
