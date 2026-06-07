@@ -241,6 +241,93 @@ def deep_merge_user_over_stock(user_value: Any, stock_value: Any) -> Any:
     return copy.deepcopy(user_value)
 
 
+
+PROTECTED_CARD_IDS = {
+    "profiles",
+    "profile",
+    "profile-switcher",
+    "profileswitcher",
+    "profile-switcher-card",
+    "shell-profiles",
+    "shellprofiles",
+}
+
+
+def normalized_card_id(value: Any) -> str:
+    """Best-effort identity for card/button/widget objects."""
+    if isinstance(value, str):
+        return rewrite_string(value).strip().lower().replace("_", "-").replace(" ", "-")
+
+    if isinstance(value, dict):
+        for key in ("id", "name", "pluginId", "plugin", "module", "component", "widget", "card", "button", "type", "title", "label"):
+            found = value.get(key)
+            if isinstance(found, str) and found.strip():
+                return rewrite_string(found).strip().lower().replace("_", "-").replace(" ", "-")
+
+    return ""
+
+
+def is_profile_switcher_card(value: Any) -> bool:
+    cid = normalized_card_id(value)
+    compact = cid.replace("-", "")
+    return (
+        cid in PROTECTED_CARD_IDS
+        or compact in PROTECTED_CARD_IDS
+        or ("profile" in cid and ("switch" in cid or "shell" in cid))
+    )
+
+
+def protect_profile_switcher_order(items: list[Any], max_items: int = 5) -> list[Any]:
+    """
+    Keep max_items, but never drop profile switcher if present.
+    """
+    if len(items) <= max_items:
+        return items
+
+    protected = [item for item in items if is_profile_switcher_card(item)]
+    normal = [item for item in items if not is_profile_switcher_card(item)]
+
+    if not protected:
+        return items[:max_items]
+
+    out = [protected[0]]
+    for item in normal:
+        if len(out) >= max_items:
+            break
+        out.append(item)
+    return out
+
+
+def fix_profile_switcher_in_card_layouts(obj: Any) -> Any:
+    """
+    Targeted repair for constrained card/widget/button layout lists.
+
+    It only touches lists that already contain a profile switcher and exceed
+    five items. It does not globally dedupe or touch decorative/weather arrays.
+    """
+    if isinstance(obj, dict):
+        fixed: dict[str, Any] = {}
+        for key, value in obj.items():
+            lower_key = str(key).lower()
+            fixed_value = fix_profile_switcher_in_card_layouts(value)
+
+            if (
+                isinstance(fixed_value, list)
+                and len(fixed_value) > 5
+                and any(token in lower_key for token in ("left", "right", "card", "cards", "widget", "widgets", "button", "buttons"))
+                and any(is_profile_switcher_card(item) for item in fixed_value)
+            ):
+                fixed_value = protect_profile_switcher_order(fixed_value, 5)
+
+            fixed[key] = fixed_value
+        return fixed
+
+    if isinstance(obj, list):
+        return [fix_profile_switcher_in_card_layouts(item) for item in obj]
+
+    return obj
+
+
 def sanitize_settings(settings: dict[str, Any], existing_settings: dict[str, Any] | None = None) -> dict[str, Any]:
     user_settings = recursive_sanitize(copy.deepcopy(settings))
 
@@ -389,7 +476,7 @@ def migrate(source: Path, target: Path, preserve_plugins: set[str], dry_run: boo
             target_settings_path = target / "settings.json"
             if target_settings_path.exists():
                 existing_settings = load_json(target_settings_path)
-            write_json(target_settings_path, sanitize_settings(settings, existing_settings), dry_run=dry_run)
+            write_json(target_settings_path, fix_profile_switcher_in_card_layouts(sanitize_settings(settings, existing_settings)), dry_run=dry_run)
             if dry_run:
                 log("DRY RUN: settings.json would be sanitized and migrated")
             else:
