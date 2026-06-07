@@ -328,6 +328,121 @@ def fix_profile_switcher_in_card_layouts(obj: Any) -> Any:
     return obj
 
 
+
+def collect_profile_switcher_list_paths(obj: Any, path: tuple[Any, ...] = ()) -> list[tuple[tuple[Any, ...], list[Any]]]:
+    """
+    Find stock layout lists containing the profile switcher.
+
+    Returns paths to lists, not individual items, so we can re-add the stock
+    profile switcher to the same layout location after migration if it vanished.
+    """
+    found: list[tuple[tuple[Any, ...], list[Any]]] = []
+
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            found.extend(collect_profile_switcher_list_paths(value, path + (key,)))
+        return found
+
+    if isinstance(obj, list):
+        if any(is_profile_switcher_card(item) for item in obj):
+            found.append((path, obj))
+        for idx, item in enumerate(obj):
+            found.extend(collect_profile_switcher_list_paths(item, path + (idx,)))
+        return found
+
+    return found
+
+
+def get_by_path(obj: Any, path: tuple[Any, ...]) -> Any:
+    cur = obj
+    for part in path:
+        if isinstance(part, int):
+            if not isinstance(cur, list) or part >= len(cur):
+                return None
+            cur = cur[part]
+        else:
+            if not isinstance(cur, dict) or part not in cur:
+                return None
+            cur = cur[part]
+    return cur
+
+
+def set_by_path(obj: Any, path: tuple[Any, ...], value: Any) -> bool:
+    if not path:
+        return False
+
+    cur = obj
+    for part in path[:-1]:
+        if isinstance(part, int):
+            if not isinstance(cur, list) or part >= len(cur):
+                return False
+            cur = cur[part]
+        else:
+            if not isinstance(cur, dict) or part not in cur:
+                return False
+            cur = cur[part]
+
+    last = path[-1]
+    if isinstance(last, int):
+        if not isinstance(cur, list) or last >= len(cur):
+            return False
+        cur[last] = value
+        return True
+
+    if not isinstance(cur, dict):
+        return False
+    cur[last] = value
+    return True
+
+
+def restore_stock_profile_switchers(migrated: dict[str, Any], stock_settings: dict[str, Any] | None) -> dict[str, Any]:
+    """
+    If a fresh GZML stock layout has the profile switcher but the migrated
+    result lost it, reinsert the stock profile switcher into that same list.
+
+    This specifically protects the profile switcher shortcut/card from being
+    removed by old Noctalia settings that do not know it exists.
+    """
+    if not isinstance(stock_settings, dict):
+        return migrated
+
+    stock_paths = collect_profile_switcher_list_paths(stock_settings)
+
+    for path, stock_list in stock_paths:
+        migrated_list = get_by_path(migrated, path)
+        if not isinstance(migrated_list, list):
+            # If the whole list vanished or changed shape, restore the stock list.
+            set_by_path(migrated, path, copy.deepcopy(stock_list))
+            continue
+
+        if any(is_profile_switcher_card(item) for item in migrated_list):
+            continue
+
+        stock_profile_items = [item for item in stock_list if is_profile_switcher_card(item)]
+        if not stock_profile_items:
+            continue
+
+        profile_item = copy.deepcopy(stock_profile_items[0])
+
+        # Respect five-card layout limit if this is a constrained card/button/widget list.
+        if len(migrated_list) >= 5:
+            # Replace the last non-protected item rather than exceeding layout capacity.
+            replaced = False
+            for idx in range(len(migrated_list) - 1, -1, -1):
+                if not is_profile_switcher_card(migrated_list[idx]):
+                    migrated_list[idx] = profile_item
+                    replaced = True
+                    break
+            if not replaced:
+                migrated_list[0] = profile_item
+        else:
+            migrated_list.append(profile_item)
+
+        set_by_path(migrated, path, migrated_list)
+
+    return migrated
+
+
 def sanitize_settings(settings: dict[str, Any], existing_settings: dict[str, Any] | None = None) -> dict[str, Any]:
     user_settings = recursive_sanitize(copy.deepcopy(settings))
 
@@ -353,6 +468,8 @@ def sanitize_settings(settings: dict[str, Any], existing_settings: dict[str, Any
         for item in wallpaper.get("monitorDirectories", []) or []:
             if isinstance(item, dict) and isinstance(item.get("wallpaper"), str):
                 item["wallpaper"] = sanitize_wallpaper_path(item["wallpaper"])
+
+    migrated = restore_stock_profile_switchers(migrated, stock_settings if isinstance(existing_settings, dict) else None)
 
     return migrated
 
