@@ -186,7 +186,9 @@ Your original Noctalia configuration is never modified and remains available as 
 
 ### Preview Migration
 
-Preview all changes without modifying any files:
+Please Close gzml-shell before running the migrator.
+
+To preview all changes without modifying any files:
 
 ```bash
 gzml-shell-migrate --dry-run
@@ -194,12 +196,17 @@ gzml-shell-migrate --dry-run
 
 ### Run Migration
 
-Import your existing Noctalia configuration:
-
+To Import your existing Noctalia configuration:
 ```bash
 gzml-shell-migrate
 ```
 Keep your .config/noctalia folder in the same location for addtional/user plugin support untill furthur notice.
+
+To launch gzml-shell without a terminal (without relying on startup):
+```bash
+setsid -f gzml-shell >/dev/null 2>&1
+```
+
 
 ### Notes
 
