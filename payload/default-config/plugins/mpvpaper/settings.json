@@ -10,7 +10,5 @@
     "automation": false,
     "automationMode": "random",
     "automationTime": 300,
-    "wallpaper": {
-        "useOriginalImages": false
-    }
+    "wallpaper": {}
 }
