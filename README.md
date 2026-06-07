@@ -255,10 +255,10 @@ For Hyprland Lua configurations:
 hl.exec_once("gzml-shell")
 ```
 
-For legacy Hyprland `.conf` configurations(Soon to be outdated)2:
+Or if in StarupApps:
 
 ```ini
-exec-once = gzml-shell
+run("gzml-shell")
 ```
 
 Equivalent startup methods can be used with other compositors and desktop environments.
