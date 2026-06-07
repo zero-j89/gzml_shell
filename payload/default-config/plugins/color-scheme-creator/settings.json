@@ -1,5 +1,14 @@
 {
-    "iconColor": "none",
-    "wip": null,
+    "mpvSocket": "/tmp/mpv-socket",
+    "wallpapersFolder": "~/Pictures/Wallpapers",
+    "profile": "default",
+    "fillMode": "fit",
+    "thumbCacheReady": false,
+    "active": true,
+    "currentWallpaper": "",
+    "hardwareAcceleration": true,
+    "automation": false,
+    "automationMode": "random",
+    "automationTime": 300,
     "wallpaper": {}
 }
