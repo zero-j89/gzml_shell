@@ -28,20 +28,31 @@ detect_distro() {
 
   . /etc/os-release
 
-  case "${ID_LIKE:-$ID}" in
+  case "$ID" in
+    arch|artix|endeavouros|cachyos|manjaro|garuda)
+      echo "arch"
+      return
+      ;;
+    fedora)
+      echo "fedora"
+      return
+      ;;
+    ubuntu|debian|linuxmint|pop)
+      echo "debian"
+      return
+      ;;
+    opensuse*|sles)
+      echo "opensuse"
+      return
+      ;;
+  esac
+
+  case "${ID_LIKE:-}" in
     *arch*) echo "arch" ;;
     *fedora*|*rhel*) echo "fedora" ;;
     *debian*|*ubuntu*) echo "debian" ;;
     *suse*) echo "opensuse" ;;
-    *)
-      case "$ID" in
-        arch|endeavouros|cachyos|manjaro) echo "arch" ;;
-        fedora) echo "fedora" ;;
-        ubuntu|debian|linuxmint|pop) echo "debian" ;;
-        opensuse*|sles) echo "opensuse" ;;
-        *) echo "unknown" ;;
-      esac
-      ;;
+    *) echo "unknown" ;;
   esac
 }
 
