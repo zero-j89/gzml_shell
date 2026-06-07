@@ -180,13 +180,13 @@ The migration tool can import:
 * Compatible plugin settings
 * Compatible shell settings
 
-The migration process automatically sanitizes imported settings and converts known Noctalia-specific paths and IPC references to their GZML Shell equivalents where applicable.
+The migration process automatically sanitizes imported settings and converts known Noctalia specific paths and IPC references to their GZML Shell equivalents where applicable.
 
 Your original Noctalia configuration is never modified and remains available as a fallback.
 
 ### Preview Migration
 
-Please Close gzml-shell before running the migrator.
+Note*** Not mandatory but I suggest closimg gzml-shell before running the migrator.
 
 To preview all changes without modifying any files:
 
@@ -212,7 +212,7 @@ setsid -f gzml-shell >/dev/null 2>&1
 
 * Existing GZML Shell configurations are automatically backed up before migration.
 * Unsupported or unknown plugin configurations may be disabled for compatibility.
-* Plugin settings that rely on Noctalia-specific IPC behavior may require manual adjustment.
+* Plugin settings that rely on Noctalia specific IPC behavior may require manual adjustment.
 * Your original `~/.config/noctalia` configuration is preserved and can still be used independently of GZML Shell.
 
 Migration is completely optional. GZML Shell can always be used as a fresh installation without importing any previous configuration.
