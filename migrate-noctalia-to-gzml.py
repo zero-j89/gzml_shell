@@ -149,8 +149,11 @@ def sanitize_settings(settings: dict[str, Any]) -> dict[str, Any]:
         general.setdefault("telemetryEnabled", False)
 
     # Keep wallpaper settings, but strip any generated effect output paths.
+    # GZML Shell always uses optimized/resized wallpaper cache paths by default.
+    # This avoids very large original images being decoded per monitor.
     wallpaper = migrated.get("wallpaper")
     if isinstance(wallpaper, dict):
+        wallpaper["useOriginalImages"] = False
         if isinstance(wallpaper.get("directory"), str):
             wallpaper["directory"] = sanitize_wallpaper_path(wallpaper["directory"])
         for item in wallpaper.get("monitorDirectories", []) or []:
