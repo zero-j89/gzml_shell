@@ -6,7 +6,5 @@
     "lastAppliedProfile": "Black And Blue",
     "backupEnabled": true,
     "backupCount": 5,
-    "wallpaper": {
-        "useOriginalImages": false
-    }
+    "wallpaper": {}
 }
