@@ -30,7 +30,5 @@
     "qrResult": "",
     "qrCapturePath": "",
     "translateResult": "",
-    "wallpaper": {
-        "useOriginalImages": false
-    }
+    "wallpaper": {}
 }
