@@ -55,6 +55,19 @@ ask_yes_no() {
   esac
 }
 
+
+force_quickshell_reload_event() {
+  # Quickshell reloads from the runnable user layer.
+  # After replacing quickshell-gzml, force an actual write event on shell.qml
+  # so a running shell notices the updated layer without requiring a manual restart.
+  if [ -f "$QS_CONFIG_DIR/shell.qml" ]; then
+    tmp_file="$(mktemp)"
+    cat "$QS_CONFIG_DIR/shell.qml" > "$tmp_file"
+    cat "$tmp_file" > "$QS_CONFIG_DIR/shell.qml"
+    rm -f "$tmp_file"
+  fi
+}
+
 install_shell_source() {
   echo
   echo "Installing hard shell source..."
@@ -127,6 +140,8 @@ GZML_SHELL_CONFIG="$CONFIG_DIR"
 GZML_SHELL_QS_CONFIG="$QS_CONFIG_DIR"
 GZML_SHELL_CACHE="$CACHE_DIR"
 EOF2
+
+  force_quickshell_reload_event
 }
 
 install_noctalia_plugin_compat() {
@@ -292,6 +307,12 @@ verify_install() {
   echo "Install verified."
 }
 
+is_gzml_shell_running() {
+  pgrep -f "qs .*\.config/quickshell-gzml" >/dev/null 2>&1 ||
+    pgrep -f "quickshell-gzml" >/dev/null 2>&1 ||
+    pgrep -f "gzml-shell" >/dev/null 2>&1
+}
+
 launch_prompt() {
   echo
   echo "$APP_NAME installed."
@@ -300,6 +321,12 @@ launch_prompt() {
   echo "Quickshell layer: $QS_CONFIG_DIR"
   echo "Cache:            $CACHE_DIR"
   echo
+
+  if is_gzml_shell_running; then
+    echo "GZML Shell is already running."
+    echo "Updated source and Quickshell layer have been replaced."
+    return
+  fi
 
   if ask_yes_no "Launch GZML Shell now?"; then
     if [ "$FIRST_RUN" = "1" ]; then
