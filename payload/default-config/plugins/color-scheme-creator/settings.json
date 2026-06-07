@@ -1,4 +1,7 @@
 {
-  "iconColor": "none",
-  "wip": null
+    "iconColor": "none",
+    "wip": null,
+    "wallpaper": {
+        "useOriginalImages": false
+    }
 }

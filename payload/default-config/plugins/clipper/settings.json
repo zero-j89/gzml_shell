@@ -1,0 +1,18 @@
+{
+    "enableTodoIntegration": false,
+    "pincardsEnabled": true,
+    "notecardsEnabled": true,
+    "showCloseButton": true,
+    "fullscreenMode": false,
+    "hidePanelBackground": false,
+    "autoPaste": false,
+    "autoPasteOnRightClick": false,
+    "autoPasteDelay": 300,
+    "panelWidth": 1450,
+    "panelHeight": 0,
+    "cardColors": {},
+    "customColors": {},
+    "wallpaper": {
+        "useOriginalImages": false
+    }
+}
