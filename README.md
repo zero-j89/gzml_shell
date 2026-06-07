@@ -1,4 +1,5 @@
-# GZML Shell
+# GZML Shell -v0.6 is Now Live! 
+Run your gzml-shell-update command to get the latest version!(it will not overwrite user configs)
 
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
 ![GZML Shell Onboarding Tab](./Assets/screenshots/onboarding-welcome1.png)
