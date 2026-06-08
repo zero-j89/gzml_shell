@@ -44,6 +44,7 @@ bluez
 bluez-utils
 pavucontrol
 matugen
+adw-gtk-theme
 ```
 
 ---
@@ -71,7 +72,8 @@ sudo dnf install \
   pavucontrol \
   qt6-qtdeclarative \
   qt6-qtsvg \
-  qt6-qtmultimedia
+  qt6-qtmultimedia \
+  adw-gtk3-theme
 ```
 
 > Note: Depending on your Fedora version, Quickshell may require enabling a COPR repository or manual installation.
@@ -96,7 +98,8 @@ sudo apt install \
   pavucontrol \
   qml6-module-qtquick \
   qml6-module-qtquick-controls \
-  qml6-module-qtmultimedia
+  qml6-module-qtmultimedia  \
+  adw-gtk-theme distro equivelent
 ```
 
 > Note: Quickshell is not currently available in many Debian/Ubuntu repositories and may need to be built or installed manually.
@@ -125,7 +128,8 @@ sudo zypper install \
   pavucontrol \
   qt6-declarative \
   qt6-svg \
-  qt6-multimedia
+  qt6-multimedia \
+  adw-gtk-theme distro equivelent
 ```
 
 > Note: Package names may vary slightly between openSUSE releases.
