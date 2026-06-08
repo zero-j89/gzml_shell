@@ -128,7 +128,7 @@ ColumnLayout {
   }
 
   function copyInfoToClipboard() {
-    let info = "GZML Shell: v0.6.2";
+    let info = "GZML Shell: v0.6.5";
     if (root.isGitVersion && root.commitInfo) {
       info += " (" + root.commitInfo + ")";
     }
@@ -395,7 +395,7 @@ ColumnLayout {
           spacing: Style.marginS
 
           NText {
-            text: "v0.6.2"
+            text: "v0.6.5"
             color: Color.mOnSurface
             font.weight: Style.fontWeightBold
           }
