@@ -95,6 +95,9 @@ stdenvNoCC.mkDerivation {
       --add-flags "-p $out/share/gzml-shell" \
       --prefix PATH : ${lib.makeBinPath (runtimeDeps ++ extraPackages)} \
       --prefix XDG_DATA_DIRS : ${wayland-scanner}/share \
+      --prefix QML2_IMPORT_PATH : ${qt6.qtmultimedia}/lib/qt-6/qml \
+      --prefix QML_IMPORT_PATH : ${qt6.qtmultimedia}/lib/qt-6/qml \
+      --prefix QT_PLUGIN_PATH : ${qt6.qtmultimedia}/lib/qt-6/plugins \
       --set-default QS_CONFIG_PATH "$out/share/gzml-shell" \
       --set-default GZML_SHELL_SOURCE "$out/share/gzml-shell" \
       --set-default GZML_SHELL_QS_CONFIG "$out/share/gzml-shell" \
