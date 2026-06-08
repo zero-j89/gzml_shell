@@ -6,8 +6,8 @@
 
     # GZML Shell currently builds against the Noctalia Quickshell fork.
     # Keep this as-is until/unless GZML ships its own Quickshell fork/input.
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
+    gzml-qs = {
+      url = "github:gzml-dev/gzml-qs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -16,7 +16,7 @@
     {
       self,
       nixpkgs,
-      noctalia-qs,
+      gzml-qs,
       ...
     }:
     let
@@ -47,7 +47,7 @@
       });
 
       overlays.default = nixpkgs.lib.composeManyExtensions [
-        noctalia-qs.overlays.default
+        gzml-qs.overlays.default
         (final: prev: {
           gzml-shell = final.callPackage ./nix/package.nix {
             inherit version;
@@ -57,7 +57,7 @@
 
       devShells = eachSystem (system: {
         default = pkgsFor.${system}.callPackage ./nix/shell.nix {
-          quickshell = noctalia-qs.packages.${system}.default;
+          quickshell = gzml-qs.packages.${system}.default;
         };
       });
 

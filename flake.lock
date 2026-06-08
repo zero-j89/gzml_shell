@@ -19,7 +19,7 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "noctalia-qs": "gzml-qs"
+        "gzml-qs": "gzml-qs"
       }
     },
     "systems": {
@@ -58,7 +58,7 @@
         "type": "github"
       }
     },
-    "noctalia-qs": {
+    "gzml-qs": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
