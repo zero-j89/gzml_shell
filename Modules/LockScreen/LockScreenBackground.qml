@@ -63,6 +63,12 @@ Item {
       return;
     }
 
+    // In video mode, do not keep or generate a static wallpaper cache.
+    if (root.useVideoBackground) {
+      resolvedWallpaperPath = "";
+      return;
+    }
+
     // Check for solid color mode first
     if (Settings.data.wallpaper.useSolidColor) {
       resolvedWallpaperPath = "";
@@ -115,7 +121,7 @@ Item {
   MediaPlayer {
     id: lockBgPlayer
     source: root.useVideoBackground ? root.videoBackgroundPath : ""
-    videoOutput: lockBgVideo
+    videoOutput: root.useVideoBackground ? lockBgVideo : null
     autoPlay: root.useVideoBackground
     loops: MediaPlayer.Infinite
 
@@ -135,9 +141,11 @@ Item {
     target: root
     function onUseVideoBackgroundChanged() {
       if (root.useVideoBackground) {
+        resolvedWallpaperPath = "";
         lockBgPlayer.play();
       } else {
         lockBgPlayer.stop();
+        Qt.callLater(requestCachedWallpaper);
       }
     }
   }
@@ -147,11 +155,11 @@ Item {
     visible: !root.useVideoBackground && source !== "" && Settings.data.wallpaper.enabled && !Settings.data.wallpaper.useSolidColor && (!PowerProfileService.noctaliaPerformanceMode || !Settings.data.noctaliaPerformance.disableWallpaper)
     anchors.fill: parent
     fillMode: Image.PreserveAspectCrop
-    source: resolvedWallpaperPath
+    source: root.useVideoBackground ? "" : resolvedWallpaperPath
     cache: false
     smooth: true
     mipmap: false
-    antialiasing: true
+    antialiasing: false
 
     layer.enabled: Settings.data.general.lockScreenBlur > 0 && !PowerProfileService.noctaliaPerformanceMode
     layer.smooth: false
