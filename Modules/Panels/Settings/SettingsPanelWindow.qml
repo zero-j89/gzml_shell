@@ -10,7 +10,7 @@ import qs.Widgets
 FloatingWindow {
   id: root
 
-  title: "Noctalia"
+  title: "GZML Shell"
   minimumSize: Qt.size(840 * Style.uiScaleRatio, 910 * Style.uiScaleRatio)
   implicitWidth: Math.round(840 * Style.uiScaleRatio)
   implicitHeight: Math.round(910 * Style.uiScaleRatio)
