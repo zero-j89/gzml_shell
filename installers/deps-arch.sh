@@ -7,6 +7,7 @@ install_dependencies() {
     qt6-5compat
     jq
     rsync
+    adw-gtk-theme
     git
     python
     wl-clipboard

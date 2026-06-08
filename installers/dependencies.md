@@ -6,6 +6,7 @@ qt6-svg
 qt6-multimedia
 jq
 rsync
+adw-gtk-theme
 
 Wallpaper Features
 ------------------

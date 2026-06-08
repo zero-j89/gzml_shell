@@ -18,6 +18,7 @@ install_dependencies() {
     qt6-qtdeclarative
     qt6-qtsvg
     qt6-qtmultimedia
+    adw-gtk3-theme
   )
 
   local missing=()
