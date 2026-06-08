@@ -1,4 +1,4 @@
-# GZML Shell -v0.6.2 is Now Live -now with NixOS support!
+# GZML Shell -v0.6.5 is Now Live -now with NixOS support!
 Run your gzml-shell-update command to get the latest version!(it will not overwrite user configs)
 
 GZML Shell is a standalone desktop shell built with Quickshell, designed to provide a modern, customizable,  desktop experience while maintaining a clear separation between shell components and user configuration.
