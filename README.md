@@ -187,7 +187,7 @@ Your original Noctalia configuration is never modified and remains available as 
 
 ### Preview Migration
 
-Note*** Not mandatory but I suggest closing gzml-shell before running the migrator.
+Note*** It is mot mandatory to close gzml-shell before running the migrator the settings will be applied live.
 
 To preview all changes without modifying any files:
 
