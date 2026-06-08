@@ -27,9 +27,6 @@ Variants {
         shouldLoad = monitors.length === 0 || monitors.includes(modelData?.name);
       }
 
-      if (shouldLoad) {
-        Logger.d("AllScreens", "Screen activated: ", modelData?.name);
-      }
       return shouldLoad;
     }
 
@@ -44,8 +41,13 @@ Variants {
       property ShellScreen loaderScreen: modelData
 
       onLoaded: {
-        // Signal that window is loaded so exclusion zone can be created
+        // Signal that window is loaded so dependent lightweight windows can be created
         parent.windowLoaded = true;
+      }
+
+      onActiveChanged: {
+        if (!active)
+          parent.windowLoaded = false;
       }
 
       sourceComponent: MainScreen {
@@ -56,7 +58,7 @@ Variants {
     // Bar content in separate windows to prevent fullscreen redraws
     // Note: Window stays alive when bar is hidden (visible=false) to avoid
     // rapid Wayland surface destruction/creation that can crash compositors.
-    // Content is debounce-unloaded inside BarContentWindow.
+    // BarContentWindow keeps content loaded after first show to avoid compositor/QML churn.
     Loader {
       active: {
         if (!parent.windowLoaded || !parent.shouldBeActive)

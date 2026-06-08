@@ -17,8 +17,8 @@ Item {
   Item {
     anchors.fill: parent
 
-    // Cache the Shape to a texture to prevent continuous re-tessellation
-    layer.enabled: true
+    // Cache the Shape only when screen corners are actually enabled.
+    layer.enabled: Settings.data.general.showScreenCorners && Style.screenRadius > 0
 
     Shape {
       id: cornersShape
@@ -27,7 +27,7 @@ Item {
       preferredRendererType: Shape.CurveRenderer
       asynchronous: true
       enabled: false // Disable mouse input
-      visible: cornersPath.cornerRadius > 0 && width > 0 && height > 0
+      visible: cornersPath.shouldShow && cornersPath.cornerRadius > 0 && width > 0 && height > 0
 
       ShapePath {
         id: cornersPath
