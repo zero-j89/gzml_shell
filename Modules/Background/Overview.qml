@@ -33,6 +33,8 @@ Loader {
 
       Component.onDestruction: {
         bgImage.source = "";
+        wallpaper = "";
+        preprocessedWallpaper = "";
       }
 
       // External state management - wait for wallpaper processing to complete
@@ -95,13 +97,13 @@ Loader {
         anchors.fill: parent
         visible: !isSolidColor
         fillMode: Image.PreserveAspectCrop
-        source: preprocessedWallpaper || wallpaper
+        source: isSolidColor ? "" : (preprocessedWallpaper || wallpaper)
         smooth: true
         mipmap: false
         cache: true // Shares texture with Background's currentWallpaper
         asynchronous: true
 
-        layer.enabled: Settings.data.wallpaper.overviewBlur > 0 && !PowerProfileService.noctaliaPerformanceMode
+        layer.enabled: !isSolidColor && source !== "" && Settings.data.wallpaper.overviewBlur > 0 && !PowerProfileService.noctaliaPerformanceMode
         layer.smooth: false
         layer.effect: MultiEffect {
           blurEnabled: true

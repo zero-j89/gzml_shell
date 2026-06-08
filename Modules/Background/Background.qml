@@ -231,7 +231,7 @@ Variants {
           anchors.fill: parent
 
           property variant source1: currentWallpaper
-          property variant source2: nextWallpaper.status === Image.Ready ? nextWallpaper : currentWallpaper.status === Image.Ready ? nextWallpaper : currentWallpaper
+          property variant source2: nextWallpaper.status === Image.Ready ? nextWallpaper : currentWallpaper
           property real progress: root.transitionProgress
 
           // Fill mode properties
