@@ -238,6 +238,10 @@ qs -p ~/.config/quickshell-gzml ipc call plugin:shell-profiles toggleProfiles
 ```bash
 qs ipc -p ~/.config/quickshell-gzml call wallpaper toggle
 ```
+or for wallcards
+```bash
+qs -p /home/zer0/.config/quickshell-noctalia ipc call plugin:wallcards toggle
+```
 
 ### IPC Discovery
 
