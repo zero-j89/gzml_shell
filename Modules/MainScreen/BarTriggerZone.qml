@@ -25,7 +25,7 @@ PanelWindow {
   color: "transparent"
   focusable: false
 
-  WlrLayershell.namespace: "noctalia-bar-trigger-" + (screen?.name || "unknown")
+  WlrLayershell.namespace: "gzml-bar-trigger-" + (screen?.name || "unknown")
   WlrLayershell.layer: WlrLayer.Top
   WlrLayershell.exclusionMode: ExclusionMode.Ignore
 

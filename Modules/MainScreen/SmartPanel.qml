@@ -99,7 +99,7 @@ Item {
   readonly property string barPosition: Settings.getBarPositionForScreen(screen?.name)
   readonly property bool barIsVertical: barPosition === "left" || barPosition === "right"
   readonly property real barHeight: barShouldShow ? Style.getBarHeightForScreen(screen?.name) : 0
-  readonly property bool hasBar: screen && screen.name ? (Settings.data.bar.monitors.includes(screen.name) || (Settings.data.bar.monitors.length === 0)) : false
+  readonly property bool hasBar: modelData && modelData.name ? (Settings.data.bar.monitors.includes(modelData.name) || (Settings.data.bar.monitors.length === 0)) : false
   readonly property bool isFramed: Settings.data.bar.barType === "framed" && hasBar
   readonly property real frameThickness: Settings.data.bar.frameThickness ?? 12
   readonly property bool barFloating: Settings.data.bar.barType === "floating"
@@ -239,9 +239,6 @@ Item {
   }
 
   function close() {
-    if ((!isPanelOpen && !isPanelVisible) || isClosing)
-      return;
-
     // Reset immediate close flag to ensure animations work properly
     PanelService.closedImmediately = false;
 
@@ -286,8 +283,6 @@ Item {
     root.opacityFadeComplete = false;
     root.closeFinalized = true;
     root.isPanelOpen = false;
-    root.buttonItem = null;
-    root.useButtonPosition = false;
     panelBackground.dimensionsInitialized = false;
 
     // Signal immediate close so MainScreen can skip dimmer animation
@@ -319,8 +314,6 @@ Item {
     root.isPanelOpen = false;
     root.isClosing = false;
     root.opacityFadeComplete = false;
-    root.buttonItem = null;
-    root.useButtonPosition = false;
 
     // Reset dimensionsInitialized for next opening
     panelBackground.dimensionsInitialized = false;
