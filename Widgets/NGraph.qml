@@ -39,6 +39,17 @@ Item {
 
   readonly property bool hasData: values.length >= 4
   readonly property bool hasData2: values2.length >= 4
+  readonly property bool graphActive: visible && width > 0 && height > 0 && (hasData || hasData2)
+
+  onGraphActiveChanged: {
+    if (!graphActive) {
+      _scrollAnim1.stop();
+      _scrollAnim2.stop();
+      _scaleTimer.stop();
+      _t1 = 1.0;
+      _t2 = 1.0;
+    }
+  }
 
   // Scale animation state
   property real _targetMax1: maxValue
@@ -48,7 +59,7 @@ Item {
 
   onMaxValueChanged: {
     _targetMax1 = maxValue;
-    if (animateScale && _ready1) {
+    if (graphActive && animateScale && _ready1) {
       _scaleTimer.start();
     } else {
       _animMax1 = maxValue;
@@ -57,7 +68,7 @@ Item {
 
   onMaxValue2Changed: {
     _targetMax2 = maxValue2;
-    if (animateScale && _ready2) {
+    if (graphActive && animateScale && _ready2) {
       _scaleTimer.start();
     } else {
       _animMax2 = maxValue2;
@@ -84,7 +95,7 @@ Item {
     property: "_t1"
     from: 0
     to: 1
-    duration: root.updateInterval
+    duration: root.graphActive ? root.updateInterval : 0
   }
 
   NumberAnimation {
@@ -93,7 +104,7 @@ Item {
     property: "_t2"
     from: 0
     to: 1
-    duration: root.updateInterval
+    duration: root.graphActive ? root.updateInterval : 0
   }
 
   onValuesChanged: {
@@ -106,7 +117,11 @@ Item {
 
     if (!_ready1)
       _ready1 = true;
-    _scrollAnim1.restart();
+
+    if (graphActive)
+      _scrollAnim1.restart();
+    else
+      _t1 = 1.0;
   }
 
   onValues2Changed: {
@@ -119,16 +134,24 @@ Item {
 
     if (!_ready2)
       _ready2 = true;
-    _scrollAnim2.restart();
+
+    if (graphActive)
+      _scrollAnim2.restart();
+    else
+      _t2 = 1.0;
   }
 
   // Scale animation timer (only needed for animateScale mode)
   Timer {
     id: _scaleTimer
-    interval: 16
+    interval: 33
     repeat: true
 
     onTriggered: {
+      if (!root.graphActive) {
+        stop();
+        return;
+      }
       const scaleLerp = 0.15;
       const threshold = 0.5;
       let stillAnimating = false;
@@ -206,14 +229,14 @@ Item {
     id: _dataTex
     sourceItem: _dataRow
     textureSize: Qt.size(_dataRow.width, 1)
-    live: true
+    live: root.graphActive
     smooth: false
     hideSource: true
   }
 
   ShaderEffect {
     anchors.fill: parent
-    visible: (root.hasData || root.hasData2) && width > 0 && height > 0
+    visible: root.graphActive
 
     property variant dataSource: _dataTex
     property color lineColor1: root.color

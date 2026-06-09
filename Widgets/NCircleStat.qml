@@ -33,11 +33,21 @@ Item {
   Layout.maximumWidth: implicitWidth
   Layout.maximumHeight: implicitHeight
 
-  // Animated ratio for smooth transitions - reduces repaint frequency
+  // Animated ratio for smooth transitions - disabled while hidden to avoid idle repaints
   property real animatedRatio: ratio
+  readonly property bool statActive: visible && width > 0 && height > 0
+
+  onStatActiveChanged: {
+    if (!statActive) {
+      repaintTimer.stop();
+      animatedRatio = ratio;
+    } else {
+      gauge.requestPaint();
+    }
+  }
 
   Behavior on animatedRatio {
-    enabled: !Settings.data.general.animationDisabled
+    enabled: root.statActive && !Settings.data.general.animationDisabled
     NumberAnimation {
       duration: Style.animationNormal
       easing.type: Easing.OutCubic
@@ -46,18 +56,32 @@ Item {
 
   // Repaint gauge when animated ratio changes (throttled by animation)
   onAnimatedRatioChanged: {
-    if (!repaintTimer.running) {
+    if (!root.statActive)
+      return;
+
+    if (!repaintTimer.running)
       repaintTimer.start();
-    }
   }
-  onFillColorChanged: gauge.requestPaint()
+  onRatioChanged: {
+    if (!root.statActive)
+      animatedRatio = ratio;
+  }
+  onFillColorChanged: {
+    if (root.statActive)
+      gauge.requestPaint();
+  }
 
   // Throttle timer to limit repaint frequency during animation (~30 FPS)
   Timer {
     id: repaintTimer
-    interval: 33
+    interval: 50
     repeat: true
     onTriggered: {
+      if (!root.statActive) {
+        stop();
+        return;
+      }
+
       gauge.requestPaint();
       // Stop repeating once animation settles
       if (Math.abs(root.animatedRatio - root.ratio) < 0.001) {
@@ -73,20 +97,20 @@ Item {
     anchors.horizontalCenter: parent.horizontalCenter
     y: 0
 
-    // Optimized Canvas settings for better GPU performance
+    // Keep this lightweight; FBO/layer caching on many stats can keep GPU memory/render work alive.
     renderStrategy: Canvas.Cooperative
-    renderTarget: Canvas.FramebufferObject
+    renderTarget: Canvas.Image
 
-    // Enable layer caching - critical for performance!
-    layer.enabled: true
-    layer.smooth: true
+    layer.enabled: false
+    layer.smooth: false
 
     // Hide until first paint to avoid white FBO flash
     visible: false
     onPainted: visible = true
 
     Component.onCompleted: {
-      requestPaint();
+      if (root.statActive)
+        requestPaint();
     }
 
     onPaint: {
