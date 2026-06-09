@@ -236,7 +236,7 @@ qs -p ~/.config/quickshell-gzml ipc call plugin:shell-profiles toggleProfiles
 ### Wallpaper Selector
 
 ```bash
-qs -p ~/.config/quickshell-gzml ipc call plugin:wallcards toggle
+qs ipc -p ~/.config/quickshell-gzml call wallpaper toggle
 ```
 
 ### IPC Discovery
