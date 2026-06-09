@@ -242,7 +242,7 @@ qs -p ~/.config/quickshell-gzml ipc call plugin:wallcards toggle
 ### IPC Discovery
 
 ```bash
-qs -p ~/.config/quickshell-gzml ipc call plugin: ipc show
+qs ipc -p ~/.config/quickshell-gzml show
 ```
 
 or, depending on the installed Quickshell version:
